@@ -1,0 +1,68 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\BadmitonCenter\\BadmintonCenter\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1E87EAE9-5975-4F18-AE9C-8CDF39B93380}|..\\BadmintonCenter.Services\\BadmintonCenter.Services.csproj|f:\\badmitoncenter\\badmintoncenter.services\\badmintoncenter.services.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D2ED74B-7A60-45F6-B552-13BCD486C9B2}|..\\BadmintonCenter.Data\\BadmintonCenter.Data.csproj|f:\\badmitoncenter\\badmintoncenter.data\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E87EAE9-5975-4F18-AE9C-8CDF39B93380}|..\\BadmintonCenter.Services\\BadmintonCenter.Services.csproj|f:\\badmitoncenter\\badmintoncenter.services\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BadmintonCenter.Services",
+              "DocumentMoniker": "F:\\BadmitonCenter\\BadmintonCenter.Services\\BadmintonCenter.Services.csproj",
+              "RelativeDocumentMoniker": "..\\BadmintonCenter.Services\\BadmintonCenter.Services.csproj",
+              "ToolTip": "F:\\BadmitonCenter\\BadmintonCenter.Services\\BadmintonCenter.Services.csproj",
+              "RelativeToolTip": "..\\BadmintonCenter.Services\\BadmintonCenter.Services.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-05-25T13:31:51.278Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "F:\\BadmitonCenter\\BadmintonCenter.Data\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\BadmintonCenter.Data\\Class1.cs",
+              "ToolTip": "F:\\BadmitonCenter\\BadmintonCenter.Data\\Class1.cs",
+              "RelativeToolTip": "..\\BadmintonCenter.Data\\Class1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-25T13:30:33.299Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "F:\\BadmitonCenter\\BadmintonCenter.Services\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\BadmintonCenter.Services\\Class1.cs",
+              "ToolTip": "F:\\BadmitonCenter\\BadmintonCenter.Services\\Class1.cs",
+              "RelativeToolTip": "..\\BadmintonCenter.Services\\Class1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-25T13:30:09.95Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
