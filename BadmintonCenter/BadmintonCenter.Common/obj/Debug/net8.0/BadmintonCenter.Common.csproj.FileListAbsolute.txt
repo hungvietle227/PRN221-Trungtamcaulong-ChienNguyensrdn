@@ -1,0 +1,12 @@
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Common\bin\Debug\net8.0\BadmintonCenter.Common.deps.json
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Common\bin\Debug\net8.0\BadmintonCenter.Common.dll
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Common\bin\Debug\net8.0\BadmintonCenter.Common.pdb
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\BadmintonCenter.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\BadmintonCenter.Common.AssemblyInfoInputs.cache
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\BadmintonCenter.Common.AssemblyInfo.cs
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\BadmintonCenter.Common.csproj.CoreCompileInputs.cache
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\BadmintonCenter.Common.sourcelink.json
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\BadmintonCenter.Common.dll
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\refint\BadmintonCenter.Common.dll
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\BadmintonCenter.Common.pdb
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\ref\BadmintonCenter.Common.dll
