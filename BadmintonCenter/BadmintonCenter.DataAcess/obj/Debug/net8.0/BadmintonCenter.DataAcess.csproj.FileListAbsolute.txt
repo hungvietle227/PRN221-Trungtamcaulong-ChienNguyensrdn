@@ -1,0 +1,12 @@
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.DataAcess\bin\Debug\net8.0\BadmintonCenter.DataAcess.deps.json
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.DataAcess\bin\Debug\net8.0\BadmintonCenter.DataAcess.dll
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.DataAcess\bin\Debug\net8.0\BadmintonCenter.DataAcess.pdb
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.DataAcess\obj\Debug\net8.0\BadmintonCenter.DataAcess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.DataAcess\obj\Debug\net8.0\BadmintonCenter.DataAcess.AssemblyInfoInputs.cache
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.DataAcess\obj\Debug\net8.0\BadmintonCenter.DataAcess.AssemblyInfo.cs
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.DataAcess\obj\Debug\net8.0\BadmintonCenter.DataAcess.csproj.CoreCompileInputs.cache
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.DataAcess\obj\Debug\net8.0\BadmintonCenter.DataAcess.sourcelink.json
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.DataAcess\obj\Debug\net8.0\BadmintonCenter.DataAcess.dll
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.DataAcess\obj\Debug\net8.0\refint\BadmintonCenter.DataAcess.dll
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.DataAcess\obj\Debug\net8.0\BadmintonCenter.DataAcess.pdb
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.DataAcess\obj\Debug\net8.0\ref\BadmintonCenter.DataAcess.dll
