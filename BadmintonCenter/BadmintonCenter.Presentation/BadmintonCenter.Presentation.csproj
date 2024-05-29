@@ -7,9 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BadmintonCenter.BusinessObject\BadmintonCenter.BusinessObject.csproj" />
     <ProjectReference Include="..\BadmintonCenter.Common\BadmintonCenter.Common.csproj" />
     <ProjectReference Include="..\BadmintonCenter.DataAcess\BadmintonCenter.DataAcess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\Authen\" />
   </ItemGroup>
 
 </Project>

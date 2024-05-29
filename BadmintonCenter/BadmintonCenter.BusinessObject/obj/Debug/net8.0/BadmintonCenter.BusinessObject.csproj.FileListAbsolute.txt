@@ -13,3 +13,6 @@ D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\
 D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.BusinessObject\obj\Debug\net8.0\BadmintonCenter.BusinessObject.pdb
 D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.BusinessObject\obj\Debug\net8.0\BadmintonCenter.BusinessObject.genruntimeconfig.cache
 D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.BusinessObject\obj\Debug\net8.0\ref\BadmintonCenter.BusinessObject.dll
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.BusinessObject\bin\Debug\net8.0\BadmintonCenter.Common.dll
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.BusinessObject\bin\Debug\net8.0\BadmintonCenter.Common.pdb
+D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.BusinessObject\obj\Debug\net8.0\BadmintonCenter.BusinessObject.csproj.CopyComplete

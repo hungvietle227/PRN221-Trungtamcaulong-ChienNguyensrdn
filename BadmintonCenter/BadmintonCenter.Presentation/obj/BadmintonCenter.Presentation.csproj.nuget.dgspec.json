@@ -31,7 +31,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj": {
+                "projectPath": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -246,6 +250,14 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
