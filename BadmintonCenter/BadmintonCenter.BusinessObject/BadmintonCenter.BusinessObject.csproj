@@ -15,4 +15,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BadmintonCenter.Common\BadmintonCenter.Common.csproj" />
+  </ItemGroup>
+
 </Project>

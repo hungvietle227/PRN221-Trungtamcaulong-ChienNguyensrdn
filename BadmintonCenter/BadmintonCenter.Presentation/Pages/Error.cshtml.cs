@@ -13,15 +13,17 @@ namespace BadmintonCenter.Presentation.Pages
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
         private readonly ILogger<ErrorModel> _logger;
+        public string Message { get; set; } = null!;
 
         public ErrorModel(ILogger<ErrorModel> logger)
         {
             _logger = logger;
         }
 
-        public void OnGet()
+        public void OnGet(string errMsg)
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            Message = errMsg;
         }
     }
 
