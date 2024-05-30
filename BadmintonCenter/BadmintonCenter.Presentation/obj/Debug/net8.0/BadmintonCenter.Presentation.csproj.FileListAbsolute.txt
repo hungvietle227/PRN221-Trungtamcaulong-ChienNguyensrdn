@@ -141,3 +141,15 @@ D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\
 D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Presentation\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Presentation\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Presentation\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Presentation\obj\Debug\net8.0\BadmintonCenter.Presentation.csproj.AssemblyReference.cache
+F:\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Presentation\obj\Debug\net8.0\BadmintonCenter.Presentation.GeneratedMSBuildEditorConfig.editorconfig
+F:\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Presentation\obj\Debug\net8.0\BadmintonCenter.Presentation.AssemblyInfoInputs.cache
+F:\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Presentation\obj\Debug\net8.0\BadmintonCenter.Presentation.AssemblyInfo.cs
+F:\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Presentation\obj\Debug\net8.0\BadmintonCenter.Presentation.csproj.CoreCompileInputs.cache
+F:\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Presentation\obj\Debug\net8.0\BadmintonCenter.Presentation.MvcApplicationPartsAssemblyInfo.cache
+F:\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Presentation\obj\Debug\net8.0\BadmintonCenter.Presentation.RazorAssemblyInfo.cache
+F:\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Presentation\obj\Debug\net8.0\BadmintonCenter.Presentation.RazorAssemblyInfo.cs
+F:\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Presentation\obj\Debug\net8.0\BadmintonCenter.Presentation.sourcelink.json
+F:\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Presentation\obj\Debug\net8.0\BadmintonCenter.Presentation.dll
+F:\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Presentation\obj\Debug\net8.0\refint\BadmintonCenter.Presentation.dll
+F:\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Presentation\obj\Debug\net8.0\BadmintonCenter.Presentation.pdb
