@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Presentation\\BadmintonCenter.Presentation.csproj": {}
+    "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.Presentation\\BadmintonCenter.Presentation.csproj": {}
   },
   "projects": {
-    "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.BusinessObject\\BadmintonCenter.BusinessObject.csproj": {
+    "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.BusinessObject\\BadmintonCenter.BusinessObject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.BusinessObject\\BadmintonCenter.BusinessObject.csproj",
+        "projectUniqueName": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.BusinessObject\\BadmintonCenter.BusinessObject.csproj",
         "projectName": "BadmintonCenter.BusinessObject",
-        "projectPath": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.BusinessObject\\BadmintonCenter.BusinessObject.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.BusinessObject\\obj\\",
+        "projectPath": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.BusinessObject\\BadmintonCenter.BusinessObject.csproj",
+        "packagesPath": "C:\\Users\\steve\\.nuget\\packages\\",
+        "outputPath": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.BusinessObject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\steve\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj": {
-                "projectPath": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj"
+              "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj": {
+                "projectPath": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj"
               }
             }
           }
@@ -42,6 +43,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -79,24 +85,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj": {
+    "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj",
+        "projectUniqueName": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj",
         "projectName": "BadmintonCenter.Common",
-        "projectPath": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\obj\\",
+        "projectPath": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj",
+        "packagesPath": "C:\\Users\\steve\\.nuget\\packages\\",
+        "outputPath": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\steve\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -105,6 +111,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -117,6 +124,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -138,24 +150,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.DataAcess\\BadmintonCenter.DataAcess.csproj": {
+    "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.DataAcess\\BadmintonCenter.DataAcess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.DataAcess\\BadmintonCenter.DataAcess.csproj",
+        "projectUniqueName": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.DataAcess\\BadmintonCenter.DataAcess.csproj",
         "projectName": "BadmintonCenter.DataAcess",
-        "projectPath": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.DataAcess\\BadmintonCenter.DataAcess.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.DataAcess\\obj\\",
+        "projectPath": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.DataAcess\\BadmintonCenter.DataAcess.csproj",
+        "packagesPath": "C:\\Users\\steve\\.nuget\\packages\\",
+        "outputPath": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.DataAcess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\steve\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -164,79 +176,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Presentation\\BadmintonCenter.Presentation.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Presentation\\BadmintonCenter.Presentation.csproj",
-        "projectName": "BadmintonCenter.Presentation",
-        "projectPath": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Presentation\\BadmintonCenter.Presentation.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Presentation\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.BusinessObject\\BadmintonCenter.BusinessObject.csproj": {
-                "projectPath": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.BusinessObject\\BadmintonCenter.BusinessObject.csproj"
-              },
-              "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj": {
-                "projectPath": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj"
-              },
-              "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.DataAcess\\BadmintonCenter.DataAcess.csproj": {
-                "projectPath": "D:\\Major7\\PRN221\\Project\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.DataAcess\\BadmintonCenter.DataAcess.csproj"
+              "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.BusinessObject\\BadmintonCenter.BusinessObject.csproj": {
+                "projectPath": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.BusinessObject\\BadmintonCenter.BusinessObject.csproj"
               }
             }
           }
@@ -245,6 +193,86 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.Presentation\\BadmintonCenter.Presentation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.Presentation\\BadmintonCenter.Presentation.csproj",
+        "projectName": "BadmintonCenter.Presentation",
+        "projectPath": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.Presentation\\BadmintonCenter.Presentation.csproj",
+        "packagesPath": "C:\\Users\\steve\\.nuget\\packages\\",
+        "outputPath": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.Presentation\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\steve\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.BusinessObject\\BadmintonCenter.BusinessObject.csproj": {
+                "projectPath": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.BusinessObject\\BadmintonCenter.BusinessObject.csproj"
+              },
+              "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj": {
+                "projectPath": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj"
+              },
+              "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.DataAcess\\BadmintonCenter.DataAcess.csproj": {
+                "projectPath": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.DataAcess\\BadmintonCenter.DataAcess.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -277,7 +305,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -10,3 +10,15 @@ D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\
 D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\refint\BadmintonCenter.Common.dll
 D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\BadmintonCenter.Common.pdb
 D:\Major7\PRN221\Project\PRN221-Trungtamcaulong-ChienNguyensrdn\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\ref\BadmintonCenter.Common.dll
+E:\PRN221-PROJECT\BadmintonCenter\BadmintonCenter.Common\bin\Debug\net8.0\BadmintonCenter.Common.deps.json
+E:\PRN221-PROJECT\BadmintonCenter\BadmintonCenter.Common\bin\Debug\net8.0\BadmintonCenter.Common.dll
+E:\PRN221-PROJECT\BadmintonCenter\BadmintonCenter.Common\bin\Debug\net8.0\BadmintonCenter.Common.pdb
+E:\PRN221-PROJECT\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\BadmintonCenter.Common.GeneratedMSBuildEditorConfig.editorconfig
+E:\PRN221-PROJECT\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\BadmintonCenter.Common.AssemblyInfoInputs.cache
+E:\PRN221-PROJECT\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\BadmintonCenter.Common.AssemblyInfo.cs
+E:\PRN221-PROJECT\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\BadmintonCenter.Common.csproj.CoreCompileInputs.cache
+E:\PRN221-PROJECT\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\BadmintonCenter.Common.sourcelink.json
+E:\PRN221-PROJECT\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\BadmintonCenter.Common.dll
+E:\PRN221-PROJECT\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\refint\BadmintonCenter.Common.dll
+E:\PRN221-PROJECT\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\BadmintonCenter.Common.pdb
+E:\PRN221-PROJECT\BadmintonCenter\BadmintonCenter.Common\obj\Debug\net8.0\ref\BadmintonCenter.Common.dll

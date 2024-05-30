@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BadmintonCenter.DataAcess.Repository.Interface
 {
-    internal class ITest
+    public interface ITransactionRepository
     {
+        //
     }
 }

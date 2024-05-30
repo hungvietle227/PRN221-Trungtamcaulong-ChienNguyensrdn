@@ -874,6 +874,9 @@
         }
       },
       "BadmintonCenter.DataAcess/1.0.0": {
+        "dependencies": {
+          "BadmintonCenter.BusinessObject": "1.0.0"
+        },
         "runtime": {
           "BadmintonCenter.DataAcess.dll": {}
         }
