@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadmintonCenter.Presentation", "BadmintonCenter.Presentation\BadmintonCenter.Presentation.csproj", "{BB53FF47-8D14-42F4-B380-EA1367D714F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadmintonCenter.Presentation", "BadmintonCenter.Presentation\BadmintonCenter.Presentation.csproj", "{BB53FF47-8D14-42F4-B380-EA1367D714F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadmintonCenter.BusinessObject", "BadmintonCenter.BusinessObject\BadmintonCenter.BusinessObject.csproj", "{2D38C601-0551-44C5-A97F-460A031719DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadmintonCenter.BusinessObject", "BadmintonCenter.BusinessObject\BadmintonCenter.BusinessObject.csproj", "{2D38C601-0551-44C5-A97F-460A031719DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadmintonCenter.DataAcess", "BadmintonCenter.DataAcess\BadmintonCenter.DataAcess.csproj", "{BBA3FB6C-AF37-4A5F-8331-89877B17E2F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadmintonCenter.DataAcess", "BadmintonCenter.DataAcess\BadmintonCenter.DataAcess.csproj", "{BBA3FB6C-AF37-4A5F-8331-89877B17E2F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadmintonCenter.Common", "BadmintonCenter.Common\BadmintonCenter.Common.csproj", "{42806645-5E0C-4F00-9A10-FFFFE246109E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadmintonCenter.Common", "BadmintonCenter.Common\BadmintonCenter.Common.csproj", "{42806645-5E0C-4F00-9A10-FFFFE246109E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9DA1C511-31EA-4BBA-9B7C-70CCE95968AF}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
