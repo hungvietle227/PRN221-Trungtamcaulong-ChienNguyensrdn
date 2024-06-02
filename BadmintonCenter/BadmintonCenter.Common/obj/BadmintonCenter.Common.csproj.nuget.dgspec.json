@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj": {}
+    "D:\\Major7\\PRN221\\Project\\main\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj": {}
   },
   "projects": {
-    "F:\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj": {
+    "D:\\Major7\\PRN221\\Project\\main\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj",
+        "projectUniqueName": "D:\\Major7\\PRN221\\Project\\main\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj",
         "projectName": "BadmintonCenter.Common",
-        "projectPath": "F:\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj",
-        "packagesPath": "C:\\Users\\trong\\.nuget\\packages\\",
-        "outputPath": "F:\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\obj\\",
+        "projectPath": "D:\\Major7\\PRN221\\Project\\main\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\BadmintonCenter.Common.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\Major7\\PRN221\\Project\\main\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\BadmintonCenter.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "F:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\trong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -38,11 +38,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -64,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

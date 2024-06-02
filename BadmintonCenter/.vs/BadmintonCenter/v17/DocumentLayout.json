@@ -1,7 +1,21 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "WorkspaceRootPath": "F:\\PRN221-Trungtamcaulong-ChienNguyensrdn\\BadmintonCenter\\",
   "Documents": [],
+=======
+  "WorkspaceRootPath": "E:\\PRN221-PROJECT\\BadmintonCenter\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BBA3FB6C-AF37-4A5F-8331-89877B17E2F2}|BadmintonCenter.DataAcess\\BadmintonCenter.DataAcess.csproj|e:\\prn221-project\\badmintoncenter\\badmintoncenter.dataacess\\dao\\transactiondao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBA3FB6C-AF37-4A5F-8331-89877B17E2F2}|BadmintonCenter.DataAcess\\BadmintonCenter.DataAcess.csproj|solutionrelative:badmintoncenter.dataacess\\dao\\transactiondao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBA3FB6C-AF37-4A5F-8331-89877B17E2F2}|BadmintonCenter.DataAcess\\BadmintonCenter.DataAcess.csproj|e:\\prn221-project\\badmintoncenter\\badmintoncenter.dataacess\\dao\\userdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBA3FB6C-AF37-4A5F-8331-89877B17E2F2}|BadmintonCenter.DataAcess\\BadmintonCenter.DataAcess.csproj|solutionrelative:badmintoncenter.dataacess\\dao\\userdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+>>>>>>> b5eca5eb4c11f013f444172bc7a3bac8486604f9
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +23,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": -1,
+=======
+          "SelectedChildIndex": 5,
+>>>>>>> b5eca5eb4c11f013f444172bc7a3bac8486604f9
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,6 +44,35 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+<<<<<<< HEAD
+=======
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserDAO.cs",
+              "DocumentMoniker": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.DataAcess\\DAO\\UserDAO.cs",
+              "RelativeDocumentMoniker": "BadmintonCenter.DataAcess\\DAO\\UserDAO.cs",
+              "ToolTip": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.DataAcess\\DAO\\UserDAO.cs",
+              "RelativeToolTip": "BadmintonCenter.DataAcess\\DAO\\UserDAO.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAB8AAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T13:47:38.382Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TransactionDAO.cs",
+              "DocumentMoniker": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.DataAcess\\DAO\\TransactionDAO.cs",
+              "RelativeDocumentMoniker": "BadmintonCenter.DataAcess\\DAO\\TransactionDAO.cs",
+              "ToolTip": "E:\\PRN221-PROJECT\\BadmintonCenter\\BadmintonCenter.DataAcess\\DAO\\TransactionDAO.cs",
+              "RelativeToolTip": "BadmintonCenter.DataAcess\\DAO\\TransactionDAO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T13:47:37.706Z",
+              "EditorCaption": ""
+>>>>>>> b5eca5eb4c11f013f444172bc7a3bac8486604f9
             }
           ]
         }
