@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using BadmintonCenter.Common.Constant.Message;
+using BadmintonCenter.Common.Enum.Status;
+using System.Web;
 
 namespace BadmintonCenter.Presentation.Middleware
 {
@@ -16,6 +18,10 @@ namespace BadmintonCenter.Presentation.Middleware
             try
             {
                 await _next(context);
+                if(context.Response.StatusCode == 404)
+                {
+                    HandleNotFound(context);
+                }
             }
             catch (Exception ex)
             {
@@ -29,7 +35,12 @@ namespace BadmintonCenter.Presentation.Middleware
 
             var errorMsg = string.Join(",", errors.Select(HttpUtility.UrlEncode));
 
-            context.Response.Redirect($"/error?errMessage={errorMsg}");
+            context.Response.Redirect($"/error?errMessage={errorMsg}&statusCode={(int)StatusCode.InternalServer}");
+        }
+
+        private static void HandleNotFound(HttpContext context)
+        {
+            context.Response.Redirect($"/error?errMessage={ErrorMessage.NotFound}&statusCode={(int)StatusCode.NotFound}");
         }
     }
 }

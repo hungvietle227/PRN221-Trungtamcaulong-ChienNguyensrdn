@@ -1,4 +1,11 @@
 using BadmintonCenter.BusinessObject.Models;
+using BadmintonCenter.DataAcess.DAO;
+using BadmintonCenter.DataAcess.Repository;
+using BadmintonCenter.DataAcess.Repository.Interface;
+using BadmintonCenter.Presentation.Middleware;
+using BadmintonCenter.Service;
+using BadmintonCenter.Service.Interface;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +17,20 @@ builder.Services.AddDbContext<BadmintonDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(optionsCookies =>
+{
+    optionsCookies.Cookie.Name = "AuthUser";
+});
+
+// DAO
+builder.Services.AddScoped<IUserDAO, UserDAO>();
+
+// repos
+builder.Services.AddScoped<IUserRepository, UserRepo>();
+
+// services
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 
@@ -25,6 +46,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseAuthorization();
 

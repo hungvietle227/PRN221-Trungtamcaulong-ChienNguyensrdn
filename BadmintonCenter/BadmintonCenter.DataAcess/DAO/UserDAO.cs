@@ -15,6 +15,7 @@ namespace BadmintonCenter.DataAcess.DAO
         Task AddUserAsync(User user);
         Task UpdateUserAsync(User user);
         Task DeleteUserAsync(int userId);
+        Task<User?> GetUserByUserName(string username);
     }
     public class UserDAO : IUserDAO
     {
@@ -59,5 +60,9 @@ namespace BadmintonCenter.DataAcess.DAO
             await _context.SaveChangesAsync();
         }
 
+        public async Task<User?> GetUserByUserName(string username)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
+        }
     }
 }

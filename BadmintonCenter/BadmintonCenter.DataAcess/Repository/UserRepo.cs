@@ -1,11 +1,6 @@
-﻿using BadmintonCenter.DataAcess.Repository.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BadmintonCenter.BusinessObject.Models;
 using BadmintonCenter.DataAcess.DAO;
-using BadmintonCenter.BusinessObject.Models;
+using BadmintonCenter.DataAcess.Repository.Interface;
 
 namespace BadmintonCenter.DataAcess.Repository
 {
@@ -43,7 +38,9 @@ namespace BadmintonCenter.DataAcess.Repository
             await _userDAO.DeleteUserAsync(userId);
         }
 
-
-
+        public async Task<User?> GetUserByUserName(string username)
+        {
+            return await _userDAO.GetUserByUserName(username);
+        }
     }
 }
