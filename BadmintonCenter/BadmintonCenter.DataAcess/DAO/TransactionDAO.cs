@@ -1,21 +1,22 @@
-﻿using System;
+﻿using BadmintonCenter.BusinessObject.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BadmintonCenter.BusinessObject.Models;
 
 namespace BadmintonCenter.DataAcess.DAO
 {
     public interface ITransactionDAO
     {
-        Task<Transaction> GetUserByIdAsync(int transactionId);
-        Task<List<Transaction>> GetAllUsersAsync();
-        Task AddUserAsync(Transaction transaction);
-        Task UpdateUserAsync(Transaction transaction);
-        Task DeleteUserAsync(int transactionId);
+        Task<Transaction> GetTransactionByIdAsync(int TransactionId);
+        Task<List<Transaction>> GetAllTransactionsAsync();
+        Task AddTransactionAsync(Transaction Transaction);
+        Task UpdateTransactionAsync(Transaction Transaction);
+        Task DeleteTransactionAsync(Transaction TransactionId);
     }
-    public class TransactionDAO
+    public class TransactionDAO : ITransactionDAO
     {
         private readonly BadmintonDbContext _context;
 
@@ -23,30 +24,31 @@ namespace BadmintonCenter.DataAcess.DAO
         {
             _context = context;
         }
-        public async Task<Transaction> GetTransactionByIdAsync (int transactionId)
+        public async Task<Transaction> GetTransactionByIdAsync(int TransactionId)
         {
-            //
-            //return _context.Transactions.FirstOrDefault(b => b.TransactionId == transactionId);
-            throw new NotImplementedException();
+            return _context.Transactions.FirstOrDefault(b => b.TransactionId == TransactionId);
         }
-
-        public Transaction AddTransaction(Transaction transaction) 
-        { 
-            //
-            throw new NotImplementedException(); 
-        }
-
-        public Transaction UpdateTransaction(Transaction transaction) 
+        public async Task<List<Transaction>> GetAllTransactionsAsync()
         {
-            //
-            throw new NotImplementedException(); 
+            return await _context.Transactions.ToListAsync();
         }
 
-        public Transaction DeleteTransaction(int transactionId) 
-        { 
-            //
-            throw new NotImplementedException(); 
+        public async Task AddTransactionAsync(Transaction Transaction)
+        {
+            var addedTransaction = await _context.Transactions.AddAsync(Transaction);
+            await _context.SaveChangesAsync();
         }
 
+        public async Task UpdateTransactionAsync(Transaction Transaction)
+        {
+            _context.Update(Transaction);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteTransactionAsync(Transaction TransactionId)
+        {
+            _context.Remove(TransactionId);
+            await _context.SaveChangesAsync();
+        }
     }
 }
