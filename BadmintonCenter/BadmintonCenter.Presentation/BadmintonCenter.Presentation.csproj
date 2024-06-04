@@ -16,11 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BadmintonCenter.BusinessObject\BadmintonCenter.BusinessObject.csproj" />
     <ProjectReference Include="..\BadmintonCenter.Common\BadmintonCenter.Common.csproj" />
-    <ProjectReference Include="..\BadmintonCenter.DataAcess\BadmintonCenter.DataAcess.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\Authen\" />
+    <ProjectReference Include="..\BadmintonCenter.Service\BadmintonCenter.Service.csproj" />
   </ItemGroup>
 
 </Project>
