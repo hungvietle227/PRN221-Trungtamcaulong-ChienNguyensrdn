@@ -16,6 +16,10 @@ namespace BadmintonCenter.BusinessObject.Models
         public DbSet<Court> Courts { get; set; } = null!;
         public DbSet<TimeSlot> TimeSlots { get; set; } = null!;
         public DbSet<BookingDetail> BookingDetails { get; set; } = null!;
+        public DbSet<Package> Packages { get; set; }
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<UserPackage> UserPackages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
