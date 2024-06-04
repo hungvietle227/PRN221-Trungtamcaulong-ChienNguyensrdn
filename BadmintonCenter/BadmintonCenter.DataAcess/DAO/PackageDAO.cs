@@ -24,30 +24,30 @@ namespace BadmintonCenter.DataAcess.DAO
         {
             _context = context;
         }
-        public async Task<Package> GetPackageByIdAsync(int PackageId)
+        public async Task<Package> GetPackageByIdAsync(int packageId)
         {
-            return _context.Packages.FirstOrDefault(b => b.PackageId == PackageId);
+            return _context.Packages.FirstOrDefault(b => b.PackageId == packageId);
         }
         public async Task<List<Package>> GetAllPackagesAsync()
         {
             return await _context.Packages.ToListAsync();
         }
 
-        public async Task AddPackageAsync(Package Package)
+        public async Task AddPackageAsync(Package package)
         {
-            var addedPackage = await _context.Packages.AddAsync(Package);
+            var addedPackage = await _context.Packages.AddAsync(package);
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdatePackageAsync(Package Package)
+        public async Task UpdatePackageAsync(Package package)
         {
-            _context.Update(Package);
+            _context.Update(package);
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeletePackageAsync(Package PackageId)
+        public async Task DeletePackageAsync(Package packageId)
         {
-            _context.Remove(PackageId);
+            _context.Remove(packageId);
             await _context.SaveChangesAsync();
         }
     }

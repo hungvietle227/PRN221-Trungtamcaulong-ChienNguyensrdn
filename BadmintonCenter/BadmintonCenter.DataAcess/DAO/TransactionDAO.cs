@@ -10,11 +10,11 @@ namespace BadmintonCenter.DataAcess.DAO
 {
     public interface ITransactionDAO
     {
-        Task<Transaction> GetTransactionByIdAsync(int TransactionId);
+        Task<Transaction> GetTransactionByIdAsync(int transactionId);
         Task<List<Transaction>> GetAllTransactionsAsync();
-        Task AddTransactionAsync(Transaction Transaction);
-        Task UpdateTransactionAsync(Transaction Transaction);
-        Task DeleteTransactionAsync(Transaction TransactionId);
+        Task AddTransactionAsync(Transaction transaction);
+        Task UpdateTransactionAsync(Transaction transaction);
+        Task DeleteTransactionAsync(Transaction transactionId);
     }
     public class TransactionDAO : ITransactionDAO
     {
@@ -24,30 +24,30 @@ namespace BadmintonCenter.DataAcess.DAO
         {
             _context = context;
         }
-        public async Task<Transaction> GetTransactionByIdAsync(int TransactionId)
+        public async Task<Transaction> GetTransactionByIdAsync(int transactionId)
         {
-            return _context.Transactions.FirstOrDefault(b => b.TransactionId == TransactionId);
+            return _context.Transactions.FirstOrDefault(b => b.TransactionId == transactionId);
         }
         public async Task<List<Transaction>> GetAllTransactionsAsync()
         {
             return await _context.Transactions.ToListAsync();
         }
 
-        public async Task AddTransactionAsync(Transaction Transaction)
+        public async Task AddTransactionAsync(Transaction transaction)
         {
-            var addedTransaction = await _context.Transactions.AddAsync(Transaction);
+            var addedTransaction = await _context.Transactions.AddAsync(transaction);
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateTransactionAsync(Transaction Transaction)
+        public async Task UpdateTransactionAsync(Transaction transaction)
         {
-            _context.Update(Transaction);
+            _context.Update(transaction);
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteTransactionAsync(Transaction TransactionId)
+        public async Task DeleteTransactionAsync(Transaction transactionId)
         {
-            _context.Remove(TransactionId);
+            _context.Remove(transactionId);
             await _context.SaveChangesAsync();
         }
     }
