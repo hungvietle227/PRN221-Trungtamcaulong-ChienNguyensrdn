@@ -1,0 +1,38 @@
+﻿.form-outline {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+    .form-outline .form-control {
+        padding: 1rem 0.75rem;
+        border: 1px solid #ced4da;
+        border-radius: 0.375rem;
+        background-color: transparent;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, padding 0.2s ease-in-out;
+    }
+
+    .form-outline .form-label {
+        position: absolute;
+        top: 50%;
+        left: 0.75rem;
+        transform: translateY(-50%);
+        color: #6c757d;
+        font-size: 1rem;
+        pointer-events: none;
+        transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out, color 0.2s ease-in-out;
+        background-color: white
+    }
+
+    .form-outline .form-control:focus {
+        border-color: #80bdff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        padding-top: 1rem;
+        padding-bottom: 0.5rem;
+    }
+
+        .form-outline .form-control:focus + .form-label,
+        .form-outline .form-control:valid + .form-label {
+            top: 0rem;
+            color: #007bff;
+        }
+
