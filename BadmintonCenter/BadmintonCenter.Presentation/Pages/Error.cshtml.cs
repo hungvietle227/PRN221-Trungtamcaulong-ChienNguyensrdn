@@ -14,16 +14,18 @@ namespace BadmintonCenter.Presentation.Pages
 
         private readonly ILogger<ErrorModel> _logger;
         public string Message { get; set; } = null!;
+        public int? Status { get; set; }
 
         public ErrorModel(ILogger<ErrorModel> logger)
         {
             _logger = logger;
         }
 
-        public void OnGet(string errMsg)
+        public void OnGet(string errMessage, int? statusCode)
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
-            Message = errMsg;
+            Message = errMessage;
+            Status = statusCode;
         }
     }
 
