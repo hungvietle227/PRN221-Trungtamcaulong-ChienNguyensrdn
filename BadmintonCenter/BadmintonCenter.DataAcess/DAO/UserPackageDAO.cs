@@ -10,8 +10,8 @@ namespace BadmintonCenter.DataAcess.DAO
 {
     public interface IUserPackageDAO
     {
-        Task<UserPackage> GetUserPackageByIdAsync(int userPackageId);
-        Task<UserPackage> GetUserPackageByUserIdAsync(int userId);
+        Task<UserPackage?> GetUserPackageByIdAsync(int userPackageId);
+        Task<UserPackage?> GetUserPackageByUserIdAsync(int userId);
         Task<List<UserPackage>> GetAllUserPackageAsync();
         Task AddUserPackageAsync(UserPackage userPackage);
         Task UpdateUserPackageAsync(UserPackage userPackage);
@@ -36,7 +36,11 @@ namespace BadmintonCenter.DataAcess.DAO
         public async Task DeleteUserPackageAsync(int packageId)
         {
             var userPackage = await _context.UserPackages.FirstOrDefaultAsync(p => p.PackageId == packageId);
-            _context.UserPackages.Remove(userPackage);
+            if(userPackage != null)
+            {
+                _context.UserPackages.Remove(userPackage);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task<List<UserPackage>> GetAllUserPackageAsync()
@@ -44,13 +48,13 @@ namespace BadmintonCenter.DataAcess.DAO
             return await _context.UserPackages.ToListAsync();
         }
 
-        public async Task<UserPackage> GetUserPackageByIdAsync(int packageId)
+        public async Task<UserPackage?> GetUserPackageByIdAsync(int packageId)
         {
             var userPackage = await _context.UserPackages.FirstOrDefaultAsync(a => a.PackageId == packageId);
             return userPackage;
         }
 
-        public Task<UserPackage> GetUserPackageByUserIdAsync(int userId)
+        public Task<UserPackage?> GetUserPackageByUserIdAsync(int userId)
         {
             return _context.UserPackages.FirstOrDefaultAsync(a => a.UserId == userId);
         }

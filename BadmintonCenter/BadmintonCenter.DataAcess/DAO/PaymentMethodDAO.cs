@@ -10,7 +10,7 @@ namespace BadmintonCenter.DataAcess.DAO
 {
     public interface IPaymentMethodDAO
     {
-        Task<PaymentMethod> GetPaymentMethodByIdAsync(int paymentMethodId);
+        Task<PaymentMethod?> GetPaymentMethodByIdAsync(int paymentMethodId);
         Task<List<PaymentMethod>> GetPaymentMethodAsync();
         Task AddPaymentMethodAsync(PaymentMethod paymentMethod);
         Task UpdatePaymentMethodAsync(PaymentMethod paymentMethod);
@@ -35,7 +35,11 @@ namespace BadmintonCenter.DataAcess.DAO
         public async Task DeletePaymentMethodAsync(int packageId)
         {
             var paymentMethod = await _context.PaymentMethods.FirstOrDefaultAsync(p => p.PaymentMethodId == packageId);
-            _context.PaymentMethods.Remove(paymentMethod);
+            if(paymentMethod != null)
+            {
+                _context.PaymentMethods.Remove(paymentMethod);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task<List<PaymentMethod>> GetPaymentMethodAsync()
@@ -43,7 +47,7 @@ namespace BadmintonCenter.DataAcess.DAO
             return await _context.PaymentMethods.ToListAsync();
         }
 
-        public async Task<PaymentMethod> GetPaymentMethodByIdAsync(int paymentMethodId)
+        public async Task<PaymentMethod?> GetPaymentMethodByIdAsync(int paymentMethodId)
         {
             var paymentMethod = await _context.PaymentMethods.FirstOrDefaultAsync(a => a.PaymentMethodId == paymentMethodId);
             return paymentMethod;

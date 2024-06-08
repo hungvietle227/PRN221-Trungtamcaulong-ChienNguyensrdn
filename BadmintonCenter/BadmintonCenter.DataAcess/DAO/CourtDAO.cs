@@ -10,7 +10,7 @@ namespace BadmintonCenter.DataAcess.DAO
 {
     public interface ICourtDAO
     {
-        Task<Court> GetCourtByIdAsync(int courtId);
+        Task<Court?> GetCourtByIdAsync(int courtId);
         Task<List<Court>> GetAllCourtsAsync();
         Task AddCourtAsync(Court court);
         Task UpdateCourtAsync(Court court);
@@ -24,10 +24,10 @@ namespace BadmintonCenter.DataAcess.DAO
         {
             _context = context;
         }
-        public async Task<Court> GetCourtByIdAsync(int courtId)
+        public async Task<Court?> GetCourtByIdAsync(int courtId)
         {
             //
-            return _context.Courts.FirstOrDefault(b => b.CourtId == courtId);
+            return await _context.Courts.FirstOrDefaultAsync(b => b.CourtId == courtId);
         }
 
         public async Task<List<Court>> GetAllCourtsAsync()

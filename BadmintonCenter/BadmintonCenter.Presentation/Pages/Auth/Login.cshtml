@@ -1,4 +1,4 @@
-﻿@page "/auth/login"
+﻿@page
 @model BadmintonCenter.Presentation.Pages.Auth.LoginModel
 @{
     ViewData["Title"] = "Login";
@@ -45,7 +45,7 @@
 
                     <!-- Submit button -->
                     <div class="d-flex flex-column gap-2 justify-content-center align-items-center mb-4">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+                        <button type="submit" class="btn-signin">Sign in</button>
                         <p class="mb-0">
                             Don't have an account? <a href="/auth/register" class="text-info fw-bold">Sign Up</a>
                         </p>

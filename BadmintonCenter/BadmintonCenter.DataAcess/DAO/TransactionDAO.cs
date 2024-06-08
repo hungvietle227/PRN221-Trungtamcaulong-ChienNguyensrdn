@@ -10,7 +10,7 @@ namespace BadmintonCenter.DataAcess.DAO
 {
     public interface ITransactionDAO
     {
-        Task<Transaction> GetTransactionByIdAsync(int transactionId);
+        Task<Transaction?> GetTransactionByIdAsync(int transactionId);
         Task<List<Transaction>> GetAllTransactionsAsync();
         Task AddTransactionAsync(Transaction transaction);
         Task UpdateTransactionAsync(Transaction transaction);
@@ -24,9 +24,9 @@ namespace BadmintonCenter.DataAcess.DAO
         {
             _context = context;
         }
-        public async Task<Transaction> GetTransactionByIdAsync(int transactionId)
+        public async Task<Transaction?> GetTransactionByIdAsync(int transactionId)
         {
-            return _context.Transactions.FirstOrDefault(b => b.TransactionId == transactionId);
+            return await _context.Transactions.FirstOrDefaultAsync(b => b.TransactionId == transactionId);
         }
         public async Task<List<Transaction>> GetAllTransactionsAsync()
         {
