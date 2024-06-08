@@ -10,7 +10,7 @@ namespace BadmintonCenter.DataAcess.DAO
 {
     public interface IPackageDAO
     {
-        Task<Package> GetPackageByIdAsync(int PackageId);
+        Task<Package?> GetPackageByIdAsync(int PackageId);
         Task<List<Package>> GetAllPackagesAsync();
         Task AddPackageAsync(Package Package);
         Task UpdatePackageAsync(Package Package);
@@ -24,9 +24,9 @@ namespace BadmintonCenter.DataAcess.DAO
         {
             _context = context;
         }
-        public async Task<Package> GetPackageByIdAsync(int packageId)
+        public async Task<Package?> GetPackageByIdAsync(int packageId)
         {
-            return _context.Packages.FirstOrDefault(b => b.PackageId == packageId);
+            return await _context.Packages.FirstOrDefaultAsync(b => b.PackageId == packageId);
         }
         public async Task<List<Package>> GetAllPackagesAsync()
         {

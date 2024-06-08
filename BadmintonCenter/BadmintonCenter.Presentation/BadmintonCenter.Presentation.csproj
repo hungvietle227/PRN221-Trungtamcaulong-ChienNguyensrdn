@@ -11,12 +11,17 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BadmintonCenter.BusinessObject\BadmintonCenter.BusinessObject.csproj" />
     <ProjectReference Include="..\BadmintonCenter.Common\BadmintonCenter.Common.csproj" />
     <ProjectReference Include="..\BadmintonCenter.Service\BadmintonCenter.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\Customer\" />
   </ItemGroup>
 
 </Project>

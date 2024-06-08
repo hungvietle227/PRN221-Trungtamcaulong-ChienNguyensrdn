@@ -1,13 +1,8 @@
 ﻿using BadmintonCenter.BusinessObject.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BadmintonCenter.DataAcess.Repository.Interface
 {
-    public interface IBookingDetailDetailRepository
+    public interface IBookingDetailRepository
     {
         Task<BookingDetail> GetBookingDetailByIdAsync(int bookingDetailId);
         Task<List<BookingDetail>> GetAllBookingDetailsAsync();

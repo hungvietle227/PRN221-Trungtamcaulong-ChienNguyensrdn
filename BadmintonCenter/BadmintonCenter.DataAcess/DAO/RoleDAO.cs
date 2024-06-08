@@ -10,7 +10,7 @@ namespace BadmintonCenter.DataAcess.DAO
 {
     public interface IRoleDAO
     {
-        Task<Role> GetRoleByIdAsync(int roleId);
+        Task<Role?> GetRoleByIdAsync(int roleId);
         Task<List<Role>> GetAllRolesAsync();
         Task AddRoleAsync(Role role);
         Task UpdateRoleAsync(Role role);
@@ -26,7 +26,7 @@ namespace BadmintonCenter.DataAcess.DAO
             _context = context;
         }
 
-        public async Task<Role> GetRoleByIdAsync(int roleId)
+        public async Task<Role?> GetRoleByIdAsync(int roleId)
         {
             return await _context.Roles.FirstOrDefaultAsync(r => r.RoleId == roleId);
         }

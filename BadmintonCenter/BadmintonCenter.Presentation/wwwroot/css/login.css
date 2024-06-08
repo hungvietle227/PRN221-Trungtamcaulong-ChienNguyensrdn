@@ -36,3 +36,23 @@
             color: #007bff;
         }
 
+.btn-signin {
+    background-color: #212529; /* Màu nền ban đầu */
+    color: #fff; /* Màu chữ ban đầu */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Thời gian chuyển đổi màu sắc */
+}
+
+    .btn-signin:hover {
+        background-color: #343a40; /* Màu nền khi hover */
+        color: #fff; /* Màu chữ khi hover */
+    }
+
+    .btn-signin:active {
+        background-color: #495057; /* Màu nền khi active */
+        color: #fff; /* Màu chữ khi active */
+    }

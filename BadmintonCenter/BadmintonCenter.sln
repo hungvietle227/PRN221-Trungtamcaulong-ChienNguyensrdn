@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadmintonCenter.Service", "BadmintonCenter.Service\BadmintonCenter.Service.csproj", "{5923E4D6-6A88-4BA7-A719-6982AA200D1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BadmintonCenter.Service", "BadmintonCenter.Service\BadmintonCenter.Service.csproj", "{5923E4D6-6A88-4BA7-A719-6982AA200D1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

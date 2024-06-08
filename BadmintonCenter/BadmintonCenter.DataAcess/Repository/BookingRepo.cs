@@ -1,15 +1,10 @@
-﻿using BadmintonCenter.DataAcess.Repository.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BadmintonCenter.BusinessObject.Models;
 using BadmintonCenter.DataAcess.DAO;
-using BadmintonCenter.BusinessObject.Models;
+using BadmintonCenter.DataAcess.Repository.Interface;
 
 namespace BadmintonCenter.DataAcess.Repository
 {
-    internal class BookingRepo : IBookingRepository
+    public class BookingRepo : IBookingRepository
     {
         private readonly IBookingDAO _bookingDAO;
 
@@ -18,7 +13,7 @@ namespace BadmintonCenter.DataAcess.Repository
             _bookingDAO = bookingDAO;
         }
 
-        public async Task<Booking> GetBookingByIdAsync(int bookingId)
+        public async Task<Booking?> GetBookingByIdAsync(int bookingId)
         {
             return await _bookingDAO.GetBookingByIdAsync(bookingId);
         }
