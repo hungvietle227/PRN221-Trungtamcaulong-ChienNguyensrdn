@@ -6,7 +6,7 @@ namespace BadmintonCenter.DataAcess.Repository.Interface
     {
         Task<Booking?> GetBookingByIdAsync(int bookingId);
         Task<List<Booking>> GetAllBookingsAsync();
-        Task AddBookingAsync(Booking booking);
+        Task<Booking> AddBookingAsync(Booking booking);
         Task UpdateBookingAsync(Booking booking);
         Task DeleteBookingAsync(Booking booking);
 

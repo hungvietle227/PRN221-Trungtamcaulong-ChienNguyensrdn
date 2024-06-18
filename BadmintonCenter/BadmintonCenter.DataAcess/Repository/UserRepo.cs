@@ -42,5 +42,10 @@ namespace BadmintonCenter.DataAcess.Repository
         {
             return await _userDAO.GetUserByUserName(username);
         }
+
+        public async Task<User?> GetUserByEmail(string email)
+        {
+            return (await _userDAO.GetAllUsersAsync()).FirstOrDefault(u => u.Email == email);
+        }
     }
 }

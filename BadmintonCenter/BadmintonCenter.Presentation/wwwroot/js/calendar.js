@@ -82,22 +82,9 @@ $(document).ready(() => {
 
 
 	function daysInMonth(year, month) {
-		return new Date(year, month + 1, 0).getDate();//29/03/2016 (month + 1)
+		return new Date(year, month + 1, 0).getDate();
 	}
 
-	/*function leapYear(year){
-	  return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
-	}
-	
-	function getNextMonth(month){
-	 if (month == 11) {
-		var nextMonth = 0;
-	} else {
-		var nextMonth = month+1;
-	}
-	return nextMonth;
-	}
-	*/
 	function getMonthName(month) {
 		return monthNamesRy[month];
 	}
@@ -138,7 +125,7 @@ $(document).ready(() => {
 
 		$.ajax({
 			method: 'GET',
-			url: "/booking/byday/?handler=UpdateSlotTime",
+			url: "/customer/booking/byday/?handler=UpdateSlotTime",
 			data: {
 				courtId: value,
 				date: selectedDate.toLocaleDateString()

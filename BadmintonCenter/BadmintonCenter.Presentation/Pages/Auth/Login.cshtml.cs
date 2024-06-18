@@ -46,7 +46,7 @@ namespace BadmintonCenter.Presentation.Pages.Auth
 
             if (LoginRequest.Password.Length < 8)
             {
-                ModelState.AddModelError("LoginRequest.Password", "Password must be at least 8 characters lon1g.");
+                ModelState.AddModelError("LoginRequest.Password", "Password must be at least 8 characters long.");
                 return Page();
             }
 
@@ -57,7 +57,8 @@ namespace BadmintonCenter.Presentation.Pages.Auth
                 //if found, create new cookie auth for user
                 var claims = new List<Claim>
                 {
-                    new(ClaimTypes.Name, LoginRequest.Username),
+                    new(ClaimTypes.Name, user.FullName),
+                    new(ClaimTypes.Email, user.Email!),
                     new(ClaimTypes.Role, Enum.GetName(typeof(UserRole), user.RoleId)!)
                 };
 
@@ -75,7 +76,7 @@ namespace BadmintonCenter.Presentation.Pages.Auth
 
                     IssuedUtc = DateTime.UtcNow,
 
-                    RedirectUri = "/login"
+                    RedirectUri = "/auth/login"
                 };
 
                 //register cookie auth

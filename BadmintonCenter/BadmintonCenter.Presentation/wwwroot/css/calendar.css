@@ -69,8 +69,7 @@ h1#year {
 
 /* FLEXBOX styles*/
 
-body,
-body * {
+.container-booking * {
     display: flex;
     justify-content: center;
 }
@@ -105,12 +104,6 @@ section {
     align-items: center;
     justify-content: center;
 }
-
-/*for a Spanish like calendar  
-  .month .day:nth-of-type(1){order:7!important;}
-  .month .day:nth-of-type(8){order:-1!important;}
-   
-*/
 
 script {
     display: none;
