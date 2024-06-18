@@ -4,7 +4,51 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="jumbotron text-center bg-light p-5 rounded">
+        <h1 class="display-4">WELCOME TO BADMINTON COURT BOOKING CENTER</h1>
+        <p class="lead">Book your badminton court easily and quickly with our online booking system.</p>
+        <hr class="my-4">
+        <p>Experience the best badminton courts in town with top-notch facilities and services.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" asp-area="" asp-page="/Booking" role="button">Book a Court Now</a>
+        </p>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="~/img/img-banner.jpg" class="card-img-top" alt="Court 1">
+                <div class="card-body">
+                    <h5 class="card-title">High-Quality Courts</h5>
+                    <p class="card-text">Our courts are maintained to the highest standards to ensure you have the best playing experience.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="~/img/img-banner2.jpg" class="card-img-top" alt="Facility">
+                <div class="card-body">
+                    <h5 class="card-title">Fast and Real-time update</h5>
+                    <p class="card-text">Our services bring you the most comfortable and high productivity quality</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="~/img/img-banner3.jpg" class="card-img-top" alt="Training">
+                <div class="card-body">
+                    <h5 class="card-title">Best price guarantee</h5>
+                    <p class="card-text">We offer you the best price and money back guarantee.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12 text-center">
+            <h2>Why Choose Us?</h2>
+            <p class="lead">At BadmintonCenter, we strive to provide the best badminton experience with high-quality courts, high productivity quality, and best price.</p>
+        </div>
+    </div>
 </div>
