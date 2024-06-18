@@ -5,8 +5,14 @@ namespace BadmintonCenter.Presentation.Pages.Booking
 {
     public class IndexModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if (!User.Identity!.IsAuthenticated)
+            {
+                return RedirectToPage("/Auth/Login");
+            }
+
+            return Page();
         }
     }
 }

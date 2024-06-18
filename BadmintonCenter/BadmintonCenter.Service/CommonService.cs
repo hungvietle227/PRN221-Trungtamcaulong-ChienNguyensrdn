@@ -47,14 +47,17 @@ namespace DemoSchedule.Services
             DateTime currentTime = DateTime.Now;
 
             // get available slot time of court
-            var availableTime = allSlotTime.Where(p => !timeOfCourtBooking.Contains(p.SlotTimeId) && DateTime.Parse(p.StartTime).Hour >= currentTime.Hour)
-                                                .Select(x => new SlotTimeDTO
-                                                {
-                                                    Id = x.SlotTimeId,
-                                                    StartTime = x.StartTime, 
-                                                    EndTime = x.EndTime,
-                                                    Price = x.Price,
-                                                }).ToList();
+            var availableTime = allSlotTime.Where(p => !timeOfCourtBooking.Contains(p.SlotTimeId)
+                                                        && (date > currentTime
+                                                        || (DateTime.Parse(p.StartTime).Hour > currentTime.Hour 
+                                                        || (DateTime.Parse(p.StartTime).Hour == currentTime.Hour && DateTime.Parse(p.StartTime).Minute > currentTime.Minute))))
+                                                        .Select(x => new SlotTimeDTO
+                                                        {
+                                                            Id = x.SlotTimeId,
+                                                            StartTime = x.StartTime, 
+                                                            EndTime = x.EndTime,
+                                                            Price = x.Price,
+                                                        }).ToList();
 
             return availableTime;
         }

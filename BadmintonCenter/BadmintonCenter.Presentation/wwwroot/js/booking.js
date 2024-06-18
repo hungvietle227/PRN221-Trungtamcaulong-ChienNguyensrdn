@@ -1,6 +1,7 @@
 ﻿var price = +0;
 
 $(document).ready(function () {
+    var userId = $("#userId").val();
 
     // handle when changing option
     $("#sltCourt").change(function () {
@@ -9,7 +10,7 @@ $(document).ready(function () {
 
         $.ajax({
             method: 'GET',
-            url: "/booking/byday/?handler=UpdateSlotTime",
+            url: "/customer/booking/byday/?handler=UpdateSlotTime",
             data: {
                 courtId: value,
                 date: selectedDate.toLocaleDateString()
@@ -37,17 +38,22 @@ $(document).ready(function () {
 
     $('#book-court-btn').click(function () {
         var token = $('input[name="__RequestVerificationToken"]').val();
+        var newDate = new Date(selectedDate);
+        var isoDateString = newDate.toISOString().slice(0, 10);
         var bookingData = {
             details: selectedCourtSlot,
-            price: price
+            price: parseInt(price),
+            validDate: isoDateString,
+            userId: userId
         }
+
+        console.log(JSON.stringify(bookingData))
 
         // call ajax to add booking
         $.ajax({
-            url: "/booking/byday/?handler=Booking",
+            url: "/customer/booking/byday/?handler=Booking",
             type: 'POST',
-            contentType: 'application/json',
-            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
             headers: {
                 'RequestVerificationToken': token
             },

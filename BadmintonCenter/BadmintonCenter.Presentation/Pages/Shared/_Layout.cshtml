@@ -9,19 +9,55 @@
     <link rel="stylesheet" href="~/BadmintonCenter.Presentation.styles.css" asp-append-version="true" />
 </head>
 <body>
-
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand text-white" asp-area="" asp-page="/Index">Badminton Center</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-page="Customer/Booking/Index">Booking</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center">
+                        @if (User.Identity!.IsAuthenticated)
+                        {
+                            <div class="me-3 text-light">
+                                @User.Identity.Name
+                            </div>
+                            <a asp-page="/Auth/Logout" class="btn btn-light text-dark me-3">Logout</a>
+                        }
+                        else
+                        {
+                            <a asp-page="/Auth/Login" class="btn btn-light text-dark me-3">Login</a>
+                            <a asp-page="/Auth/Register" class="btn btn-light text-dark me-3">Register</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
     <div class=" container vw-100 vh-100">
         <main role="main" class="h-100 w-100 pb-3">
             @RenderBody()
         </main>
     </div>
+    <footer class="border-top footer text-muted">
+        <div class="container text-center">
+            &copy; 2024 - Badminton Center
+        </div>
+    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/booking.js" asp-append-version="true"></script>
-    <script src="~/js/calendar.js" asp-append-version="true"></script>
-    <script src="~/js/slot-time.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

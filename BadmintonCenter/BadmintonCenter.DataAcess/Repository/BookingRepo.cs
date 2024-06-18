@@ -23,9 +23,9 @@ namespace BadmintonCenter.DataAcess.Repository
             return await _bookingDAO.GetAllBookingsAsync();
         }
 
-        public async Task AddBookingAsync(Booking booking)
+        public async Task<Booking> AddBookingAsync(Booking booking)
         {
-            await _bookingDAO.AddBookingAsync(booking);
+            return await _bookingDAO.AddBookingAsync(booking);
         }
 
         public async Task UpdateBookingAsync(Booking booking)

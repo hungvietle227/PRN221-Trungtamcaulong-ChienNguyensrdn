@@ -4,7 +4,8 @@
 }
 <link rel="stylesheet" href="~/css/calendar.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/css/booking.css" asp-append-version="true" />
-<div class="d-flex flex-column w-100 h-100 justify-content-start gap-3">
+<div class="container-booking d-flex flex-column w-100 h-100 justify-content-start gap-3">
+    <input id="userId" hidden value="@Model.Customer!.UserId"/>
     <h1 class="display-4">LỊCH ĐẶT SÂN</h1>
     <div class="row flex-wrap gap-2">
         <section class="border border-1 col-3">
@@ -39,6 +40,12 @@
         <p class="success-message" hidden></p>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/js/booking.js" asp-append-version="true"></script>
+    <script src="~/js/calendar.js" asp-append-version="true"></script>
+    <script src="~/js/slot-time.js" asp-append-version="true"></script>
+}
 
 
 
