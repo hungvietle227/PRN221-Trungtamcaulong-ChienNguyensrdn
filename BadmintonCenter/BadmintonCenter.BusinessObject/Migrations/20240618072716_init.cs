@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BadmintonCenter.BusinessObject.Migrations
 {
     /// <inheritdoc />
-    public partial class initDb : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,7 +40,7 @@ namespace BadmintonCenter.BusinessObject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Package",
+                name: "Packages",
                 columns: table => new
                 {
                     PackageId = table.Column<int>(type: "int", nullable: false)
@@ -52,11 +52,11 @@ namespace BadmintonCenter.BusinessObject.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Package", x => x.PackageId);
+                    table.PrimaryKey("PK_Packages", x => x.PackageId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PaymentMethod",
+                name: "PaymentMethods",
                 columns: table => new
                 {
                     PaymentMethodId = table.Column<int>(type: "int", nullable: false)
@@ -66,7 +66,7 @@ namespace BadmintonCenter.BusinessObject.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PaymentMethod", x => x.PaymentMethodId);
+                    table.PrimaryKey("PK_PaymentMethods", x => x.PaymentMethodId);
                 });
 
             migrationBuilder.CreateTable(
@@ -124,7 +124,7 @@ namespace BadmintonCenter.BusinessObject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Transaction",
+                name: "Transactions",
                 columns: table => new
                 {
                     TransactionId = table.Column<int>(type: "int", nullable: false)
@@ -135,25 +135,26 @@ namespace BadmintonCenter.BusinessObject.Migrations
                     Status = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     PackageId = table.Column<int>(type: "int", nullable: false),
-                    PaymentMethodId = table.Column<int>(type: "int", nullable: false)
+                    PaymentMethodId = table.Column<int>(type: "int", nullable: false),
+                    BookingId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transaction", x => x.TransactionId);
+                    table.PrimaryKey("PK_Transactions", x => x.TransactionId);
                     table.ForeignKey(
-                        name: "FK_Transaction_Package_PackageId",
+                        name: "FK_Transactions_Packages_PackageId",
                         column: x => x.PackageId,
-                        principalTable: "Package",
+                        principalTable: "Packages",
                         principalColumn: "PackageId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Transaction_PaymentMethod_PaymentMethodId",
+                        name: "FK_Transactions_PaymentMethods_PaymentMethodId",
                         column: x => x.PaymentMethodId,
-                        principalTable: "PaymentMethod",
+                        principalTable: "PaymentMethods",
                         principalColumn: "PaymentMethodId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Transaction_Users_UserId",
+                        name: "FK_Transactions_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
@@ -161,7 +162,7 @@ namespace BadmintonCenter.BusinessObject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserPackage",
+                name: "UserPackages",
                 columns: table => new
                 {
                     UserId = table.Column<int>(type: "int", nullable: false),
@@ -171,15 +172,15 @@ namespace BadmintonCenter.BusinessObject.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserPackage", x => new { x.PackageId, x.UserId });
+                    table.PrimaryKey("PK_UserPackages", x => new { x.PackageId, x.UserId });
                     table.ForeignKey(
-                        name: "FK_UserPackage_Package_PackageId",
+                        name: "FK_UserPackages_Packages_PackageId",
                         column: x => x.PackageId,
-                        principalTable: "Package",
+                        principalTable: "Packages",
                         principalColumn: "PackageId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserPackage_Users_UserId",
+                        name: "FK_UserPackages_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
@@ -190,8 +191,7 @@ namespace BadmintonCenter.BusinessObject.Migrations
                 name: "Bookings",
                 columns: table => new
                 {
-                    BookingId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BookingId = table.Column<int>(type: "int", nullable: false),
                     BookingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ValidDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ExpiredDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -200,8 +200,7 @@ namespace BadmintonCenter.BusinessObject.Migrations
                     TotalPrice = table.Column<double>(type: "float", nullable: false),
                     TotalHour = table.Column<double>(type: "float", nullable: false),
                     BookingTypeId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    TransactionId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -213,9 +212,9 @@ namespace BadmintonCenter.BusinessObject.Migrations
                         principalColumn: "BookingTypeId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Bookings_Transaction_TransactionId",
-                        column: x => x.TransactionId,
-                        principalTable: "Transaction",
+                        name: "FK_Bookings_Transactions_BookingId",
+                        column: x => x.BookingId,
+                        principalTable: "Transactions",
                         principalColumn: "TransactionId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -272,34 +271,28 @@ namespace BadmintonCenter.BusinessObject.Migrations
                 column: "BookingTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Bookings_TransactionId",
-                table: "Bookings",
-                column: "TransactionId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Bookings_UserId",
                 table: "Bookings",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transaction_PackageId",
-                table: "Transaction",
+                name: "IX_Transactions_PackageId",
+                table: "Transactions",
                 column: "PackageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transaction_PaymentMethodId",
-                table: "Transaction",
+                name: "IX_Transactions_PaymentMethodId",
+                table: "Transactions",
                 column: "PaymentMethodId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transaction_UserId",
-                table: "Transaction",
+                name: "IX_Transactions_UserId",
+                table: "Transactions",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserPackage_UserId",
-                table: "UserPackage",
+                name: "IX_UserPackages_UserId",
+                table: "UserPackages",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -315,7 +308,7 @@ namespace BadmintonCenter.BusinessObject.Migrations
                 name: "BookingDetails");
 
             migrationBuilder.DropTable(
-                name: "UserPackage");
+                name: "UserPackages");
 
             migrationBuilder.DropTable(
                 name: "Bookings");
@@ -330,13 +323,13 @@ namespace BadmintonCenter.BusinessObject.Migrations
                 name: "BookingTypes");
 
             migrationBuilder.DropTable(
-                name: "Transaction");
+                name: "Transactions");
 
             migrationBuilder.DropTable(
-                name: "Package");
+                name: "Packages");
 
             migrationBuilder.DropTable(
-                name: "PaymentMethod");
+                name: "PaymentMethods");
 
             migrationBuilder.DropTable(
                 name: "Users");

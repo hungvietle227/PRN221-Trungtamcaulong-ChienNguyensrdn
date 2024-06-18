@@ -155,12 +155,11 @@ namespace BadmintonCenter.BusinessObject.Models
             });
 
             // 1-1 relation between booking and transaction
-            modelBuilder.Entity<Transaction>()
-                        .HasOne(p => p.Booking)
-                        .WithOne(a => a.Transaction)
-                        .HasForeignKey<Booking>(p => p.TransactionId)
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            modelBuilder.Entity<Booking>()
+                        .HasOne(p => p.Transaction)
+                        .WithOne(a => a.Booking)
+                        .HasForeignKey<Booking>(p => p.BookingId)
+                        .OnDelete(DeleteBehavior.Cascade);
 
             // M-M relation
             // UserPackage table

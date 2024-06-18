@@ -36,9 +36,9 @@ namespace BadmintonCenter.Service
             return newBooking;
         }
 
-        public Task<IEnumerable<Booking>> GetAllBookings()
+        public async Task<IEnumerable<Booking>> GetAllBookings()
         {
-            throw new NotImplementedException();
+            return await _bookingRepository.GetAllBookingsAsync();
         }
 
         public Task<Booking?> GetBookingById(int id)
