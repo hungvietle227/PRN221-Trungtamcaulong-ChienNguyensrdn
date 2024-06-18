@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace BadmintonCenter.Presentation.Pages.Authen
+namespace BadmintonCenter.Presentation.Pages.Booking
 {
-    public class LoginModel : PageModel
+    public class StableModel : PageModel
     {
         public void OnGet()
         {

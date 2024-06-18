@@ -10,7 +10,7 @@ namespace BadmintonCenter.DataAcess.DAO
 {
     public interface IBookingTypeDAO
     {
-        Task<BookingType> GetBookingTypeByIdAsync(int bookingTypeId);
+        Task<BookingType?> GetBookingTypeByIdAsync(int bookingTypeId);
         Task<List<BookingType>> GetAllBookingTypesAsync();
         Task AddBookingTypeAsync(BookingType bookingType);
         Task UpdateBookingTypeAsync(BookingType bookingType);
@@ -26,7 +26,7 @@ namespace BadmintonCenter.DataAcess.DAO
             _context = context;
         }
 
-        public async Task<BookingType> GetBookingTypeByIdAsync(int bookingTypeId)
+        public async Task<BookingType?> GetBookingTypeByIdAsync(int bookingTypeId)
         {
             return await _context.BookingTypes.FirstOrDefaultAsync(bt => bt.BookingTypeId == bookingTypeId);
         }

@@ -2,8 +2,8 @@
 {
     public enum BookingByType
     {
-        Stable = 0,
-        NormalByDate = 1,
-        HourByDate = 2,
+        Stable = 1,
+        NormalByDate = 2,
+        HourByDate = 3,
     }
 }

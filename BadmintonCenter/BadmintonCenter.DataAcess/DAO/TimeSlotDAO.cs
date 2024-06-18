@@ -10,7 +10,7 @@ namespace BadmintonCenter.DataAcess.DAO
 {
     public interface ITimeSlotDAO
     {
-        Task<TimeSlot> GetTimeSlotByIdAsync(int SlotTimeId);
+        Task<TimeSlot?> GetTimeSlotByIdAsync(int SlotTimeId);
         Task<List<TimeSlot>> GetAllTimeSlotAsync();
         Task AddTimeSlotAsync(TimeSlot timeSlot);
         Task UpdateTimeSlotAsync(TimeSlot timeSlotId);
@@ -24,10 +24,10 @@ namespace BadmintonCenter.DataAcess.DAO
         {
             _context = context;
         }
-        public async Task<TimeSlot> GetTimeSlotByIdAsync(int SlotTimeId)
+        public async Task<TimeSlot?> GetTimeSlotByIdAsync(int SlotTimeId)
         {
             //
-            return _context.TimeSlots.FirstOrDefault(b => b.SlotTimeId == SlotTimeId);
+            return await _context.TimeSlots.FirstOrDefaultAsync(b => b.SlotTimeId == SlotTimeId);
         }
 
         public async Task<List<TimeSlot>> GetAllTimeSlotAsync()

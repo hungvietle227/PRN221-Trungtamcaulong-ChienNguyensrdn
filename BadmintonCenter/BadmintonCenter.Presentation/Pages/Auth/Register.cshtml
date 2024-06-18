@@ -1,0 +1,90 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<link rel="stylesheet" href="~/css/register.css" asp-append-version="true" />
+<div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+            <h1 class="my-3 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 75%)">
+                Welcome to Badminton Center
+            </h1>
+            <p class="mb-4 opacity-70" style="color: black">
+                Hope you have a wonderful experience for booking a court or watching a badminton match
+            </p>
+        </div>
+
+        <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+            <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+            <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+            <div class="card bg-glass">
+                <div class="card-body px-4 py-5 px-md-5">
+                    <form method="post">
+                        <div class="form-outline mb-4">                        
+                            <input asp-for="@Model.RegisterRequest.FullName" type="text" class="form-control" />
+                            <label class="form-label">Full Name</label>
+                        </div>
+                        <div class="mb-2">
+                            <span asp-validation-for="RegisterRequest.FullName" class="text-danger"></span>
+                        </div>                        
+
+                        <div class="form-outline mb-4">
+                            <input asp-for="@Model.RegisterRequest.Username" type="text" class="form-control" />
+                            <label class="form-label">Username</label>
+                        </div>
+                        <div class="mb-2">
+                            <span asp-validation-for="RegisterRequest.Username" class="text-danger"></span>
+                        </div>          
+
+                        <div class="form-outline mb-4">
+                            <input asp-for="@Model.RegisterRequest.Email" type="email" class="form-control" />
+                            <label class="form-label">Email</label>
+                        </div>
+                        <div class="mb-2">
+                            <span asp-validation-for="RegisterRequest.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input asp-for="@Model.RegisterRequest.PhoneNumber" type="text" class="form-control" />
+                            <label class="form-label">Phone Number</label>
+                        </div>
+                        <div class="mb-2">
+                            <span asp-validation-for="RegisterRequest.PhoneNumber" class="text-danger"></span>
+                        </div>       
+
+                        <div class="form-outline mb-4">
+                            <input asp-for="@Model.RegisterRequest.Password" type="password" class="form-control" />
+                            <label class="form-label">Password</label>
+                        </div>
+                        <div class="mb-2">
+                            <span asp-validation-for="RegisterRequest.Password" class="text-danger"></span>
+                        </div>                       
+
+                        <div class="form-outline mb-4">
+                            <input asp-for="@Model.RegisterRequest.ConfirmPassword" type="password" class="form-control" />
+                            <label class="form-label">Confirm Password</label>
+                        </div>
+                        <div class="mb-2">
+                            <span asp-validation-for="RegisterRequest.ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        
+
+                        <div class="w-100 d-flex flex-column align-items-center justify-content-center">
+                            <button type="submit" class="btn btn-outline-dark w-25 mb-1">
+                                Sign up
+                            </button>
+                            <p class="mb-0">
+                                Have already an account? <a href="/auth/login" class="text-info fw-bold">Sign in</a>
+                            </p>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
