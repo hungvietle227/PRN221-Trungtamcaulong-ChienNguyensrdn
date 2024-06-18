@@ -100,13 +100,13 @@ namespace BadmintonCenter.Presentation.Pages.Booking
             var bookings = await _bookingService.GetAllBookings();
             BadmintonCenter.BusinessObject.Models.Booking newBooking = new BadmintonCenter.BusinessObject.Models.Booking()
             {
-                BookingId = bookings.Count() + 1,
+                //BookingId = bookings.Count() + 1,
                 BookingDate = DateTime.Now,
                 ExpiredDate = data.ValidDate,
                 TotalPrice = data.Price,
                 ValidDate = data.ValidDate,
                 Status = BookingStatus.Wait,
-                UserId = 3,
+                UserId = 1,
                 TotalHour = double.Parse(data.Details.Count.ToString()) / 2 ,
                 BookingTypeId = (int)BookingByType.NormalByDate,
             };

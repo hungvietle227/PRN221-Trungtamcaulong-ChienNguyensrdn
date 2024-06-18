@@ -55,6 +55,8 @@ const updateEventClickItem = () => {
                 slotTimeId: +$(this).attr('id')
             })
 
+            console.log(selectedCourtSlot)
+
         } else {
             // change color
             $(this).css('background-color', '#f1f1f1');

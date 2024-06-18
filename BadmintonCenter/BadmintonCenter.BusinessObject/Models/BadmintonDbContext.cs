@@ -57,9 +57,9 @@ namespace BadmintonCenter.BusinessObject.Models
                         .IsRequired();
 
             // 1-M relation between user and booking
-            modelBuilder.Entity<User>()
-                        .HasMany(d => d.Bookings)
-                        .WithOne(e => e.User)
+            modelBuilder.Entity<Booking>()
+                        .HasOne(d => d.User)
+                        .WithMany(e => e.Bookings)
                         .HasForeignKey(e => e.UserId)
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -155,10 +155,10 @@ namespace BadmintonCenter.BusinessObject.Models
             });
 
             // 1-1 relation between booking and transaction
-            modelBuilder.Entity<Booking>()
-                        .HasOne(p => p.Transaction)
-                        .WithOne(a => a.Booking)
-                        .HasForeignKey<Booking>(p => p.BookingId)
+            modelBuilder.Entity<Transaction>()
+                        .HasOne(p => p.Booking)
+                        .WithOne(a => a.Transaction)
+                        .HasForeignKey<Transaction>(p => p.BookingId)
                         .OnDelete(DeleteBehavior.Cascade);
 
             // M-M relation
