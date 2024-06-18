@@ -12,9 +12,10 @@ namespace BadmintonCenter.BusinessObject.Models
         public int UserId { get; set; }
         public int PackageId { get; set; }
         public int PaymentMethodId { get; set; }
+        public int? BookingId { get; set; }
         public PaymentMethod PaymentMethod { get; set; } = null!;
         public Package Package { get; set; } = null!;
         public User User { get; set; } = null!;
-        public Booking Booking { get; set; } = null!;
+        public Booking? Booking { get; set; } = null!;
     }
 }

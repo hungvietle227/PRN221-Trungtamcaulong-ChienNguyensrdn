@@ -25,10 +25,7 @@ namespace BadmintonCenter.BusinessObject.Migrations
             modelBuilder.Entity("BadmintonCenter.BusinessObject.Models.Booking", b =>
                 {
                     b.Property<int>("BookingId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookingId"));
 
                     b.Property<DateTime>("BookingDate")
                         .HasColumnType("datetime2");
@@ -51,9 +48,6 @@ namespace BadmintonCenter.BusinessObject.Migrations
                     b.Property<double>("TotalPrice")
                         .HasColumnType("float");
 
-                    b.Property<int>("TransactionId")
-                        .HasColumnType("int");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -63,9 +57,6 @@ namespace BadmintonCenter.BusinessObject.Migrations
                     b.HasKey("BookingId");
 
                     b.HasIndex("BookingTypeId");
-
-                    b.HasIndex("TransactionId")
-                        .IsUnique();
 
                     b.HasIndex("UserId");
 
@@ -160,7 +151,7 @@ namespace BadmintonCenter.BusinessObject.Migrations
 
                     b.HasKey("PackageId");
 
-                    b.ToTable("Package");
+                    b.ToTable("Packages");
                 });
 
             modelBuilder.Entity("BadmintonCenter.BusinessObject.Models.PaymentMethod", b =>
@@ -183,7 +174,7 @@ namespace BadmintonCenter.BusinessObject.Migrations
 
                     b.HasKey("PaymentMethodId");
 
-                    b.ToTable("PaymentMethod");
+                    b.ToTable("PaymentMethods");
                 });
 
             modelBuilder.Entity("BadmintonCenter.BusinessObject.Models.Role", b =>
@@ -237,6 +228,9 @@ namespace BadmintonCenter.BusinessObject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"));
 
+                    b.Property<int?>("BookingId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -268,7 +262,7 @@ namespace BadmintonCenter.BusinessObject.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Transaction");
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("BadmintonCenter.BusinessObject.Models.User", b =>
@@ -334,20 +328,20 @@ namespace BadmintonCenter.BusinessObject.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserPackage");
+                    b.ToTable("UserPackages");
                 });
 
             modelBuilder.Entity("BadmintonCenter.BusinessObject.Models.Booking", b =>
                 {
-                    b.HasOne("BadmintonCenter.BusinessObject.Models.BookingType", "BookingType")
-                        .WithMany("Bookings")
-                        .HasForeignKey("BookingTypeId")
+                    b.HasOne("BadmintonCenter.BusinessObject.Models.Transaction", "Transaction")
+                        .WithOne("Booking")
+                        .HasForeignKey("BadmintonCenter.BusinessObject.Models.Booking", "BookingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BadmintonCenter.BusinessObject.Models.Transaction", "Transaction")
-                        .WithOne("Booking")
-                        .HasForeignKey("BadmintonCenter.BusinessObject.Models.Booking", "TransactionId")
+                    b.HasOne("BadmintonCenter.BusinessObject.Models.BookingType", "BookingType")
+                        .WithMany("Bookings")
+                        .HasForeignKey("BookingTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -487,8 +481,7 @@ namespace BadmintonCenter.BusinessObject.Migrations
 
             modelBuilder.Entity("BadmintonCenter.BusinessObject.Models.Transaction", b =>
                 {
-                    b.Navigation("Booking")
-                        .IsRequired();
+                    b.Navigation("Booking");
                 });
 
             modelBuilder.Entity("BadmintonCenter.BusinessObject.Models.User", b =>
