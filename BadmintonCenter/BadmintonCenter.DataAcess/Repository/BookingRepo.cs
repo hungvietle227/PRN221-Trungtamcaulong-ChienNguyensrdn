@@ -1,4 +1,5 @@
 ﻿using BadmintonCenter.BusinessObject.Models;
+using BadmintonCenter.Common.Enum.Status;
 using BadmintonCenter.DataAcess.DAO;
 using BadmintonCenter.DataAcess.Repository.Interface;
 
@@ -36,6 +37,12 @@ namespace BadmintonCenter.DataAcess.Repository
         public async Task DeleteBookingAsync(Booking bookingId)
         {
             await _bookingDAO.DeleteBookingAsync(bookingId);
+        }
+
+        public async Task<Booking?> GetUnPaidBookingByUserId(int userId)
+        {
+            var bookings = await _bookingDAO.GetAllBookingsAsync();
+            return bookings.FirstOrDefault(bookings => bookings.UserId == userId && bookings.Status == BookingStatus.Wait);
         }
     }
 }

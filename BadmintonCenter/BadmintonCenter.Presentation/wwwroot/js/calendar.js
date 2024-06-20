@@ -48,6 +48,7 @@ $(document).ready(() => {
 		day.css('order', order);
 		if (counter === "&nbsp;" || counter === "") {
 			day.text("");
+			day.addClass('disabled');
 		} else {
 			day.text(counter);
 		}
@@ -102,6 +103,8 @@ $(document).ready(() => {
 	}
 
 	$(".day").on("click", function () {
+		$("#book-court-btn").prop("disabled", true);
+
 		// get selected date
 		var selectedItem = $(".to");
 
@@ -112,7 +115,7 @@ $(document).ready(() => {
 		$(this).removeClass("day").addClass("to day")
 
 		// update selected date
-		selectedDate = new Date(year, thisMonth, $(this).text());		
+		selectedDate = new Date(year, thisMonth, $(this).text());
 
 		// remove selected court slot
 		selectedCourtSlot = [];
@@ -122,13 +125,17 @@ $(document).ready(() => {
 		$('#total-price').text(price + " VND");
 
 		var value = $("#sltCourt").val();
+		let y = selectedDate.getFullYear();
+		let m = String(selectedDate.getMonth() + 1).padStart(2, '0');
+		let d = String(selectedDate.getDate()).padStart(2, '0');
+		let formattedDate = `${y}-${m}-${d}`;
 
 		$.ajax({
 			method: 'GET',
 			url: "/customer/booking/byday/?handler=UpdateSlotTime",
 			data: {
 				courtId: value,
-				date: selectedDate.toLocaleDateString()
+				date: formattedDate
 			},
 			contentType: 'application/json',
 			success: function (response) {
@@ -148,4 +155,23 @@ $(document).ready(() => {
 		})
 	});
 })
+
+const resetCalendar = () => {
+	var d = new Date();
+	var today = d.getDate();
+
+	// get selected date
+	var selectedItem = $(".to");
+
+	// remove selected
+	selectedItem.removeClass("to");
+
+	var days = $(".day");
+	days.each(function () {
+		if (+$(this).text() === today) {
+			$(this).removeClass("day").addClass("to day");
+		}
+		$(this).addClass('disabled');
+	});
+}
 

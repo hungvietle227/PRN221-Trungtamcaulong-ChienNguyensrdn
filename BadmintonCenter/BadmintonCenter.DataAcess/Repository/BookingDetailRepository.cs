@@ -23,7 +23,7 @@ namespace BadmintonCenter.DataAcess.Repository
             await _bookingDetailDAO.DeleteBookingDetailAsync(bookingDetail);
         }
 
-        public async Task<List<BookingDetail>> GetAllBookingDetailsAsync()
+        public async Task<IEnumerable<BookingDetail>> GetAllBookingDetailsAsync()
         {
             return await _bookingDetailDAO.GetAllBookingDetailsAsync();
         }
@@ -31,6 +31,12 @@ namespace BadmintonCenter.DataAcess.Repository
         public async Task<BookingDetail> GetBookingDetailByIdAsync(int bookingDetailId)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<BookingDetail>> GetBookingDetailsByBookingId(int id)
+        {
+            var bookingDetails = await _bookingDetailDAO.GetAllBookingDetailsAsync();
+            return bookingDetails.Where(p => p.BookingId == id).AsEnumerable();
         }
 
         public async Task UpdateBookingDetailAsync(BookingDetail bookingDetail)

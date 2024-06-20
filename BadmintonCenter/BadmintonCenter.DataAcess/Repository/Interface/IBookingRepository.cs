@@ -9,6 +9,6 @@ namespace BadmintonCenter.DataAcess.Repository.Interface
         Task<Booking> AddBookingAsync(Booking booking);
         Task UpdateBookingAsync(Booking booking);
         Task DeleteBookingAsync(Booking booking);
-
+        Task<Booking?> GetUnPaidBookingByUserId(int userId);
     }
 }

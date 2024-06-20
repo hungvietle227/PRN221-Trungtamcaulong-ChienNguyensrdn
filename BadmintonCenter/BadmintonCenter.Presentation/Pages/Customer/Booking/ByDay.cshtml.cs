@@ -60,7 +60,7 @@ namespace BadmintonCenter.Presentation.Pages.Booking
             // update available slot time of new court
             SlotTimes = await _commonService.GetAvailableTimeOfCourt(courtId, date);
 
-            if (SlotTimes != null && SlotTimes.Count() > 0)
+            if (SlotTimes != null)
             {
                 // slot time list
                 var slotTimeData = new List<string>();
@@ -97,16 +97,14 @@ namespace BadmintonCenter.Presentation.Pages.Booking
 
         public async Task<IActionResult> OnPostBookingAsync([FromBody] BookingModel data)
         {
-            var bookings = await _bookingService.GetAllBookings();
             BadmintonCenter.BusinessObject.Models.Booking newBooking = new BadmintonCenter.BusinessObject.Models.Booking()
             {
-                //BookingId = bookings.Count() + 1,
                 BookingDate = DateTime.Now,
                 ExpiredDate = data.ValidDate,
                 TotalPrice = data.Price,
                 ValidDate = data.ValidDate,
                 Status = BookingStatus.Wait,
-                UserId = 1,
+                UserId = data.UserId,
                 TotalHour = double.Parse(data.Details.Count.ToString()) / 2 ,
                 BookingTypeId = (int)BookingByType.NormalByDate,
             };
@@ -117,7 +115,7 @@ namespace BadmintonCenter.Presentation.Pages.Booking
             // update available slot time of first court
             SlotTimes = await _commonService.GetAvailableTimeOfCourt(1, DateTime.Now);
 
-            if (SlotTimes != null && SlotTimes.Count() > 0)
+            if (SlotTimes != null)
             {
                 // slot time list
                 var slotTimeData = new List<string>();
@@ -141,7 +139,8 @@ namespace BadmintonCenter.Presentation.Pages.Booking
                 return new JsonResult(new
                 {
                     isSuccess = true,
-                    data = slotTimeData
+                    data = slotTimeData,
+                    id = newBooking.BookingId
                 });
             }
 
