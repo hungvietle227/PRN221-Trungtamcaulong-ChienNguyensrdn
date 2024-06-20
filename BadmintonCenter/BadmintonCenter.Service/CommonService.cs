@@ -1,4 +1,5 @@
 ﻿using BadmintonCenter.Common.DTO.Booking;
+using BadmintonCenter.Common.Enum.Status;
 using BadmintonCenter.DataAcess.Repository.Interface;
 using DemoSchedule.Services.Interfaces;
 
@@ -38,7 +39,7 @@ namespace DemoSchedule.Services
             var allBooking = await _bookingRepository.GetAllBookingsAsync();
 
             // get booking in selected date
-            var bookingInDate = allBooking.Where(p => p.BookingDate.Date == date.Date).Select(x => x.BookingId).ToList();
+            var bookingInDate = allBooking.Where(p => p.ValidDate.Date == date.Date && p.Status != BookingStatus.Cancel).Select(x => x.BookingId).ToList();
 
             // get slot time of court booking in selected date
             var timeOfCourtBooking = allCourtTimeBooking.Where(p => p.CourtId == courtId && bookingInDate.Contains(p.BookingId)).Select(x => x.TimeSlotId).ToList();

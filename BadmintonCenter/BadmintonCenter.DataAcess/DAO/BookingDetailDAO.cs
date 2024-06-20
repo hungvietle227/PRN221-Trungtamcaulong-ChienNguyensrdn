@@ -10,7 +10,7 @@ namespace BadmintonCenter.DataAcess.DAO
 {
     public interface IBookingDetailDAO
     {
-        Task<List<BookingDetail>> GetAllBookingDetailsAsync();
+        Task<IEnumerable<BookingDetail>> GetAllBookingDetailsAsync();
         Task AddBookingDetailAsync(BookingDetail bookingDetail);
         Task UpdateBookingDetailAsync(BookingDetail bookingDetail);
         Task DeleteBookingDetailAsync(BookingDetail bookingDetailId);
@@ -23,9 +23,9 @@ namespace BadmintonCenter.DataAcess.DAO
         {
             _context = context;
         }
-        public async Task<List<BookingDetail>> GetAllBookingDetailsAsync()
+        public async Task<IEnumerable<BookingDetail>> GetAllBookingDetailsAsync()
         {
-            return await _context.BookingDetails.ToListAsync();
+            return await _context.BookingDetails.Include(p => p.Court).Include(p => p.TimeSlot).ToListAsync();
         }
 
         public async Task AddBookingDetailAsync(BookingDetail bookingDetail)

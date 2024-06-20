@@ -2,6 +2,8 @@
 
 $(document).ready(function () {
     var userId = $("#userId").val();
+   
+    $('#book-court-btn').prop("disabled", true);
 
     // handle when changing option
     $("#sltCourt").change(function () {
@@ -39,11 +41,15 @@ $(document).ready(function () {
     $('#book-court-btn').click(function () {
         var token = $('input[name="__RequestVerificationToken"]').val();
         var newDate = new Date(selectedDate);
-        var isoDateString = newDate.toISOString().slice(0, 10);
+        let year = newDate.getFullYear();
+        let month = String(newDate.getMonth() + 1).padStart(2, '0');
+        let day = String(newDate.getDate()).padStart(2, '0');
+        let formattedDate = `${year}-${month}-${day}`;
+
         var bookingData = {
             details: selectedCourtSlot,
             price: parseInt(price),
-            validDate: isoDateString,
+            validDate: formattedDate,
             userId: userId
         }
 
@@ -62,6 +68,9 @@ $(document).ready(function () {
                 if (response.isSuccess && response.data) {
                     updateSlotTime(response.data);
                     resetUI();
+                    $("#payment-btn").prop("hidden", false);
+                    $("#payment-btn a").attr("href", "/Customer/Booking/Detail?id=" + response.id);
+                    $('#book-court-btn').prop("disabled", true);
                 }
             },
             error: function (xhr, status, error) {

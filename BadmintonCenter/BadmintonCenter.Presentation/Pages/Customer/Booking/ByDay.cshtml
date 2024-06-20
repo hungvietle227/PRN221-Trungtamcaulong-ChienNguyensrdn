@@ -35,8 +35,10 @@
             <span id="total-price">0 VND</span>
         </div>
         @Html.AntiForgeryToken()
-        <button id="book-court-btn" class="w-25">Đặt sân</button>
-        <div id="error-message"></div>
+            <button id="book-court-btn" class="w-25">Đặt sân</button>
+        <div id="payment-btn" class="btn btn-outline-info hover:text-light" hidden>
+                <a asp-page="Detail" class="w-50 text-decoration-none text-dark">Tiến hành thanh toán</a>
+            </div>
         <p class="success-message" hidden></p>
     </div>
 </div>

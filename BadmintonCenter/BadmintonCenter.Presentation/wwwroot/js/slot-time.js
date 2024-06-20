@@ -55,7 +55,9 @@ const updateEventClickItem = () => {
                 slotTimeId: +$(this).attr('id')
             })
 
-            console.log(selectedCourtSlot)
+            if (selectedCourtSlot.length > 0) {
+                $("#book-court-btn").prop("disabled", false);
+            }
 
         } else {
             // change color
@@ -69,6 +71,10 @@ const updateEventClickItem = () => {
 
             if (index !== -1) {
                 selectedCourtSlot.splice(index, 1);
+            }
+
+            if (selectedCourtSlot.length == 0) {
+                $("#book-court-btn").prop("disabled", true);
             }
         }
     })
@@ -96,6 +102,9 @@ const resetUI = () => {
     // update price
     price = +0;
     $('#total-price').text(price + " VND");
+
+    // reset calender
+    resetCalendar();
 
     // update selected court time
     selectedCourtSlot = [];
