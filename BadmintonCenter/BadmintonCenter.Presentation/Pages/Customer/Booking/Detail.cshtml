@@ -81,23 +81,64 @@
 
                     </table>
                 </div>
+                <form method="post" class="pb-3">
                 <div class="row">
                     <div class="col-xl-8">
                         <p class="ms-3">Add additional notes and payment information</p>
-                        <form class="pb-3 w-50">
                             <div class="d-flex flex-row pb-3">
                                 <div class="d-flex align-items-center pe-2">
-                                    <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
-                                           value="" aria-label="..." checked />
+                                    <input asp-for="PaymentMethod" value="Vnpay" class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
+                                           aria-label="..." />
                                 </div>
                                 <div class="rounded border d-flex w-100 p-3 align-items-center">
                                     <p class="mb-0">
-                                        <i class="bi bi-wallet-fill"></i> MOMO
+                                        <i class="bi bi-credit-card-fill"></i> VNPAY
                                     </p>
-                                    <div class="ms-auto">@Model.Customer.PhoneNumber</div>
+                                    <div class="ms-auto">970419xxxxxxxxxxxxx</div>
                                 </div>
-                            </div>
-                        </form>
+                            </div>              
+                            @{
+                                int time = 0;
+                                foreach (var item in Model.Packages)
+                                {
+                                    time += item.HourRemaining;
+                                }
+                            }
+                            @if(time >= Model.Booking.TotalHour)
+                            {
+                                <div class="d-flex flex-row pb-3">
+                                    <div class="d-flex align-items-center pe-2">
+                                        <input asp-for="PaymentMethod" value="Hours" class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
+                                               aria-label="..." />
+                                    </div>
+                                    <div class="rounded border d-flex w-100 p-3 align-items-center">
+                                        <p class="mb-0">
+                                            <i class="bi bi-credit-card-fill"></i> Hours
+                                        </p>
+                                        <div class="ms-auto">
+                                            @time hours
+                                        </div>
+                                    </div>
+                                </div>
+                            } else
+                            {
+                                <div class="d-flex flex-row pb-3">
+                                    <div class="d-flex align-items-center pe-2">
+                                        <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
+                                               value="" aria-label="..." disabled />
+                                    </div>
+                                    <div class="rounded border d-flex w-100 p-3 align-items-center">
+                                        <p class="mb-0">
+                                            <i class="bi bi-credit-card-fill"></i> Hours
+                                        </p>
+                                        <div class="ms-auto">
+                                            @time hours
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
                     </div>
                     <div class="col-xl-4">
                         <ul class="list-unstyled">
@@ -118,22 +159,20 @@
                         <p>Thank you for your purchase</p>
                     </div>
                     <div class="col-xl-3 d-flex">
-                            <form method="post" class="mx-2">
-                                <button type="submit" asp-page-handler="Cancel" asp-route-id="@Model.Booking.BookingId" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary text-capitalize" style="background-color: red">
+                                <button type="submit" asp-page-handler="Cancel" asp-route-id="@Model.Booking.BookingId" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary text-capitalize mx-2" style="background-color: red">
                                     Cancel
                                 </button>
-                            </form>
 
-                        <form method="post">
-                            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary text-capitalize class=" mx-2""
+                            <input asp-for="Customer!.UserId" type="text" value="@Model.Customer.UserId" hidden />
+                            <input asp-for="Booking!.BookingId" type="text" value="@Model.Booking.BookingId" hidden />
+                            <button type="submit" asp-page-handler="Payment" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary text-capitalize mx-2"
                                     style="background-color:#60bdf3 ;">
                                 Pay Now
                             </button>
-                        </form>
 
                     </div>
                 </div>
-
+                </form>
             </div>
         </div>
     </div>

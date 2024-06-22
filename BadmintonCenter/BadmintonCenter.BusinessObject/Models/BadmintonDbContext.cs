@@ -127,8 +127,7 @@ namespace BadmintonCenter.BusinessObject.Models
             modelBuilder.Entity<Package>()
                         .HasMany(d => d.Transactions)
                         .WithOne(e => e.Package)
-                        .HasForeignKey(e => e.PackageId)
-                        .IsRequired();
+                        .HasForeignKey(e => e.PackageId);
 
             // Booking table
             modelBuilder.Entity<Booking>(entity =>
