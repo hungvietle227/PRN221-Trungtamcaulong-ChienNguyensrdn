@@ -1,4 +1,5 @@
-﻿using BadmintonCenter.Common.DTO.Booking;
+﻿using BadmintonCenter.BusinessObject.Models;
+using BadmintonCenter.Common.DTO.Booking;
 using BadmintonCenter.Common.Enum.Status;
 using BadmintonCenter.DataAcess.Repository.Interface;
 using DemoSchedule.Services.Interfaces;
@@ -10,15 +11,17 @@ namespace DemoSchedule.Services
         private readonly IBookingDetailRepository _bookingDetailRepository;
         private readonly ITimeSlotRepository _slotTimeRepository;
         private readonly IBookingRepository _bookingRepository;
+        private readonly IUserPackageRepository _userPackageRepository;
 
         public CommonService(IBookingDetailRepository courtTimeBookingRepository,  
                              ITimeSlotRepository slotTimeRepository, 
-                             IBookingRepository bookingRepository)
+                             IBookingRepository bookingRepository,
+                             IUserPackageRepository userPackageRepository)
         {
             _bookingDetailRepository = courtTimeBookingRepository;
             _slotTimeRepository = slotTimeRepository;
             _bookingRepository = bookingRepository;
-
+            _userPackageRepository = userPackageRepository;
         }
 
         /// <summary>
@@ -61,6 +64,12 @@ namespace DemoSchedule.Services
                                                         }).ToList();
 
             return availableTime;
+        }
+
+        public async Task<IEnumerable<UserPackage>> GetTimeRemainingOfUser(int userId)
+        {
+            var userPackages = await _userPackageRepository.GetUserPackageByUserIdAsync(userId);
+            return userPackages.Where(p => p.ValidInMonth == DateTime.Now.Month).ToList();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace BadmintonCenter.DataAcess.Repository.Interface
     public interface IUserPackageRepository
     {
         Task<UserPackage> GetUserPackageByIdAsync(int userPackageId);
-        Task<UserPackage> GetUserPackageByUserIdAsync(int userId);
+        Task<IEnumerable<UserPackage>> GetUserPackageByUserIdAsync(int userId);
         Task<List<UserPackage>> GetAllUserPackageAsync();
         Task AddUserPackageAsync(UserPackage userPackage);
         Task UpdateUserPackageAsync(UserPackage userPackage);

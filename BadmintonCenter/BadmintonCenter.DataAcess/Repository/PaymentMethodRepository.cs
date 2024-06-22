@@ -37,6 +37,12 @@ namespace BadmintonCenter.DataAcess.Repository
             return _paymentMethodDAO.GetPaymentMethodByIdAsync(paymentMethodId);
         }
 
+        public async Task<PaymentMethod?> GetPaymentMethodByNameAsync(string name)
+        {
+            var paymentMethods = await _paymentMethodDAO.GetPaymentMethodAsync();
+            return paymentMethods.FirstOrDefault(p => p.MethodName.ToUpper() == name.ToUpper());
+        }
+
         public Task UpdatePaymentMethodAsync(PaymentMethod paymentMethod)
         {
             return _paymentMethodDAO.UpdatePaymentMethodAsync(paymentMethod);

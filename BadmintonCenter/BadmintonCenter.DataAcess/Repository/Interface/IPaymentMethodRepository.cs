@@ -14,5 +14,6 @@ namespace BadmintonCenter.DataAcess.Repository.Interface
         Task AddPaymentMethodAsync(PaymentMethod paymentMethod);
         Task UpdatePaymentMethodAsync(PaymentMethod paymentMethod);
         Task DeletePaymentMethodAsync(int paymentMethodId);
+        Task<PaymentMethod?> GetPaymentMethodByNameAsync(string name);
     }
 }

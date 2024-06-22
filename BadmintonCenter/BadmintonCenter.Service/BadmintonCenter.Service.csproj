@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="RestSharp" Version="111.3.0" />
+    <PackageReference Include="System.Text.Json" Version="8.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BadmintonCenter.BusinessObject\BadmintonCenter.BusinessObject.csproj" />
     <ProjectReference Include="..\BadmintonCenter.Common\BadmintonCenter.Common.csproj" />
     <ProjectReference Include="..\BadmintonCenter.DataAcess\BadmintonCenter.DataAcess.csproj" />

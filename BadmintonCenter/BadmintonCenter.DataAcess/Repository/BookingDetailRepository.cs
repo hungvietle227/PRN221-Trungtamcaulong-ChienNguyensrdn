@@ -30,7 +30,7 @@ namespace BadmintonCenter.DataAcess.Repository
 
         public async Task<BookingDetail> GetBookingDetailByIdAsync(int bookingDetailId)
         {
-            throw new NotImplementedException();
+            return await Task.FromResult(new BookingDetail());
         }
 
         public async Task<IEnumerable<BookingDetail>> GetBookingDetailsByBookingId(int id)

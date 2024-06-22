@@ -1,0 +1,17 @@
+﻿@page
+@model BadmintonCenter.Presentation.Pages.Payment.IndexModel
+@{
+}
+
+<div class="h-100 w-100 d-flex justify-content-center
+                 align-items-center">
+    <div class="col-md-12 text-center">
+        <h1>Payment status</h1>
+        <p>
+            <strong>Status:</strong>
+            @(Model.Success ? "SUCCESS" : "FAIL")
+        </p>
+        <p>@Model.Message</p>
+        <a class="btn bsb-btn-5xl @(Model.Success ? "btn-success" : "btn-danger") rounded-pill px-5 fs-6 m-0" href="/" role="button">Back to Home</a>
+    </div>
+</div>

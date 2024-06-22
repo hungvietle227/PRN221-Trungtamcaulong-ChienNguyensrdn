@@ -2,8 +2,7 @@
 {
     public enum TransactionStatus
     {
-        None = 0,
-        Wait = 1,
-        Paid = 2
+        Cancel = 0,
+        Paid = 1
     }
 }
