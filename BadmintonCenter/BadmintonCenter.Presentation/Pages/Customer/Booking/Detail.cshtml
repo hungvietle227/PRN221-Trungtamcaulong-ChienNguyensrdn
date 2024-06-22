@@ -1,0 +1,179 @@
+﻿@page
+@model BadmintonCenter.Presentation.Pages.Booking.DetailModel
+@{
+}
+<link rel="stylesheet" href="~/css/booking-detail.css" asp-append-version="true" />
+<div class="card">
+    <div class="card-body">
+        <div class="container mb-5 mt-3">
+            <div class="row d-flex align-items-baseline">
+                <div class="col-xl-9">
+                    <p style="color: #7e8d9f;font-size: 20px;">Invoice <i class="bi bi-receipt"></i>
+                </div>
+                <hr>
+            </div>
+
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <i class="fab fa-mdb fa-4x ms-0" style="color:#5d9fc5 ;"></i>
+                        <h2 class="pt-0">Booking Detail</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xl-8">
+                        <ul class="list-unstyled">
+                            <li class="text-muted">To: <span style="color:#5d9fc5 ;">@Model.Customer!.FullName</span></li>
+                            <li class="text-muted"><i class="bi bi-telephone-fill"></i> @Model.Customer.PhoneNumber</li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4">
+                        <ul class="list-unstyled">
+                            <li class="text-muted">
+                                <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">ID:</span> @Model.Booking!.BookingId
+                            </li>
+                            <li class="text-muted">
+                                <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">Created Date: </span>@Model.Booking.BookingDate.ToString("dd-MM-yyyy")
+                            </li>
+                            <li class="text-muted">
+                                <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">Valid Date: </span>@Model.Booking.ValidDate.ToString("dd-MM-yyyy")
+                            </li>
+                            <li class="text-muted">
+                                <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="me-1 fw-bold">Status:</span><span class="badge bg-warning text-black fw-bold">
+                                    @Model.Booking!.Status
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row my-2 mx-1 justify-content-center" style="max-height: 200px;overflow-y: auto;">
+                    <table class="table-responsive table table-striped table-borderless">
+                        <thead style="background-color:#84B0CA ;" class="text-white">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Court</th>
+                                <th scope="col">Start Time</th>
+                                <th scope="col">End Time</th>
+                                <th scope="col">Unit Price</th>
+                                <th scope="col">Unit of hour</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int i = 0;
+                            }
+                            @foreach(var item in Model.BookingDetails)
+                            {
+                                <tr>
+                                    <th scope="row">@(++i)</th>
+                                    <td>@item.Court.CourtName</td>
+                                    <td>@item.TimeSlot.StartTime</td>
+                                    <td>@item.TimeSlot.EndTime</td>
+                                    <td>@item.TimeSlot.Price</td>
+                                    <td>@item.TimeSlot.Time</td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+                <form method="post" class="pb-3">
+                <div class="row">
+                    <div class="col-xl-8">
+                        <p class="ms-3">Add additional notes and payment information</p>
+                            <div class="d-flex flex-row pb-3">
+                                <div class="d-flex align-items-center pe-2">
+                                    <input asp-for="PaymentMethod" value="Vnpay" class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
+                                           aria-label="..." />
+                                </div>
+                                <div class="rounded border d-flex w-100 p-3 align-items-center">
+                                    <p class="mb-0">
+                                        <i class="bi bi-credit-card-fill"></i> VNPAY
+                                    </p>
+                                    <div class="ms-auto">970419xxxxxxxxxxxxx</div>
+                                </div>
+                            </div>              
+                            @{
+                                int time = 0;
+                                foreach (var item in Model.Packages)
+                                {
+                                    time += item.HourRemaining;
+                                }
+                            }
+                            @if(time >= Model.Booking.TotalHour)
+                            {
+                                <div class="d-flex flex-row pb-3">
+                                    <div class="d-flex align-items-center pe-2">
+                                        <input asp-for="PaymentMethod" value="Hours" class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
+                                               aria-label="..." />
+                                    </div>
+                                    <div class="rounded border d-flex w-100 p-3 align-items-center">
+                                        <p class="mb-0">
+                                            <i class="bi bi-credit-card-fill"></i> Hours
+                                        </p>
+                                        <div class="ms-auto">
+                                            @time hours
+                                        </div>
+                                    </div>
+                                </div>
+                            } else
+                            {
+                                <div class="d-flex flex-row pb-3">
+                                    <div class="d-flex align-items-center pe-2">
+                                        <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
+                                               value="" aria-label="..." disabled />
+                                    </div>
+                                    <div class="rounded border d-flex w-100 p-3 align-items-center">
+                                        <p class="mb-0">
+                                            <i class="bi bi-credit-card-fill"></i> Hours
+                                        </p>
+                                        <div class="ms-auto">
+                                            @time hours
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+                    </div>
+                    <div class="col-xl-4">
+                        <ul class="list-unstyled">
+                            <li class="text-muted ms-3"><span class="text-black me-4">SubTotal</span>@Model.Booking.TotalPrice VND</li>
+                            <li class="text-muted ms-3 mt-2"><span class="text-black me-4">Total Hour</span>@Model.Booking.TotalHour Hours</li>
+                        </ul>
+                        <p class="text-black float-start">
+                            <span class="text-black me-3"> Total Amount (VND)</span><span style="font-size: 25px;">@Model.Booking.TotalPrice VND</span>
+                        </p>
+                        <p class="text-black float-start">
+                            <span class="text-black me-3"> Total Amount (hour)</span><span style="font-size: 25px;">@Model.Booking.TotalHour Hours</span>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-xl-9">
+                        <p>Thank you for your purchase</p>
+                    </div>
+                    <div class="col-xl-3 d-flex">
+                                <button type="submit" asp-page-handler="Cancel" asp-route-id="@Model.Booking.BookingId" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary text-capitalize mx-2" style="background-color: red">
+                                    Cancel
+                                </button>
+
+                            <input asp-for="Customer!.UserId" type="text" value="@Model.Customer.UserId" hidden />
+                            <input asp-for="Booking!.BookingId" type="text" value="@Model.Booking.BookingId" hidden />
+                            <button type="submit" asp-page-handler="Payment" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary text-capitalize mx-2"
+                                    style="background-color:#60bdf3 ;">
+                                Pay Now
+                            </button>
+
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

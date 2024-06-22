@@ -10,11 +10,12 @@ namespace BadmintonCenter.DataAcess.DAO
 {
     public interface IUserDAO
     {
-        Task<User> GetUserByIdAsync(int userId);
+        Task<User?> GetUserByIdAsync(int userId);
         Task<List<User>> GetAllUsersAsync();
         Task AddUserAsync(User user);
         Task UpdateUserAsync(User user);
         Task DeleteUserAsync(int userId);
+        Task<User?> GetUserByUserName(string username);
     }
     public class UserDAO : IUserDAO
     {
@@ -26,10 +27,10 @@ namespace BadmintonCenter.DataAcess.DAO
         }
 
 
-        public async Task<User> GetUserByIdAsync(int userId)
+        public async Task<User?> GetUserByIdAsync(int userId)
         {
             //
-            return _context.Users.FirstOrDefault(b => b.UserId == userId);
+            return await _context.Users.FirstOrDefaultAsync(b => b.UserId == userId);
         }
 
         public async Task<List<User>> GetAllUsersAsync()
@@ -59,5 +60,9 @@ namespace BadmintonCenter.DataAcess.DAO
             await _context.SaveChangesAsync();
         }
 
+        public async Task<User?> GetUserByUserName(string username)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
+        }
     }
 }

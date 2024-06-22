@@ -1,0 +1,23 @@
+﻿@page
+@model BadmintonCenter.Presentation.Pages.Booking.IndexModel
+@{
+    ViewData["Title"] = "Booking";
+}
+<link rel="stylesheet" href="~/css/booking.css" asp-append-version="true" />
+
+<div class="container d-flex flex-column align-items-center justify-content-center vh-100">
+    @if(Model.UnPaidBooking != null)
+    {
+        <h1 class="mb-4 text-warning">You have an unpaid booking! Please pay it!</h1>
+        <a asp-page="Detail" asp-route-id="@Model.UnPaidBooking.BookingId" class="btn btn-booking">Go to payment</a>
+    } else
+    {
+        <h1 class="mb-4">Please choose your booking type</h1>
+        <div class="d-flex flex-column gap-3">
+            <a asp-page="stable" class="btn btn-booking">Booking by stable time</a>
+            <a asp-page="byday" class="btn btn-booking">Booking by current day</a>
+        </div>
+    }
+</div>
+
+

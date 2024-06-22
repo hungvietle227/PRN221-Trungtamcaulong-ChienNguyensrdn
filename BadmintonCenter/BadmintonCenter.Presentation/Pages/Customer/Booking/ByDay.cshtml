@@ -1,0 +1,54 @@
+﻿@page
+@model BadmintonCenter.Presentation.Pages.Booking.ByDayModel
+@{
+}
+<link rel="stylesheet" href="~/css/calendar.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/booking.css" asp-append-version="true" />
+<div class="container-booking d-flex flex-column w-100 h-100 justify-content-start gap-3">
+    <input id="userId" hidden value="@Model.Customer!.UserId"/>
+    <h1 class="display-4">LỊCH ĐẶT SÂN</h1>
+    <div class="row flex-wrap gap-2">
+        <section class="border border-1 col-3">
+            <h1 id="year"></h1>
+            <div class="calendar"></div>
+        </section>
+
+        <div class="text-center w-70 col-8 flex-column justify-content-start py-2">
+            <select id="sltCourt" class="col-3">
+                @foreach (var item in Model.Courts)
+                {
+                    <option value=@item.CourtId>@item.CourtName</option>
+                }
+            </select>
+
+            <div class="container-slot overflow-auto">
+                @foreach (var item in Model.SlotTimes)
+                {
+                    <div id=@item.Id class="time-slot" price=@item.Price>@item.StartTime - @item.EndTime</div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="flex-column gap-2 align-items-center justify-content-center">
+        <div class="total-price-container">
+            <span>Tổng giá tiền:</span>
+            <span id="total-price">0 VND</span>
+        </div>
+        @Html.AntiForgeryToken()
+            <button id="book-court-btn" class="w-25">Đặt sân</button>
+        <div id="payment-btn" class="btn btn-outline-info hover:text-light" hidden>
+                <a asp-page="Detail" class="w-50 text-decoration-none text-dark">Tiến hành thanh toán</a>
+            </div>
+        <p class="success-message" hidden></p>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/booking.js" asp-append-version="true"></script>
+    <script src="~/js/calendar.js" asp-append-version="true"></script>
+    <script src="~/js/slot-time.js" asp-append-version="true"></script>
+}
+
+
+
+

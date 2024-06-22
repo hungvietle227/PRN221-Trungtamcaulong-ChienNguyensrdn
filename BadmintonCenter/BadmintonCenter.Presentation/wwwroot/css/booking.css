@@ -1,0 +1,86 @@
+﻿.btn-booking {
+    background-color: #e83e8c; /* Đổi màu nền thành màu hồng */
+    color: #fff;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-booking:hover {
+        background-color: #c2255c; /* Đổi màu khi hover thành màu hồng đậm hơn */
+    }
+
+    .btn-booking:active {
+        background-color: #a01a4b; /* Đổi màu khi active thành màu hồng sẫm hơn */
+    }
+
+
+
+#book-court-btn {
+    margin-top: 20px;
+    background-color: #007bff; /* Màu nền của button */
+    color: #fff; /* Màu chữ */
+    border: none; /* Không có viền */
+    padding: 10px 20px; /* Khoảng cách nội dung và viền */
+    border-radius: 20px; /* Bo tròn cạnh */
+    font-size: 16px; /* Kích thước chữ */
+    cursor: pointer; /* Thay đổi con trỏ chuột khi hover */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu khi hover */
+}
+
+    #book-court-btn:hover {
+        background-color: #0056b3; /* Màu nền khi hover */
+    }
+
+.total-price-container {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+    .total-price-container span {
+        margin-right: 5px;
+    }
+
+#total-price {
+    color: #007bff; /* Màu chữ của tổng giá tiền */
+}
+
+.success-message {
+    margin: 10px auto;
+    width: 300px;
+    background-color: #4CAF50; /* Màu xanh lá cây */
+    color: white; /* Màu chữ trắng */
+    padding: 10px 20px; /* Khoảng cách nội dung và viền */
+    border-radius: 5px; /* Bo góc */
+    font-size: 16px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ in đậm */
+}
+
+.container-slot {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin-top: 5px;
+    max-height: 280px;
+    overflow: auto;
+}
+
+.time-slot {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .time-slot:hover {
+        background-color: #e0e0e0;
+    }
+
+    .time-slot:active {
+        background-color: #d0d0d0;
+    }

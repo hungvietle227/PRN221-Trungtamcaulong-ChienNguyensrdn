@@ -14,7 +14,6 @@ namespace BadmintonCenter.BusinessObject.Models
         public double TotalHour { get; set; }
         public int BookingTypeId { get; set; }
         public int UserId { get; set; }
-        public int TransactionId { get; set; }
         public Transaction Transaction { get; set; } = null!;
         public BookingType BookingType { get; set; } = null!;
         public User User { get; set; } = null!;

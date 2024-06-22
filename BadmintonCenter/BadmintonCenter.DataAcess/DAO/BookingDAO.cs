@@ -10,9 +10,9 @@ namespace BadmintonCenter.DataAcess.DAO
 {
     public interface IBookingDAO
     {
-        Task<Booking> GetBookingByIdAsync(int bookingId);
+        Task<Booking?> GetBookingByIdAsync(int bookingId);
         Task<List<Booking>> GetAllBookingsAsync();
-        Task AddBookingAsync(Booking booking);
+        Task<Booking> AddBookingAsync(Booking booking);
         Task UpdateBookingAsync(Booking booking);
         Task DeleteBookingAsync(Booking bookingId);
     }
@@ -24,10 +24,10 @@ namespace BadmintonCenter.DataAcess.DAO
         {
             _context = context;
         }
-        public async Task<Booking> GetBookingByIdAsync(int bookingId)
+        public async Task<Booking?> GetBookingByIdAsync(int bookingId)
         {
             //
-            return _context.Bookings.FirstOrDefault(b => b.BookingId == bookingId);
+            return await _context.Bookings.FirstOrDefaultAsync(b => b.BookingId == bookingId);
         }
         public async Task<List<Booking>> GetAllBookingsAsync()
         {
@@ -35,11 +35,13 @@ namespace BadmintonCenter.DataAcess.DAO
             return await _context.Bookings.ToListAsync();
         }
 
-        public async Task AddBookingAsync(Booking booking)
+        public async Task<Booking> AddBookingAsync(Booking booking)
         {
             //
             var addedBooking = await _context.Bookings.AddAsync(booking);
             await _context.SaveChangesAsync();
+
+            return addedBooking.Entity;
         }
 
         public async Task  UpdateBookingAsync(Booking booking) 

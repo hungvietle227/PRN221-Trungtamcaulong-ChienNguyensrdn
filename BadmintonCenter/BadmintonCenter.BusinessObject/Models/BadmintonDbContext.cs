@@ -16,6 +16,10 @@ namespace BadmintonCenter.BusinessObject.Models
         public DbSet<Court> Courts { get; set; } = null!;
         public DbSet<TimeSlot> TimeSlots { get; set; } = null!;
         public DbSet<BookingDetail> BookingDetails { get; set; } = null!;
+        public DbSet<Package> Packages { get; set; }
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<UserPackage> UserPackages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -53,9 +57,9 @@ namespace BadmintonCenter.BusinessObject.Models
                         .IsRequired();
 
             // 1-M relation between user and booking
-            modelBuilder.Entity<User>()
-                        .HasMany(d => d.Bookings)
-                        .WithOne(e => e.User)
+            modelBuilder.Entity<Booking>()
+                        .HasOne(d => d.User)
+                        .WithMany(e => e.Bookings)
                         .HasForeignKey(e => e.UserId)
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -123,8 +127,7 @@ namespace BadmintonCenter.BusinessObject.Models
             modelBuilder.Entity<Package>()
                         .HasMany(d => d.Transactions)
                         .WithOne(e => e.Package)
-                        .HasForeignKey(e => e.PackageId)
-                        .IsRequired();
+                        .HasForeignKey(e => e.PackageId);
 
             // Booking table
             modelBuilder.Entity<Booking>(entity =>
@@ -154,9 +157,8 @@ namespace BadmintonCenter.BusinessObject.Models
             modelBuilder.Entity<Transaction>()
                         .HasOne(p => p.Booking)
                         .WithOne(a => a.Transaction)
-                        .HasForeignKey<Booking>(p => p.TransactionId)
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey<Transaction>(p => p.BookingId)
+                        .OnDelete(DeleteBehavior.Cascade);
 
             // M-M relation
             // UserPackage table
