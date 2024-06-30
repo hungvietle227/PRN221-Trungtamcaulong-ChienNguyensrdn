@@ -34,6 +34,7 @@ builder.Services.AddScoped<IBookingDAO, BookingDAO>();
 builder.Services.AddScoped<IUserPackageDAO, UserPackageDAO>();
 builder.Services.AddScoped<ITransactionDAO, TransactionDAO>();
 builder.Services.AddScoped<IPaymentMethodDAO, PaymentMethodDAO>();
+builder.Services.AddScoped<IPackageDAO, PackageDAO>();
 
 // repos
 builder.Services.AddScoped<IUserRepository, UserRepo>();
@@ -44,6 +45,7 @@ builder.Services.AddScoped<IBookingRepository, BookingRepo>();
 builder.Services.AddScoped<IUserPackageRepository, UserPackageRepository>();
 builder.Services.AddScoped<ITransactionRepository,  TransactionRepository>();
 builder.Services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
+builder.Services.AddScoped<IPackageRepository, PackageRepository>();
 
 // services
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -57,6 +59,7 @@ builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IUserPackageService, UserPackageService>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IPaymentMethodService, PaymentMethodService>();
+builder.Services.AddScoped<IPackageService, PackageService>();
 
 var app = builder.Build();
 
