@@ -12,7 +12,7 @@ using System.Security.Claims;
 
 namespace BadmintonCenter.Presentation.Pages.Booking
 {
-    [Authorize]
+    [Authorize(Roles = "Customer")]
     [BindProperties]
     public class DetailModel : PageModel
     {
