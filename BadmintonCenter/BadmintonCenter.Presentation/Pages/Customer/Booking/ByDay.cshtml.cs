@@ -6,6 +6,7 @@ using BadmintonCenter.Service;
 using BadmintonCenter.Service.Interface;
 using DemoSchedule.DTO;
 using DemoSchedule.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
@@ -13,6 +14,7 @@ using System.Security.Claims;
 
 namespace BadmintonCenter.Presentation.Pages.Booking
 {
+    [Authorize(Roles = "Customer")]
     public class ByDayModel : PageModel
     {
         private readonly ICourtService _courtService;
@@ -38,11 +40,6 @@ namespace BadmintonCenter.Presentation.Pages.Booking
 
         public async Task<IActionResult> OnGetAsync()
         {
-            if (!User.Identity!.IsAuthenticated)
-            {
-                return RedirectToPage("/Auth/Login");
-            }
-
             // Get user
             Customer = await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!);
 

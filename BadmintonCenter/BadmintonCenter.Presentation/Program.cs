@@ -20,9 +20,14 @@ builder.Services.AddDbContext<BadmintonDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(optionsCookies =>
 {
     optionsCookies.Cookie.Name = "AuthUser";
+    optionsCookies.AccessDeniedPath = "/Auth/AccessDenied";
+    optionsCookies.LoginPath = "/Auth/Login";
+    optionsCookies.LogoutPath = "/Auth/Logout";
 });
 
 // DAO
