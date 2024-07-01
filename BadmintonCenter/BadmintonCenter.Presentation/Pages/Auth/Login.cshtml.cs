@@ -1,27 +1,18 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Identity.Data;
+using BadmintonCenter.Common.Constant.Message;
+using BadmintonCenter.Common.DTO.Auth;
+using BadmintonCenter.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Security.Claims;
-using BadmintonCenter.Service.Interface;
-using BadmintonCenter.Common.DTO.Auth;
-using BadmintonCenter.Common.Enum.User;
-using BadmintonCenter.Common.Constant.Message;
 
 namespace BadmintonCenter.Presentation.Pages.Auth
 {
     public class LoginModel : PageModel
     {
         private readonly IAuthService _authService;
-        private readonly IConfiguration _configuration;
 
-        public LoginModel(IAuthService authService,
-                          IConfiguration configuration)
+        public LoginModel(IAuthService authService)
         {
             _authService = authService;
-            _configuration = configuration;
-
         }
 
         [BindProperty]
@@ -44,49 +35,19 @@ namespace BadmintonCenter.Presentation.Pages.Auth
                 return Page();
             }
 
-            if (LoginRequest.Password.Length < 8)
+            // login with role customer
+            var user = await _authService.Login(LoginRequest.Username, LoginRequest.Password);
+
+            if (user != null)
             {
-                ModelState.AddModelError("LoginRequest.Password", "Password must be at least 8 characters long.");
+                return Redirect("/");
+            }
+            else
+            {
+                Message = AuthMessage.LoginFailed;
                 return Page();
             }
 
-            // login with role customer
-            var user = await _authService.Login(LoginRequest.Username, LoginRequest.Password);
-            if (user != null)
-            {
-                //if found, create new cookie auth for user
-                var claims = new List<Claim>
-                {
-                    new(ClaimTypes.Name, user.FullName),
-                    new(ClaimTypes.Email, user.Email!),
-                    new(ClaimTypes.Role, Enum.GetName(typeof(UserRole), user.RoleId)!)
-                };
-
-                // claims identity
-                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                //auth properties
-                var authProperties = new AuthenticationProperties
-                {
-                    AllowRefresh = true,
-
-                    ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(double.Parse(_configuration["Cookie:ExpireTime"]!)),
-
-                    IsPersistent = true,
-
-                    IssuedUtc = DateTime.UtcNow,
-
-                    RedirectUri = "/auth/login"
-                };
-
-                //register cookie auth
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
-                return Redirect("/");
-            } else
-            {
-                Message = AuthMessage.LoginFailed;
-            }
-            return Page();
         }
     }
 }

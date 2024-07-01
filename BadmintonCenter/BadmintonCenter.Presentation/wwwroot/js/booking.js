@@ -53,8 +53,6 @@ $(document).ready(function () {
             userId: userId
         }
 
-        console.log(JSON.stringify(bookingData))
-
         // call ajax to add booking
         $.ajax({
             url: "/customer/booking/byday/?handler=Booking",

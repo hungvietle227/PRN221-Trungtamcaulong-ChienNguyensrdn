@@ -1,11 +1,13 @@
 using BadmintonCenter.Service;
 using BadmintonCenter.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
 
 namespace BadmintonCenter.Presentation.Pages.Booking
 {
+    [Authorize(Roles = "Customer")]
     public class IndexModel : PageModel
     {
         private readonly IBookingService _bookingService;

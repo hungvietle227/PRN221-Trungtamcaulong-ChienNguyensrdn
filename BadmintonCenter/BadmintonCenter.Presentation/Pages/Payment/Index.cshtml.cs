@@ -4,12 +4,14 @@ using BadmintonCenter.Common.Constant.Payment;
 using BadmintonCenter.Common.DTO.Payment;
 using BadmintonCenter.Common.Enum.Status;
 using BadmintonCenter.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
 
 namespace BadmintonCenter.Presentation.Pages.Payment
 {
+    [Authorize(Roles = "Customer")]
     public class IndexModel : PageModel
     {
         private readonly IBookingService _bookingService;
