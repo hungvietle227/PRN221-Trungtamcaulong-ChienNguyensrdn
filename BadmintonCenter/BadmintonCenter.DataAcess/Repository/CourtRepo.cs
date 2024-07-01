@@ -33,9 +33,9 @@ namespace BadmintonCenter.DataAcess.Repository
             await _courtDAO.UpdateCourtAsync(court);
         }
 
-        public async Task DeleteCourtAsync(int courtId)
+        public async Task DeleteCourtAsync(Court court)
         {
-            await _courtDAO.DeleteCourtAsync(courtId);
+            await _courtDAO.DeleteCourtAsync(court);
         }
     }
 }

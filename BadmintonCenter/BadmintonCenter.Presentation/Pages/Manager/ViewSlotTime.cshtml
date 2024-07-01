@@ -33,7 +33,7 @@
                 </form>
             </div>
             <div class="add-new-container">
-                <button class="btn btn-primary" type="button" onclick="openCreateModal()"><i class="fa-solid fa-circle-plus"></i> Add New</button>
+                <button class="btn btn-primary" type="button" onclick="navigate()"><i class="fa-solid fa-circle-plus"></i> Add New</button>
             </div>
         </div>
         <h5 class="noti-msg">@TempData["CreateMsg"]</h5>
@@ -70,12 +70,11 @@
                         <td>@timeSlot.SlotTimeId</td>
                         <td>@timeSlot.StartTime</td>
                         <td>@timeSlot.EndTime</td>
-                        <td>@timeSlot.Time</td>
-                        <td>@timeSlot.Price</td>
+                        <td>@timeSlot.Time h</td>
+                        <td>@timeSlot.Price.ToString("#,##0") VND</td>
                         <td>
-                            <a href="#" class="btn btn-primary">Edit</a>
-                            <a href="#" class="btn btn-primary">Detail</a>
-                            <a href="#" class="btn btn-primary">Delete</a>
+                           <a asp-page="/Manager/SlotTime/EditSlotTime" asp-route-id="@timeSlot.SlotTimeId" class="btn btn-primary">Edit</a>
+                                <a asp-page="/Manager/SlotTime/DeleteSlotTime" asp-route-id="@timeSlot.SlotTimeId" class="btn btn-primary">Delete</a>
                         </td>
                     </tr>
                 }
@@ -103,3 +102,8 @@
 </div>
 </body>
 </html>
+<script>
+    function navigate() {
+        window.location.href = "/Manager/SlotTime/AddSlotTime";
+    }
+</script>

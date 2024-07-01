@@ -17,6 +17,17 @@ namespace BadmintonCenter.Service
         {
             _packageRepository = packageRepository;
         }
+
+        public async Task AddPackageAsync(Package package)
+        {
+            await _packageRepository.AddPackageAsync(package);
+        }
+
+        public async Task DeletePackageAsync(Package package)
+        {
+            await _packageRepository.DeletePackageAsync(package);
+        }
+
         public async Task<List<Package>> GetAllPackages()
         {
             return await _packageRepository.GetAllPackagesAsync();
@@ -25,6 +36,11 @@ namespace BadmintonCenter.Service
         public async Task<Package?> GetPackageById(int id)
         {
             return await _packageRepository.GetPackageByIdAsync(id);
+        }
+
+        public async Task UpdatePackageAsync(Package package)
+        {
+            await _packageRepository.UpdatePackageAsync(package);
         }
     }
 }

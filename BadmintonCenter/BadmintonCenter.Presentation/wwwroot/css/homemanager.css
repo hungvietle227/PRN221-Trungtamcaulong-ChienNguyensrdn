@@ -1,0 +1,21 @@
+﻿﻿body {
+    color: black;
+}
+
+.header {
+    color: white;
+    background-color: #576678;
+    padding: 6px 0;
+    padding-left: 0px;
+    margin-bottom: 30px;
+}
+
+    .header h1 {
+        margin-left: 15px;
+        color: white;
+    }
+/*end header*/
+
+.content {
+    text-align: center;
+}

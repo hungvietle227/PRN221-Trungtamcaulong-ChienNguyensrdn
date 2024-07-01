@@ -33,7 +33,7 @@
                     </form>
                 </div>
                 <div class="add-new-container">
-                    <button class="btn btn-primary" type="button" onclick="openCreateModal()"><i class="fa-solid fa-circle-plus"></i> Add New</button>
+                    <button class="btn btn-primary" type="button" onclick="navigateToAdd()"><i class="fa-solid fa-circle-plus"></i> Add New</button>
                 </div>
             </div>
             <h5 class="noti-msg">@TempData["CreateMsg"]</h5>
@@ -69,9 +69,8 @@
                             <td>@court.Description</td>
                             <td>@court.Status</td>
                             <td>
-                                <a href="#" class="btn btn-primary">Edit</a>
-                                <a href="#" class="btn btn-primary">Detail</a>
-                                <a href="#" class="btn btn-primary">Delete</a>
+                                <a asp-page="/Manager/EditCourt" asp-route-id="@court.CourtId" class="btn btn-primary">Edit</a>
+                                <a asp-page="/Manager/DeleteCourt" asp-route-id="@court.CourtId" class="btn btn-primary">Delete</a>
                             </td>
                         </tr>
                     }
@@ -99,3 +98,8 @@
     </div>
 </body>
 </html>
+<script>
+    function navigateToAdd() {
+        window.location.href = "/Manager/AddCourt";
+    }
+</script>
