@@ -14,6 +14,16 @@ namespace BadmintonCenter.Service
             _timeSlotRepository = timeSlotRepository;
         }
 
+        public async Task AddTimeSlotAsync(TimeSlot timeSlot)
+        {
+            await _timeSlotRepository.AddTimeSlotAsync(timeSlot);
+        }
+
+        public async Task DeleteTimeSlotAsync(TimeSlot timeSlot)
+        {
+            await _timeSlotRepository.DeleteTimeSlotAsync(timeSlot);
+        }
+
         public async Task<IEnumerable<TimeSlot>> GetAllTimeSlots()
         {
             return await _timeSlotRepository.GetAllTimeSlotAsync();
@@ -22,6 +32,11 @@ namespace BadmintonCenter.Service
         public async Task<TimeSlot?> GetTimeSlotById(int id)
         {
             return await _timeSlotRepository.GetTimeSlotByIdAsync(id);
+        }
+
+        public async Task UpdateTimeSlotAsync(TimeSlot timeSlot)
+        {
+            await _timeSlotRepository.UpdateTimeSlotAsync(timeSlot);
         }
     }
 }

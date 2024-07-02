@@ -6,5 +6,8 @@ namespace BadmintonCenter.Service.Interface
     {
         Task<IEnumerable<TimeSlot>> GetAllTimeSlots();
         Task<TimeSlot?> GetTimeSlotById(int id);
+        Task AddTimeSlotAsync(TimeSlot timeSlot);
+        Task UpdateTimeSlotAsync(TimeSlot timeSlot);
+        Task DeleteTimeSlotAsync(TimeSlot timeSlot);
     }
 }
