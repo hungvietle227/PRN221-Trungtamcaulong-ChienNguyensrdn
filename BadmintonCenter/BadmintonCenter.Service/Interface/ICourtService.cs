@@ -6,5 +6,8 @@ namespace BadmintonCenter.Service.Interface
     {
         Task<IEnumerable<Court>> GetAllCourts();
         Task<Court?> GetCourtById(int id);
+        Task AddCourtAsync(Court court);
+        Task UpdateCourtAsync(Court court);
+        Task DeleteCourtAsync(Court court);
     }
 }
