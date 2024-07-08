@@ -8,7 +8,7 @@ namespace BadmintonCenter.DataAcess.Repository.Interface
         Task<List<User>> GetAllUsersAsync();
         Task AddUserAsync(User user);
         Task UpdateUserAsync(User user);
-        Task DeleteUserAsync(int userId);
+        Task DeleteUserAsync(User user);
         Task<User?> GetUserByUserName(string username);
         Task<User?> GetUserByEmail(string email);
     }
