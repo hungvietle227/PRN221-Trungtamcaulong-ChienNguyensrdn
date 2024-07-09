@@ -16,11 +16,11 @@
         <div class="container_sidebar">
             <div class="sidebar">
                 <div class="header_container">
-                    <img src="@Url.Content("~/path/to/logoEdu.png")" alt="avatar logo" width="75" />
-                    <div class="header_sidebar">Gia sư học tập</div>
+                    <img src="/img/logocaulong.png" alt="avatar logo" width="75" />
+                    <div class="header_sidebar">Trung tâm cầu lông</div>
                 </div>
                 <hr style="border: 1px solid white;" />
-                <ul class="sidebar-nav">
+                <ul class="sidebar-nav mt-3">
                     <li class="sidebar-nav-item">
                         <a asp-page="/Manager/HomeManager" class="sidebar-nav-link">
                             <p>
@@ -67,7 +67,11 @@
         <div class="fixed top-0 left-64 z-10" style="width: calc(100% - 260px); float: right;">
             <div class="main" style="display: flex; justify-content: space-between; align-items: center">
                 <img style=" width: 10%; height: 70%; margin-left: 20px;margin-top: 0.5%;" src="https://uploads.turbologo.com/uploads/design/hq_preview_image/499442/draw_svg20201116-31497-1tu3ppl.svg.png" />
-                <button style="background-color: white; border: none; border-radius: 5px; height: 40%; margin-right: 20px;" onclick="Logout()">Logout</button>
+                <div style="display: flex; align-items: center; gap: 30px">
+                    <img style=" width: 50px; height: 50px;" src="/img/avatarMessi.png" />
+                    <div>Nguyễn phương nam</div>
+                    <button style="background-color: white; border: none; border-radius: 5px; height: 40%; margin-right: 20px;" onclick="Logout()">Logout</button>
+                </div>
             </div>
         </div>
         <div class="body">
