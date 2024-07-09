@@ -1,0 +1,105 @@
+﻿@page
+@model BadmintonCenter.Presentation.Pages.Admin.ViewCourtModel
+@{
+    Layout = "_LayoutAdmin";
+    var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management</title>
+    <link rel="stylesheet" href="~/css/CustomerManagementStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div style="padding: 25px 25px 5px 25px;
+         border-radius: 10px;
+         box-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px;
+         background: white;
+         padding-bottom: 15px">
+        <div class="header">
+            <h2>Court Management</h2>
+        </div>
+        <div class="mt-4 mb-2">
+            <div class="action-container">
+                <div class="search-container">
+                    <form method="get" class="form-inline mb-3" asp-page-handler="SearchCustomer">
+                        <input type="text" class="form-control mr-2 w-50" placeholder="Search by Account Name" />
+                        <input type="hidden" name="SearchValue" />
+                        <button type="submit" class="btn btn-outline-primary">Search</button>
+                    </form>
+                </div>
+                <div class="add-new-container">
+                    <button class="btn btn-primary" type="button" onclick="navigateToAdd()"><i class="fa-solid fa-circle-plus"></i> Add New</button>
+                </div>
+            </div>
+            <h5 class="noti-msg">@TempData["CreateMsg"]</h5>
+            <h5 class="noti-msg">@TempData["SearchMsg"]</h5>
+            <h5 class="noti-msg">@TempData["UpdateMsg"]</h5>
+            <h5 class="noti-msg">@TempData["DeleteMsg"]</h5>
+            <table class="table table-hover mt-4">
+                <thead style="background-color: black; color: white; height: 50px" class="align-middle">
+                    <tr>
+                        <th>
+                            Court ID
+                        </th>
+                        <th>
+                            Court Name
+                        </th>
+                        <th>
+                            Court Description
+                        </th>
+                        <th>
+                            Court Status
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var court in Model.Courts)
+                    {
+                        <tr class="align-middle">
+                            <td>@court.CourtId</td>
+                            <td>@court.CourtName</td>
+                            <td>@court.Description</td>
+                            <td>@court.Status</td>
+                            <td>
+                                <a asp-page="/Admin/Courts/EditCourt" asp-route-id="@court.CourtId" class="btn btn-primary">Edit</a>
+                                <a asp-page="/Admin/Courts/DeleteCourt" asp-route-id="@court.CourtId" class="btn btn-primary">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <nav aria-label="Room pagination">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                        <a class="page-link" asp-page="/Admin/ViewCourt" asp-route-id="@(Model.CurrentPage - 1)" tabindex="-1" aria-disabled="@(Model.CurrentPage == 1 ? "true" : "false")">Previous</a>
+                    </li>
+
+                    @for (int i = 1; i <= Math.Ceiling((double)Model.AllCourt.Count() / Model.PageSize); i++)
+                    {
+                        <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                            <a class="page-link" asp-page="/Admin/ViewCourt" asp-route-id="@i">@i</a>
+                        </li>
+                    }
+
+                    <li class="page-item @(Model.CurrentPage >= Math.Ceiling((double)Model.AllCourt.Count() / Model.PageSize) ? "disabled" : "")">
+                        <a class="page-link" asp-page="/Admin/ViewCourt" asp-route-id="@(Model.CurrentPage + 1)">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function navigateToAdd() {
+        window.location.href = "/Admin/Courts/AddCourt";
+    }
+</script>
