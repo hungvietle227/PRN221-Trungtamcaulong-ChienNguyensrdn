@@ -110,7 +110,7 @@ const resetUI = () => {
     selectedCourtSlot = [];
 
     // set successfull message
-    $('.success-message').text("Đặt sân thành công");
+    $('.success-message').text("Booking Successfully");
     $('.success-message').prop('hidden', false);
 
     // delete message
