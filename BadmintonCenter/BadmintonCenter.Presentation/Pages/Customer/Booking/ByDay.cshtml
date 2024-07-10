@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="~/css/booking.css" asp-append-version="true" />
 <div class="container-booking d-flex flex-column w-100 h-100 justify-content-start gap-3">
     <input id="userId" hidden value="@Model.Customer!.UserId"/>
-    <h1 class="display-4">LỊCH ĐẶT SÂN</h1>
+    <h1 class="display-4">Booking Schedule</h1>
     <div class="row flex-wrap gap-2">
         <section class="border border-1 col-3">
             <h1 id="year"></h1>
@@ -31,13 +31,13 @@
     </div>
     <div class="flex-column gap-2 align-items-center justify-content-center">
         <div class="total-price-container">
-            <span>Tổng giá tiền:</span>
+            <span>Total Price:</span>
             <span id="total-price">0 VND</span>
         </div>
         @Html.AntiForgeryToken()
-            <button id="book-court-btn" class="w-25">Đặt sân</button>
+            <button id="book-court-btn" class="w-25">Booking</button>
         <div id="payment-btn" class="btn btn-outline-info hover:text-light" hidden>
-                <a asp-page="Detail" class="w-50 text-decoration-none text-dark">Tiến hành thanh toán</a>
+                <a asp-page="Detail" class="w-50 text-decoration-none text-dark">Go to payment</a>
             </div>
         <p class="success-message" hidden></p>
     </div>

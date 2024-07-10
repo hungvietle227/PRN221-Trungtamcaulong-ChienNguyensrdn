@@ -1,7 +1,9 @@
 ﻿using BadmintonCenter.BusinessObject.Models;
+using BadmintonCenter.Common.DTO.Booking;
 using BadmintonCenter.DataAcess.Repository.Interface;
 using BadmintonCenter.Service.Interface;
 using DemoSchedule.DTO;
+using Microsoft.EntityFrameworkCore.Storage.Json;
 
 namespace BadmintonCenter.Service
 {
@@ -34,6 +36,33 @@ namespace BadmintonCenter.Service
             }
 
             return newBooking;
+        }
+
+        public async Task<Booking?> AddStableBooking(BookingStableDTO bookingData)
+        {
+            return new Booking();
+            //// current date
+            //DateTime today = DateTime.Now;
+
+            //// get remaining day in month of specific dayOfWeek
+            //int daysInMonth = DateTime.DaysInMonth(today.Year, bookingData.Month);
+            //List<DateTime> remainingDays = new List<DateTime>();
+            //for (int i = today.Day; i <= daysInMonth; i++)
+            //{
+            //    DateTime day = new DateTime(today.Year, bookingData.Month, i);
+            //    if (bookingData.DayOfWeek.Contains(day.DayOfWeek.ToString()))
+            //    {
+            //        remainingDays.Add(day);
+            //    }
+            //}
+
+            //// get booking in specific month
+            //var bookings = await _bookingRepository.GetAllBookingsAsync();
+            //var bookingInMonth = bookings.Where(p => p.ValidDate.Month == bookingData.Month
+            //                                         && p.ExpiredDate.Month == bookingData.Month
+            //                                         && (!bookingData.DayOfWeek.Contains(p.DateOfWeek)));
+
+            //// get detail of booking
         }
 
         public async Task<IEnumerable<Booking>> GetAllBookings()
