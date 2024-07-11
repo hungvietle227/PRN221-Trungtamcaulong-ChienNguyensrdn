@@ -43,8 +43,8 @@ namespace DemoSchedule.Services
             {
                 // get bookings in month of selected day of week
                 var bookingsInMonth = bookings.Where(p => p.ValidDate.Month == month && p.ExpiredDate.Month == month && p.ValidDate > DateTime.Now && p.Status == BookingStatus.Paid 
-                                                            && ((p.DateOfWeek == null || !p.DateOfWeek.Any()) && daysOfWeek.Contains(p.ValidDate.DayOfWeek.ToString()))
-                                                            || (p.DateOfWeek != null && p.DateOfWeek.Any() && daysOfWeek.Contains(p.DateOfWeek)));
+                                                            && ((p.DateOfWeek == null || !p.DateOfWeek.Any()) && daysOfWeek.Contains(p.ValidDate.DayOfWeek.ToString())
+                                                            || (p.DateOfWeek != null && p.DateOfWeek.Any() && daysOfWeek.Contains(p.DateOfWeek))));
 
                 if (bookingsInMonth.Any())
                 {
@@ -107,8 +107,8 @@ namespace DemoSchedule.Services
             {
                 // get bookings in month of selected day of week
                 var bookingsInMonth = bookings.Where(p => p.ValidDate.Month == month && p.ExpiredDate.Month == month && p.ValidDate > DateTime.Now && p.Status == BookingStatus.Paid 
-                                                            && ((p.DateOfWeek == null || !p.DateOfWeek.Any()) && daysOfWeek.Contains(p.ValidDate.DayOfWeek.ToString()))
-                                                            || (p.DateOfWeek != null && p.DateOfWeek.Any() && daysOfWeek.Contains(p.DateOfWeek)));
+                                                            && ((p.DateOfWeek == null || !p.DateOfWeek.Any()) && daysOfWeek.Contains(p.ValidDate.DayOfWeek.ToString())
+                                                            || (p.DateOfWeek != null && p.DateOfWeek.Any() && daysOfWeek.Contains(p.DateOfWeek))));
 
                 if (bookingsInMonth.Any())
                 {

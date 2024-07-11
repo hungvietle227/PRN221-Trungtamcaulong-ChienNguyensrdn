@@ -53,8 +53,55 @@ namespace BadmintonCenter.Presentation.Pages.Booking
 
         public async Task<IActionResult> OnPostBookingAsync([FromBody] BookingStableDTO data)
         {
-            int daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, data.Month);
-            return Page();
+            if (data == null || data.Month < 0 || data.Month > 12 || data.DayOfWeek == null)
+            {
+                return new JsonResult(new
+                {
+                    isSuccess = false
+                });
+            }
+
+            var booking = await _bookingService.AddStableBooking(data);
+
+            if (booking != null)
+            {
+                SlotTimes = await _timeSlotService.GetAllTimeSlotsDTO();
+
+                if (SlotTimes != null)
+                {
+                    // slot time list
+                    var slotTimeData = new List<string>();
+
+                    // convert new data to json
+                    foreach (var slotTime in SlotTimes)
+                    {
+                        var jsonSlotTime = JsonConvert.SerializeObject(new
+                        {
+                            id = slotTime.Id,
+                            startTime = slotTime.StartTime,
+                            endTime = slotTime.EndTime,
+                            price = slotTime.Price,
+                        });
+
+                        // add to list
+                        slotTimeData.Add(jsonSlotTime);
+                    }
+
+                    // return status true and value if success
+                    return new JsonResult(new
+                    {
+                        isSuccess = true,
+                        data = slotTimeData,
+                        id = booking.BookingId
+                    });
+                }
+            }
+
+            // return status true and value if fail
+            return new JsonResult(new
+            {
+                isSuccess = false
+            }); ;
         }
 
         public async Task<IActionResult> OnGetAvailableTime(UpdateSlotTimeDTO data)

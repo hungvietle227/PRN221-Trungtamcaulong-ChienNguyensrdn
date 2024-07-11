@@ -49,7 +49,20 @@ $(document).ready(function () {
             },
             data: JSON.stringify(bookingData),
             success: function (response) {
+                console.log("success");
                 if (response.isSuccess && response.data) {
+                    // set successfull message
+                    $('.success-message').text("Booking Successfully");
+                    $('.success-message').prop('hidden', false);
+
+                    // delete message
+                    setTimeout(function () {
+                        $('.success-message').empty()
+                        $('.success-message').prop('hidden', true);
+                    }, 3000);
+
+                    $('.time-slot').prop("disabled", true);
+                    $('.dayOfWeek').prop("disabled", true);
                     $("#payment-btn").prop("hidden", false);
                     $("#payment-btn a").attr("href", "/Customer/Booking/Detail?id=" + response.id);
                     bookingBtn.prop("disabled", true);
@@ -198,6 +211,7 @@ const updateEventClickDay = () => {
             }
 
             selectedSlots = [];
+            $(".court .form-check-input").prop("disabled", true);
 
 
             var getItems = {
@@ -212,6 +226,8 @@ const updateEventClickDay = () => {
                 contentType: 'application/json',
                 success: function (response) {
                     if (response.isSuccess && response.data) {
+                        console.log(response.data);
+
                         // get container of slot time
                         var dataContainer = $('.container-slot');
 
@@ -222,7 +238,7 @@ const updateEventClickDay = () => {
                         if (response.data.length > 0) {
                             response.data.forEach((item) => {
                                 var jsonItem = JSON.parse(item);
-                                dataContainer.append(createSlotItem(jsonItem.id, jsonItem.startTime, jsonItem.endTime, jsonItem.price));
+                                dataContainer.append(`<div id=${jsonItem.id} class="time-slot" price=${jsonItem.price}>${jsonItem.startTime} - ${jsonItem.endTime}</div>`)
                             });
                         }
 
@@ -244,6 +260,8 @@ const updateEventClickDay = () => {
             if (index !== -1) {
                 selectedDayOfWeek.splice(index, 1);
             }
+
+            $(".court .form-check-input").prop("disabled", true);
 
             if (selectedSlots.length == 0 || selectedDayOfWeek.length == 0) {
                 $(".court .form-check-input").prop("disabled", true);
@@ -280,7 +298,7 @@ const updateEventClickDay = () => {
                         if (response.data.length > 0) {
                             response.data.forEach((item) => {
                                 var jsonItem = JSON.parse(item);
-                                dataContainer.append(createSlotItem(jsonItem.id, jsonItem.startTime, jsonItem.endTime, jsonItem.price));
+                                dataContainer.append(`<div id=${jsonItem.id} class="time-slot" price=${jsonItem.price}>${jsonItem.startTime} - ${jsonItem.endTime}</div>`)
                             });
                         }
 
@@ -336,16 +354,6 @@ const updateEventClickCourt = () => {
 
         console.log(selectedCourts)
     })
-}
-
-const createSlotItem = (id, start, end, price) => {
-    // create new item
-    var item = $('<div>').addClass('time-slot')
-        .attr('price', price)
-        .attr('id', id)
-        .text(start + " - " + end);
-
-    return item;
 }
 
 const updateCourts = (data) => {
