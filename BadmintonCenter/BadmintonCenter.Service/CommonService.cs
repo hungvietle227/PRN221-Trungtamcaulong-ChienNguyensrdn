@@ -42,7 +42,7 @@ namespace DemoSchedule.Services
             if (bookings != null && bookings.Any())
             {
                 // get bookings in month of selected day of week
-                var bookingsInMonth = bookings.Where(p => p.ValidDate.Month == month && p.ExpiredDate.Month == month && p.ValidDate > DateTime.Now && p.Status == BookingStatus.Paid 
+                var bookingsInMonth = bookings.Where(p => p.ValidDate.Month == month && p.ExpiredDate.Month == month && p.ValidDate > DateTime.Now && p.Status != BookingStatus.Cancel 
                                                             && ((p.DateOfWeek == null || !p.DateOfWeek.Any()) && daysOfWeek.Contains(p.ValidDate.DayOfWeek.ToString())
                                                             || (p.DateOfWeek != null && p.DateOfWeek.Any() && daysOfWeek.Contains(p.DateOfWeek))));
 
@@ -106,7 +106,7 @@ namespace DemoSchedule.Services
             if (bookings != null && bookings.Any())
             {
                 // get bookings in month of selected day of week
-                var bookingsInMonth = bookings.Where(p => p.ValidDate.Month == month && p.ExpiredDate.Month == month && p.ValidDate > DateTime.Now && p.Status == BookingStatus.Paid 
+                var bookingsInMonth = bookings.Where(p => p.ValidDate.Month == month && p.ExpiredDate.Month == month && p.ValidDate > DateTime.Now && p.Status != BookingStatus.Cancel
                                                             && ((p.DateOfWeek == null || !p.DateOfWeek.Any()) && daysOfWeek.Contains(p.ValidDate.DayOfWeek.ToString())
                                                             || (p.DateOfWeek != null && p.DateOfWeek.Any() && daysOfWeek.Contains(p.DateOfWeek))));
 
@@ -157,12 +157,6 @@ namespace DemoSchedule.Services
             }).ToList();
         }
 
-        /// <summary>
-        /// Get Available Slot Time Of A Court
-        /// </summary>
-        /// <param name="courtId"></param>
-        /// <param name="date"></param>
-        /// <returns></returns>
         public async Task<List<SlotTimeDTO>> GetAvailableTimeOfCourt(int courtId, DateTime date)
         {
             // get all court time booking
@@ -175,7 +169,9 @@ namespace DemoSchedule.Services
             var allBooking = await _bookingRepository.GetAllBookingsAsync();
 
             // get booking in selected date
-            var bookingInDate = allBooking.Where(p => p.ValidDate.Date == date.Date && p.Status != BookingStatus.Cancel).Select(x => x.BookingId).ToList();
+            var bookingInDate = allBooking.Where(p => p.ValidDate.Month == date.Month && (p.ValidDate.Date == date.Date
+                                                    || (p.DateOfWeek != null && p.DateOfWeek.Contains(date.DayOfWeek.ToString()))) && p.Status != BookingStatus.Cancel)
+                                                    .Select(x => x.BookingId).ToList();
 
             // get slot time of court booking in selected date
             var timeOfCourtBooking = allCourtTimeBooking.Where(p => p.CourtId == courtId && bookingInDate.Contains(p.BookingId)).Select(x => x.TimeSlotId).ToList();
