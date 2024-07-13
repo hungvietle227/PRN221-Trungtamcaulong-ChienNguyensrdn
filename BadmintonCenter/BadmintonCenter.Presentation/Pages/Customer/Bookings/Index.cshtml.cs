@@ -1,3 +1,4 @@
+using BadmintonCenter.BusinessObject.Models;
 using BadmintonCenter.Service;
 using BadmintonCenter.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
@@ -5,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
 
-namespace BadmintonCenter.Presentation.Pages.Booking
+namespace BadmintonCenter.Presentation.Pages.Bookings
 {
     [Authorize(Roles = "Customer")]
     public class IndexModel : PageModel
@@ -19,7 +20,7 @@ namespace BadmintonCenter.Presentation.Pages.Booking
             _userService = userService;
         }
 
-        public BadmintonCenter.BusinessObject.Models.Booking? UnPaidBooking { get; set; }
+        public Booking? UnPaidBooking { get; set; }
 
         public async Task<IActionResult> OnGet()
         {

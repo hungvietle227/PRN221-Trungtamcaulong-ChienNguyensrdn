@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
 
-namespace BadmintonCenter.Presentation.Pages.Booking
+namespace BadmintonCenter.Presentation.Pages.Bookings
 {
     [Authorize(Roles = "Customer")]
     [BindProperties]
@@ -32,7 +32,7 @@ namespace BadmintonCenter.Presentation.Pages.Booking
             _commonService = commonService;
         }
 
-        public BadmintonCenter.BusinessObject.Models.Booking Booking { get; set; }
+        public Booking Booking { get; set; }
         public IEnumerable<BookingDetail> BookingDetails { get; set; } = new List<BookingDetail>();
         public User Customer { get; set; }
         public IEnumerable<UserPackage> Packages { get; set; } = new List<UserPackage>();
