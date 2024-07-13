@@ -1,5 +1,6 @@
 ﻿@page
-@model BadmintonCenter.Presentation.Pages.Booking.DetailModel
+@using BadmintonCenter.Common.Enum.Booking
+@model BadmintonCenter.Presentation.Pages.Bookings.DetailModel
 @{
 }
 <link rel="stylesheet" href="~/css/booking-detail.css" asp-append-version="true" />
@@ -96,14 +97,14 @@
                                     </p>
                                     <div class="ms-auto">970419xxxxxxxxxxxxx</div>
                                 </div>
-                            </div>              
-                            @{
+                            </div>       
+                            @if (Model.Booking != null && Model.Booking.DateOfWeek == null)
+                            {
                                 int time = 0;
                                 foreach (var item in Model.Packages)
                                 {
                                     time += item.HourRemaining;
                                 }
-                            }
                             @if(time >= Model.Booking.TotalHour)
                             {
                                 <div class="d-flex flex-row pb-3">
@@ -137,8 +138,7 @@
                                     </div>
                                 </div>
                             }
-
-
+                            }                         
                     </div>
                     <div class="col-xl-4">
                         <ul class="list-unstyled">
