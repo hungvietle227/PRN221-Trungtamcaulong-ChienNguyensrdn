@@ -2,6 +2,7 @@
 using BadmintonCenter.Common.Enum.Status;
 using BadmintonCenter.DataAcess.DAO;
 using BadmintonCenter.DataAcess.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
 
 namespace BadmintonCenter.DataAcess.Repository
 {
@@ -43,6 +44,13 @@ namespace BadmintonCenter.DataAcess.Repository
         {
             var bookings = await _bookingDAO.GetAllBookingsAsync();
             return bookings.FirstOrDefault(bookings => bookings.UserId == userId && bookings.Status == BookingStatus.Wait);
+        }
+
+        public async Task<IEnumerable<Booking>> GetAllBookingOfUser(int userId)
+        {
+            var bookings = await _bookingDAO.GetAllBookingsAsync();
+
+            return bookings.AsQueryable().Include(p => p.User).Include(p => p.BookingType).Where(p => p.UserId == userId).ToList();
         }
     }
 }

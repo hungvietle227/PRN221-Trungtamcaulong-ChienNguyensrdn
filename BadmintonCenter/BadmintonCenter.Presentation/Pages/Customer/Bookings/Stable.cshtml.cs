@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 using System.Security.Claims;
 
-namespace BadmintonCenter.Presentation.Pages.Booking
+namespace BadmintonCenter.Presentation.Pages.Bookings
 {
     [Authorize(Roles = "Customer")]
     public class StableModel : PageModel

@@ -13,5 +13,6 @@ namespace BadmintonCenter.Service.Interface
         Task UpdateBooking(Booking booking);
         Task<IEnumerable<BookingDetail>> GetBookingDetailsByBookingId(int id);
         Task<Booking?> GetUnPaidBookingByUserId(int userId);
+        Task<IEnumerable<Booking>> GetAllBookingOfUser(int userId);
     }
 }

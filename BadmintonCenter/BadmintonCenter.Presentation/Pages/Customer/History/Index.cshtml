@@ -1,0 +1,114 @@
+﻿@page
+@model BadmintonCenter.Presentation.Pages.Customer.History.IndexModel
+@{
+}
+
+<div class="container">
+    <h1 class="text-center mb-3">History Booking</h1>
+    <form asp-page="/Customer/HistoryIndex" method="get">
+        <div class="row mb-3 justify-content-center">
+            <div class="col-md-4 form-group">
+                <label for="startDate" class="form-label fw-bold">Start Date:</label>
+                <input type="date" class="form-control" name="startDate" value="@Model.StartTime.ToString("yyyy-MM-dd")" min="@(new DateTime(2000, 01, 01).ToString("yyyy-MM-dd"))" max="@Model.EndTime.ToString("yyyy-MM-dd")">
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label for="endDate" class="form-label fw-bold">End Date:</label>
+                <input type="date" class="form-control" name="endDate" value="@Model.EndTime.ToString("yyyy-MM-dd")" min="@Model.StartTime.ToString("yyyy-MM-dd")">
+            </div>
+
+            <div class="col-md-2 form-group">
+                <label for="startDate" class="form-label fw-bold">Action:</label>
+                <input class="btn btn-primary form-control" type="submit" value="Search" />
+            </div>
+
+        </div>
+    </form>
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Booking Type</th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
+                       asp-route-startDate="@Model.StartTime"
+                       asp-route-endDate="@Model.EndTime">
+                        Booking Date
+                    </a>
+                </th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Bookings.Any())
+            {
+                @foreach (var item in Model.Bookings)
+                {
+                    <tr>
+                        <td>@item.BookingId</td>
+                        <td>
+                            @if (item.DateOfWeek == null)
+                            {
+                                <p>By day</p>
+                            }
+                            else
+                            {
+                                <p>Stable</p>
+                            }
+
+                        </td>
+                        <td>
+                            @item.BookingDate
+                        </td>
+                        <td>@Math.Truncate((decimal)@item.TotalPrice!) VND</td>
+                        <td>
+                            @((int)item.Status == 1 ? "Paid" : ((int)item.Status == 2) ? "Cancel" : "Pending")
+                        </td>
+                        <td><a asp-page="/Customer/History/Detail" asp-route-id="@item.BookingId" class="btn btn-info">View Detail</a></td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="text-center">
+                    <td colspan="6"><h5>You have no booking!</h5></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <nav aria-label="Room pagination">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                <a class="page-link" asp-page="/Customer/History/Index"
+                   asp-route-num="@(Model.CurrentPage - 1)"
+                   asp-route-startDate="@Model.StartTime"
+                   asp-route-endDate="@Model.EndTime"
+                   asp-route-sortOrder="@Model.CurrentSort"
+                   tabindex="-1"
+                   aria-disabled="@(Model.CurrentPage == 1 ? "true" : "false")">Previous</a>
+            </li>
+
+            @for (int i = 1; i <= Math.Ceiling((double)Model.AllBookings.Count() / Model.PageSize); i++)
+            {
+                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                    <a class="page-link" asp-page="/Customer/History/Index"
+                       asp-route-num="@i"
+                       asp-route-startDate="@Model.StartTime"
+                       asp-route-sortOrder="@Model.CurrentSort"
+                       asp-route-endDate="@Model.EndTime">@i</a>
+                </li>
+            }
+
+            <li class="page-item @(Model.CurrentPage >= Math.Ceiling((double)Model.AllBookings.Count() / Model.PageSize) ? "disabled" : "")">
+                <a class="page-link" asp-page="/Customer/History/Index"
+                   asp-route-num="@(Model.CurrentPage + 1)"
+                   asp-route-startDate="@Model.StartTime"
+                   asp-route-sortOrder="@Model.CurrentSort"
+                   asp-route-endDate="@Model.EndTime">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
