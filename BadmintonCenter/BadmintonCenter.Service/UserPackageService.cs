@@ -13,6 +13,11 @@ namespace BadmintonCenter.Service
             _userPackageRepository = userPackageRepository;
         }
 
+        public async Task AddUserPackageAsync(UserPackage userPackage)
+        {
+            await _userPackageRepository.AddUserPackageAsync(userPackage);
+        }
+
         public async Task<IEnumerable<UserPackage>> GetAllUserPackagesAsync()
         {
             return await _userPackageRepository.GetAllUserPackageAsync();
