@@ -53,8 +53,8 @@ namespace BadmintonCenter.Presentation.Pages.Customer.History
                     EndTime = endDate;
                 } else
                 {
-                    StartTime = DateTime.Now;
-                    EndTime = DateTime.Now;
+                    StartTime = DateTime.Now.Date;
+                    EndTime = DateTime.Now.Date;
                 }
                 CurrentPage = num ?? 1;
 

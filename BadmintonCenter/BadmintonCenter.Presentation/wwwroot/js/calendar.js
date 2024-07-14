@@ -134,7 +134,7 @@ $(document).ready(() => {
 
 		$.ajax({
 			method: 'GET',
-			url: "/customer/booking/byday/?handler=UpdateSlotTime",
+			url: "/customer/bookings/byday/?handler=UpdateSlotTime",
 			data: {
 				courtId: value,
 				date: formattedDate

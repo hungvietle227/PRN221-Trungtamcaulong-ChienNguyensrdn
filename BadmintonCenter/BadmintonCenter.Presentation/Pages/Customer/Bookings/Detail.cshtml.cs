@@ -48,8 +48,8 @@ namespace BadmintonCenter.Presentation.Pages.Bookings
 
             if (id != null)
             {
-                Booking = await _bookingService.GetBookingById((int)id);
-                Customer = await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!);
+                Booking = (await _bookingService.GetBookingById((int)id))!;
+                Customer = (await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!))!;
                 Packages = await _commonService.GetTimeRemainingOfUser(Customer!.UserId);
 
                 if (Booking != null)
@@ -72,10 +72,10 @@ namespace BadmintonCenter.Presentation.Pages.Bookings
 
                 if (booking.DateOfWeek == null)
                 {
-                    return RedirectToPage("/Customer/Booking/ByDay");
+                    return RedirectToPage("/Customer/Bookings/ByDay");
                 } else
                 {
-                    return RedirectToPage("/Customer/Booking/Stable");
+                    return RedirectToPage("/Customer/Bookings/Stable");
                 }
 
             }
@@ -84,8 +84,8 @@ namespace BadmintonCenter.Presentation.Pages.Bookings
 
         public async Task<IActionResult> OnPostPaymentAsync()
         {
-            Booking = await _bookingService.GetBookingById(Booking!.BookingId);
-            Customer = await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!);
+            Booking = (await _bookingService.GetBookingById(Booking!.BookingId))!;
+            Customer = (await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!))!;
             Packages = await _commonService.GetTimeRemainingOfUser(Customer!.UserId);
             BookingDetails = await _bookingService.GetBookingDetailsByBookingId(Booking!.BookingId);
             var details = new List<BookingDetailDTO>();

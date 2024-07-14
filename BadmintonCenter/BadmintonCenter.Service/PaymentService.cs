@@ -51,6 +51,7 @@ namespace BadmintonCenter.Service
         public async Task HandlePaymentResponse(PaymentInfoDTO info)
         {
             var paymentMethod = await _paymentMethodService.GetPaymentMethodByName(info.PaymentMethod);
+
             if (info.BookingId != null)
             {
                 var booking = await _bookingService.GetBookingById((int)info.BookingId);

@@ -12,7 +12,7 @@ $(document).ready(function () {
 
         $.ajax({
             method: 'GET',
-            url: "/customer/booking/byday/?handler=UpdateSlotTime",
+            url: "/customer/bookings/byday/?handler=UpdateSlotTime",
             data: {
                 courtId: value,
                 date: selectedDate.toLocaleDateString()
@@ -55,7 +55,7 @@ $(document).ready(function () {
 
         // call ajax to add booking
         $.ajax({
-            url: "/customer/booking/byday/?handler=Booking",
+            url: "/customer/bookings/byday/?handler=Booking",
             type: 'POST',
             contentType: 'application/json; charset=utf-8',
             headers: {
@@ -67,7 +67,7 @@ $(document).ready(function () {
                     updateSlotTime(response.data);
                     resetUI();
                     $("#payment-btn").prop("hidden", false);
-                    $("#payment-btn a").attr("href", "/Customer/Booking/Detail?id=" + response.id);
+                    $("#payment-btn a").attr("href", "/Customer/Bookings/Detail?id=" + response.id);
                     $('#book-court-btn').prop("disabled", true);
                 }
             },
