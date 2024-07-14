@@ -38,6 +38,7 @@
                     </a>
                 </th>
                 <th>Price</th>
+                <th>Hours</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -64,6 +65,7 @@
                             @item.BookingDate
                         </td>
                         <td>@Math.Truncate((decimal)@item.TotalPrice!) VND</td>
+                        <td>@item.TotalHour</td>
                         <td>
                             @((int)item.Status == 1 ? "Paid" : ((int)item.Status == 2) ? "Cancel" : "Pending")
                         </td>

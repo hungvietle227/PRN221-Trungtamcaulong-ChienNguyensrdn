@@ -12,10 +12,12 @@ namespace BadmintonCenter.Service
     public class PackageService : IPackageService
     {
         private readonly IPackageRepository _packageRepository;
+        private readonly IUserPackageRepository _userPackageRepository;
 
-        public PackageService(IPackageRepository packageRepository)
+        public PackageService(IPackageRepository packageRepository, IUserPackageRepository userPackageRepository)
         {
             _packageRepository = packageRepository;
+            _userPackageRepository = userPackageRepository;
         }
 
         public async Task AddPackageAsync(Package package)
@@ -41,6 +43,11 @@ namespace BadmintonCenter.Service
         public async Task UpdatePackageAsync(Package package)
         {
             await _packageRepository.UpdatePackageAsync(package);
+        }
+
+        public async Task UpdateUserPackage(UserPackage package)
+        {
+            await _userPackageRepository.UpdateUserPackageAsync(package);
         }
     }
 }

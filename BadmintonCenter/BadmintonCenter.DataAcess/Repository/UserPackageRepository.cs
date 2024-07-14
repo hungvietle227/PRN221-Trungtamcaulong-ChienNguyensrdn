@@ -39,9 +39,9 @@ namespace BadmintonCenter.DataAcess.Repository
             return packages.Where(p => p.UserId == userId).AsEnumerable();
         }
 
-        public Task UpdateUserPackageAsync(UserPackage userPackage)
+        public async Task UpdateUserPackageAsync(UserPackage userPackage)
         {
-            throw new NotImplementedException();
+            await _userPackageDAO.UpdateUserPackageAsync(userPackage);
         }
     }
 }
