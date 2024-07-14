@@ -88,7 +88,7 @@
                         <p class="ms-3">Add additional notes and payment information</p>
                             <div class="d-flex flex-row pb-3">
                                 <div class="d-flex align-items-center pe-2">
-                                    <input asp-for="PaymentMethod" value="Vnpay" class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
+                                    <input asp-for="PaymentMethod" value="Vnpay" name="paymentMethod" class="form-check-input" type="radio" checked
                                            aria-label="..." />
                                 </div>
                                 <div class="rounded border d-flex w-100 p-3 align-items-center">
@@ -100,7 +100,7 @@
                             </div>       
                             @if (Model.Booking != null && Model.Booking.DateOfWeek == null)
                             {
-                                int time = 0;
+                                double time = 0;
                                 foreach (var item in Model.Packages)
                                 {
                                     time += item.HourRemaining;
@@ -109,7 +109,7 @@
                             {
                                 <div class="d-flex flex-row pb-3">
                                     <div class="d-flex align-items-center pe-2">
-                                        <input asp-for="PaymentMethod" value="Hours" class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
+                                            <input asp-for="PaymentMethod" value="Hours" name="paymentMethod" class="form-check-input" type="radio"
                                                aria-label="..." />
                                     </div>
                                     <div class="rounded border d-flex w-100 p-3 align-items-center">

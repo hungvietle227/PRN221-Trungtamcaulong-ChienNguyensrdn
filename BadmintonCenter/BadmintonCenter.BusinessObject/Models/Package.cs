@@ -10,7 +10,7 @@ namespace BadmintonCenter.BusinessObject.Models
         public string? Description { get; set; }
         [Required(ErrorMessage ="Hours is required")]
         [Range(0, 10)]
-        public int HourIncluded { get; set; }
+        public double HourIncluded { get; set; }
         [Required(ErrorMessage = "Price is required")]
         public double Price { get; set; }
         public ICollection<Transaction>? Transactions { get; set; }
