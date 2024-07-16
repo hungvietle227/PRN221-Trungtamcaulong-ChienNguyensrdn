@@ -3,6 +3,7 @@ using BadmintonCenter.Service;
 using BadmintonCenter.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BadmintonCenter.Presentation.Pages.Manager
 {
@@ -10,7 +11,7 @@ namespace BadmintonCenter.Presentation.Pages.Manager
     {
         private readonly ICourtService _courtService;
 
-        public IndexModel(ICourtService courtService) 
+        public IndexModel(ICourtService courtService)
         {
             _courtService = courtService;
         }
@@ -21,8 +22,15 @@ namespace BadmintonCenter.Presentation.Pages.Manager
         public int CurrentPage { get; set; } = 1;
         public int PageSize { get; set; } = 5; // Number of items per page
 
+        [BindProperty]
+        public string SearchValue { get; set; }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            if (!SearchValue.IsNullOrEmpty())
+            {
+
+            }
             AllCourt = await _courtService.GetAllCourts();
             CurrentPage = id ?? 1;
             // Paginate the list of rooms

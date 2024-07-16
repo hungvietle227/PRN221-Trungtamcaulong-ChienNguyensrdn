@@ -15,6 +15,7 @@ namespace BadmintonCenter.DataAcess.DAO
         Task AddCourtAsync(Court court);
         Task UpdateCourtAsync(Court court);
         Task DeleteCourtAsync(Court court);
+        Task<List<Court>> GetCourtByName(string name)l
     }
     public class CourtDAO : ICourtDAO
     {
@@ -43,7 +44,7 @@ namespace BadmintonCenter.DataAcess.DAO
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateCourtAsync(Court court) 
+        public async Task UpdateCourtAsync(Court court)
         {
             //
             _context.Update(court);
@@ -55,6 +56,12 @@ namespace BadmintonCenter.DataAcess.DAO
             //
             _context.Remove(court);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Court>> GetCourtByName(string name)
+        {
+            List<Court> courts = await GetAllCourtsAsync();
+            return courts.Where(a => a.CourtName.ToLower().Contains(name.ToLower())).ToList();
         }
     }
 }
