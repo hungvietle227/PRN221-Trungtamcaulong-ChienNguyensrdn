@@ -36,7 +36,7 @@ namespace BadmintonCenter.Presentation.Pages.Payment
             {
                 var status = requestQuery.First(x => x.Key == "vnp_ResponseCode").Value;
                 var user = await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!);
-                BadmintonCenter.BusinessObject.Models.Booking unPaidBooking = new BadmintonCenter.BusinessObject.Models.Booking();
+                Booking unPaidBooking = new Booking();
                 if (user != null)
                 {
                     unPaidBooking = (await _bookingService.GetUnPaidBookingByUserId(user.UserId))!;
@@ -63,7 +63,7 @@ namespace BadmintonCenter.Presentation.Pages.Payment
                     {
                         if (unPaidBooking != null)
                         {
-                            unPaidBooking!.Status = Common.Enum.Status.BookingStatus.Cancel;
+                            unPaidBooking!.Status = BookingStatus.Cancel;
                             await _bookingService.UpdateBooking(unPaidBooking);
                         }
 

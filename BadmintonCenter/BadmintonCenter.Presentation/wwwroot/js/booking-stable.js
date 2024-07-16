@@ -41,7 +41,7 @@ $(document).ready(function () {
 
         // call ajax to add booking
         $.ajax({
-            url: "/customer/booking/stable/?handler=Booking",
+            url: "/customer/bookings/stable/?handler=Booking",
             type: 'POST',
             contentType: 'application/json; charset=utf-8',
             headers: {
@@ -111,7 +111,7 @@ const updateEventClickSlot = () => {
 
                 $.ajax({
                     method: 'GET',
-                    url: "/customer/booking/stable/?handler=UpdateCourts",
+                    url: "/customer/bookings/stable/?handler=UpdateCourts",
                     data: getItems,
                     contentType: 'application/json',
                     success: function (response) {
@@ -150,7 +150,7 @@ const updateEventClickSlot = () => {
 
                 $.ajax({
                     method: 'GET',
-                    url: "/customer/booking/stable/?handler=UpdateCourts",
+                    url: "/customer/bookings/stable/?handler=UpdateCourts",
                     data: getItems,
                     contentType: 'application/json',
                     success: function (response) {
@@ -221,7 +221,7 @@ const updateEventClickDay = () => {
 
             $.ajax({
                 method: 'GET',
-                url: "/customer/booking/stable/?handler=AvailableTime",
+                url: "/customer/bookings/stable/?handler=AvailableTime",
                 data: getItems,
                 contentType: 'application/json',
                 success: function (response) {
@@ -283,7 +283,7 @@ const updateEventClickDay = () => {
 
             $.ajax({
                 method: 'GET',
-                url: "/customer/booking/stable/?handler=AvailableTime",
+                url: "/customer/bookings/stable/?handler=AvailableTime",
                 data: getItems,
                 contentType: 'application/json',
                 success: function (response) {

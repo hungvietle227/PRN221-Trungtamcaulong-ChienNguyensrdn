@@ -11,6 +11,7 @@
                 <th>Court</th>
                 <th>Start Time</th>
                 <th>End Time</th>
+                <th>Hours</th>
                 <th>Price</th>
             </tr>
         </thead>
@@ -23,6 +24,7 @@
                         <td>@item.Court.CourtName</td>
                         <td>@item.TimeSlot.StartTime</td>
                         <td>@item.TimeSlot.EndTime</td>
+                        <td>@item.TimeSlot.Time</td>
                         <td>@Math.Truncate((decimal)@item.TimeSlot.Price) VND</td>
                     </tr>
                 }

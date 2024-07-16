@@ -7,7 +7,7 @@ namespace BadmintonCenter.Service.Interface
 {
     public interface IPaymentService
     {
-        string CreatePaymentRequest(string paymentMethod ,BookingCreateDTO booking, HttpContext context);
+        Task<string> CreatePaymentRequest(string paymentMethod ,BookingCreateDTO booking, HttpContext context);
         Task HandlePaymentResponse(PaymentInfoDTO info);
     }
 }

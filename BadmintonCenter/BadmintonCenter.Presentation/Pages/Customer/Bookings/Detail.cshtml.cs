@@ -1,4 +1,5 @@
 using BadmintonCenter.BusinessObject.Models;
+using BadmintonCenter.Common.Constant.Message;
 using BadmintonCenter.Common.Constant.Payment;
 using BadmintonCenter.Common.DTO.Booking;
 using BadmintonCenter.Common.Enum.Status;
@@ -21,7 +22,7 @@ namespace BadmintonCenter.Presentation.Pages.Bookings
         private readonly IPaymentService _paymentService;
         private readonly ICommonService _commonService;
 
-        public DetailModel(IBookingService bookingService, 
+        public DetailModel(IBookingService bookingService,
                            IUserService userService,
                            IPaymentService paymentService,
                            ICommonService commonService)
@@ -32,12 +33,12 @@ namespace BadmintonCenter.Presentation.Pages.Bookings
             _commonService = commonService;
         }
 
-        public Booking Booking { get; set; }
+        public Booking Booking { get; set; } = null!;
         public IEnumerable<BookingDetail> BookingDetails { get; set; } = new List<BookingDetail>();
-        public User Customer { get; set; }
+        public User Customer { get; set; } = null!;
         public IEnumerable<UserPackage> Packages { get; set; } = new List<UserPackage>();
-        public string PaymentMethod { get; set; } = PaymentMethodConst.VNPAY;
-        
+        public string PaymentMethod { get; set; } = null!;
+
 
         public async Task<IActionResult> OnGet(int? id)
         {
@@ -48,8 +49,8 @@ namespace BadmintonCenter.Presentation.Pages.Bookings
 
             if (id != null)
             {
-                Booking = await _bookingService.GetBookingById((int)id);
-                Customer = await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!);
+                Booking = (await _bookingService.GetBookingById((int)id))!;
+                Customer = (await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!))!;
                 Packages = await _commonService.GetTimeRemainingOfUser(Customer!.UserId);
 
                 if (Booking != null)
@@ -72,10 +73,11 @@ namespace BadmintonCenter.Presentation.Pages.Bookings
 
                 if (booking.DateOfWeek == null)
                 {
-                    return RedirectToPage("/Customer/Booking/ByDay");
-                } else
+                    return RedirectToPage("/Customer/Bookings/ByDay");
+                }
+                else
                 {
-                    return RedirectToPage("/Customer/Booking/Stable");
+                    return RedirectToPage("/Customer/Bookings/Stable");
                 }
 
             }
@@ -84,39 +86,31 @@ namespace BadmintonCenter.Presentation.Pages.Bookings
 
         public async Task<IActionResult> OnPostPaymentAsync()
         {
-            Booking = await _bookingService.GetBookingById(Booking!.BookingId);
-            Customer = await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!);
-            Packages = await _commonService.GetTimeRemainingOfUser(Customer!.UserId);
-            BookingDetails = await _bookingService.GetBookingDetailsByBookingId(Booking!.BookingId);
-            var details = new List<BookingDetailDTO>();
-
-            if (BookingDetails != null && BookingDetails.Any())
-            {
-                foreach(var bookingDetail in BookingDetails)
-                {
-                    details.Add(new BookingDetailDTO
-                    {
-                        CourtId = bookingDetail.CourtId,
-                        SlotTimeId = bookingDetail.TimeSlotId
-                    });
-                }
-            }
+            Booking = (await _bookingService.GetBookingById(Booking!.BookingId))!;
+            Customer = (await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!))!;
 
             var newBookingCreate = new BookingCreateDTO()
             {
-                FullName = Customer.FullName,
-                PhoneNumber = Customer.PhoneNumber,
-                StartDate = Booking.BookingDate,
                 TotalPrice = Booking.TotalPrice,
-                Details = details,
-                ItemType = ItemType.RENT_COURT
+                ItemType = ItemType.RENT_COURT,
+                TotalHours = Booking.TotalHour,
+                UserId = Customer.UserId,
+                BookingId = Booking.BookingId
             };
 
-            var paymentUrl = _paymentService.CreatePaymentRequest(PaymentMethod, newBookingCreate, HttpContext);
+            var paymentUrl = await _paymentService.CreatePaymentRequest(PaymentMethod, newBookingCreate, HttpContext);
 
-            if (!string.IsNullOrEmpty(paymentUrl))
+            if (!string.IsNullOrEmpty(paymentUrl) && paymentUrl != PaymentMessage.Error)
             {
-                return Redirect(paymentUrl);
+                if (paymentUrl == PaymentMessage.Success)
+                {
+                    return RedirectToPage("Index");
+                }
+                else
+                {
+                    return Redirect(paymentUrl);
+                }
+
             }
 
             return Page();
