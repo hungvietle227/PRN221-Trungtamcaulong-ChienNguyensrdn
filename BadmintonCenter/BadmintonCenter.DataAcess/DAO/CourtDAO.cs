@@ -15,7 +15,7 @@ namespace BadmintonCenter.DataAcess.DAO
         Task AddCourtAsync(Court court);
         Task UpdateCourtAsync(Court court);
         Task DeleteCourtAsync(Court court);
-        Task<List<Court>> GetCourtByName(string name)l
+        Task<List<Court>> GetCourtByName(string name);
     }
     public class CourtDAO : ICourtDAO
     {

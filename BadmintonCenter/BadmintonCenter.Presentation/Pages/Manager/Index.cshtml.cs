@@ -22,14 +22,19 @@ namespace BadmintonCenter.Presentation.Pages.Manager
         public int CurrentPage { get; set; } = 1;
         public int PageSize { get; set; } = 5; // Number of items per page
 
-        [BindProperty]
-        public string SearchValue { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string? SearchValue { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, string? searchValue)
         {
+            SearchValue = searchValue;
             if (!SearchValue.IsNullOrEmpty())
             {
-
+                AllCourt = await _courtService.GetCourtByName(SearchValue);
+                CurrentPage = id ?? 1;
+                // Paginate the list of rooms
+                Courts = PaginatedList<Court>.Create(AllCourt.ToList(), CurrentPage, PageSize);
+                return Page();
             }
             AllCourt = await _courtService.GetAllCourts();
             CurrentPage = id ?? 1;
