@@ -33,20 +33,6 @@
         }
 
     </div>
-    <div id="detail" class="mb-3  text-center">
-        <h3>Booking Details</h3>
-        <div class="detail-item mb-3">
-            <p class="text-xxl-center">Let's book something!</p>
-        </div>
-        <h5 class="card-text">Total Price: <span id="total-price" class="fw-bold"></span></h5>
-    </div>
-    @Html.AntiForgeryToken()
-    <div class="row align-items-center justify-content-center">
-        <div class="col-md-6 text-center">
-            <input id="customerId" type="text" value="@Model.Users!.UserId" hidden />
-            <button id="confirm" class="btn btn-outline-dark" disabled>Confirm Booking</button>
-        </div>
-    </div>
 </div>
 
 

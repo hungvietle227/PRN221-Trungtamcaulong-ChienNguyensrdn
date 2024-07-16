@@ -22,5 +22,16 @@ namespace BadmintonCenter.Service
         {
             return await _userPackageRepository.GetAllUserPackageAsync();
         }
+
+        public Task<IEnumerable<UserPackage>> GetUserPackagesByUserIdAndPackageId(int userId, int packageId)
+        {
+
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateUserPackageAsync(UserPackage userPackage)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

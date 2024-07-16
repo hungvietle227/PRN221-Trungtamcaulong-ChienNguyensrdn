@@ -45,7 +45,17 @@ namespace BadmintonCenter.Service
 
         public async Task UpdateUserAsync(User user)
         {
-            await _userRepository.UpdateUserAsync(user);
+            var thisUser = await _userRepository.GetUserByEmail(user.Email);
+
+            thisUser.UserName = user.UserName;
+            thisUser.FullName = user.FullName;
+            thisUser.Email = user.Email;
+            thisUser.PhoneNumber = user.PhoneNumber;
+            thisUser.PasswordSalt = user.PasswordSalt;
+            thisUser.PasswordHash = user.PasswordHash;
+            thisUser.RoleId = user.RoleId;
+
+            await _userRepository.UpdateUserAsync(thisUser);
         }
 
         public async Task<UpdateUserDTO?> GetUpdateUserById(int id)

@@ -12,18 +12,20 @@
                  class="img-fluid"
                  alt="Product Image" />
         </div>
-        <div class="col-lg-8">
-            <h2 class="fw-bold">@Model.Package!.PackageName</h2>
-            <p class="text-muted"><span class="text-secondary"><span class="fw-bold">Room type:</span> @Model.Package.Description</span></p>
-            <span class="text-secondary"><span class="fw-bold">Capacity:</span> @Model.Package.HourIncluded</span>
-            <h4 class="my-2"><span class="fw-bold">Price:</span> $@Math.Truncate((decimal)Model.Package.Price!) / day</h4>
-            <div class="form-group mt-3">
-                <input type="submit" value="Confirm buy" class="btn btn-primary" />
+        <form method="post">
+            <div class="col-lg-8">
+                <h2 class="fw-bold">@Model.Package!.PackageName</h2>
+                <p class="text-muted"><span class="text-secondary"><span class="fw-bold">Room type:</span> @Model.Package.Description</span></p>
+                <span class="text-secondary"><span class="fw-bold">Package's' hour:</span> @Model.Package.HourIncluded</span>
+                <h4 class="my-2"><span class="fw-bold">Price:</span> $@Math.Truncate((decimal)Model.Package.Price!) / day</h4>
+                <div class="form-group mt-3">
+                    <button type="submit" class="btn btn-primary" >Confirm buy</button>
+                </div>
+                <div>
+                    <a asp-page="Index" class="btn btn-outline-dark">Back to List</a>
+                </div>
             </div>
-            <div>
-                <a asp-page="Index" class="btn btn-outline-dark">Back to List</a>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 
