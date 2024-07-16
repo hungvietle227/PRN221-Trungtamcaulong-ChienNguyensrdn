@@ -6,5 +6,7 @@ namespace BadmintonCenter.Service.Interface
     {
         Task<IEnumerable<UserPackage>> GetAllUserPackagesAsync();
         Task AddUserPackageAsync(UserPackage userPackage);
+        Task UpdateUserPackageAsync(UserPackage userPackage);
+        Task<IEnumerable<UserPackage>> GetUserPackagesByUserIdAndPackageId(int userId, int packageId);
     }
 }
