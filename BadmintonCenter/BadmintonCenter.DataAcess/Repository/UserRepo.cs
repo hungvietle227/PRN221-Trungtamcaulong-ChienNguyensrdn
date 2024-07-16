@@ -33,9 +33,9 @@ namespace BadmintonCenter.DataAcess.Repository
             await _userDAO.UpdateUserAsync(user);
         }
 
-        public async Task DeleteUserAsync(int userId)
+        public async Task DeleteUserAsync(User user)
         {
-            await _userDAO.DeleteUserAsync(userId);
+            await _userDAO.DeleteUserAsync(user);
         }
 
         public async Task<User?> GetUserByUserName(string username)

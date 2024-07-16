@@ -1,5 +1,6 @@
 ﻿using BadmintonCenter.BusinessObject.Models;
 using BadmintonCenter.Common.DTO.Auth;
+using BadmintonCenter.Common.DTO.User;
 
 namespace BadmintonCenter.Service.Interface
 {
@@ -7,5 +8,6 @@ namespace BadmintonCenter.Service.Interface
     {
         Task<User?> Login(string username, string password);
         Task Register(RegisterRequestDTO request);
+        Task CreateManager(CreateUserDTO request);
     }
 }
