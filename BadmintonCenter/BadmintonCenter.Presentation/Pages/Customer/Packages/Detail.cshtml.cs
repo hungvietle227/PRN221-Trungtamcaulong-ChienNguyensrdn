@@ -19,12 +19,19 @@ namespace BadmintonCenter.Presentation.Pages.Customer.Packages
             _userService = userService;
         }
 
-        public Package? Package { get; set; }
+        [BindProperty]
+        public Package Package { get; set; }
         public User Users {  get; set; }
 
-        public async Task OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            Package = await _packageService.GetPackageById((int)id);
+            var packages = await _packageService.GetPackageById(id);
+            if(packages == null)
+            {
+                return NotFound();
+            }
+            Package = packages;
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -39,9 +46,9 @@ namespace BadmintonCenter.Presentation.Pages.Customer.Packages
                     HourRemaining = Package.HourIncluded,
                     ValidInMonth = DateTime.Now.Month,
                 });
-                return RedirectToPage("/Customer/Packages");
+                return Page();
             }
-            return Page();
+            return RedirectToPage("/Index");
         }
     }
 }
