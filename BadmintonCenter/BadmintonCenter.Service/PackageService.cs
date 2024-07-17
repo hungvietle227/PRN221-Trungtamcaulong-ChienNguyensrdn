@@ -35,6 +35,11 @@ namespace BadmintonCenter.Service
             return await _packageRepository.GetAllPackagesAsync();
         }
 
+        public async Task<List<Package>> GetPackageByCondition(string value)
+        {
+            return await _packageRepository.GetPackageByCondition(value);
+        }
+
         public async Task<Package?> GetPackageById(int id)
         {
             return await _packageRepository.GetPackageByIdAsync(id);
