@@ -9,5 +9,6 @@ namespace BadmintonCenter.DataAcess.Repository.Interface
         Task AddCourtAsync(Court court);
         Task UpdateCourtAsync(Court court);
         Task DeleteCourtAsync(Court court);
+        Task<List<Court>> GetCourtByName(string name);
     }
 }
