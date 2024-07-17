@@ -11,7 +11,7 @@ namespace BadmintonCenter.DataAcess.DAO
     public interface IUserPackageDAO
     {
         Task<UserPackage?> GetUserPackageByIdAsync(int userPackageId);
-        Task<List<UserPackage>> GetAllUserPackageAsync();
+        Task<IEnumerable<UserPackage>> GetAllUserPackageAsync();
         Task AddUserPackageAsync(UserPackage userPackage);
         Task UpdateUserPackageAsync(UserPackage userPackage);
         Task DeleteUserPackageAsync(int userPackageId);
@@ -42,7 +42,7 @@ namespace BadmintonCenter.DataAcess.DAO
             }
         }
 
-        public async Task<List<UserPackage>> GetAllUserPackageAsync()
+        public async Task<IEnumerable<UserPackage>> GetAllUserPackageAsync()
         {
             return await _context.UserPackages.ToListAsync();
         }
