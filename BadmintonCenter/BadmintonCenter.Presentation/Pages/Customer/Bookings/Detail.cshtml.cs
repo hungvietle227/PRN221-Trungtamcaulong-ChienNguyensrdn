@@ -104,7 +104,7 @@ namespace BadmintonCenter.Presentation.Pages.Bookings
             {
                 if (paymentUrl == PaymentMessage.Success)
                 {
-                    return RedirectToPage("Index");
+                    return RedirectToPage("/Customer/History/Index");
                 }
                 else
                 {
