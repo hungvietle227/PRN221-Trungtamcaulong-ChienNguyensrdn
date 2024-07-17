@@ -21,7 +21,6 @@ namespace BadmintonCenter.Presentation.Pages.Customer.Packages
 
         [BindProperty]
         public Package Package { get; set; }
-        public User Users {  get; set; }
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
@@ -38,14 +37,27 @@ namespace BadmintonCenter.Presentation.Pages.Customer.Packages
         {
             if (ModelState.IsValid)
             {
-                Users = await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email));
-                await _userpackageService.AddUserPackageAsync(new UserPackage
+                var user = await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email));
+                var package = await _userpackageService.GetUserPackagesByUserIdAndPackageId(user.UserId, Package.PackageId);
+
+                if (package != null)
                 {
-                    PackageId = Package.PackageId,
-                    UserId = Users.UserId,
-                    HourRemaining = Package.HourIncluded,
-                    ValidInMonth = DateTime.Now.Month,
-                });
+                    await _userpackageService.UpdateUserPackageAsync(package);
+                }
+                else
+                {
+                    await _userpackageService.AddUserPackageAsync(new UserPackage
+                    {
+                        PackageId = Package.PackageId,
+                        UserId = user.UserId,
+                        HourRemaining = Package.HourIncluded,
+                        ValidInMonth = DateTime.Now.Month,
+                    });
+                }
+
+                
+                
+                
                 return Page();
             }
             return RedirectToPage("/Index");
