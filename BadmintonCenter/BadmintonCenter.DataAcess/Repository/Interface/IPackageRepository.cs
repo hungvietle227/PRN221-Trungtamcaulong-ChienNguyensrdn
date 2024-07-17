@@ -14,5 +14,6 @@ namespace BadmintonCenter.DataAcess.Repository.Interface
         Task AddPackageAsync(Package package);
         Task UpdatePackageAsync(Package package);
         Task DeletePackageAsync(Package package);
+        Task<List<Package>> GetPackageByCondition(string value);
     }
 }
