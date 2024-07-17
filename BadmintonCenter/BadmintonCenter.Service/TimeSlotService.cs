@@ -50,6 +50,11 @@ namespace BadmintonCenter.Service
             return availableTime;
         }
 
+        public async Task<List<TimeSlot>> GetTimeSlotByCondition(string value)
+        {
+            return await _timeSlotRepository.GetTimeSlotByCondition(value);
+        }
+
         public async Task<TimeSlot?> GetTimeSlotById(int id)
         {
             return await _timeSlotRepository.GetTimeSlotByIdAsync(id);
