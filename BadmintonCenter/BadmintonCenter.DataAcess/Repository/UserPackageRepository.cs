@@ -23,7 +23,7 @@ namespace BadmintonCenter.DataAcess.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<List<UserPackage>> GetAllUserPackageAsync()
+        public async Task<IEnumerable<UserPackage>> GetAllUserPackageAsync()
         {
             return await _userPackageDAO.GetAllUserPackageAsync();
         }
