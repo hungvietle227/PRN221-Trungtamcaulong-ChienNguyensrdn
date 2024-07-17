@@ -19,7 +19,7 @@
         <div class="form-group" style="margin: 30px; margin-left: 0px">
             <label for="startTime">Start Time</label>
             <div class="input-group date" style="width: 350px">
-                <select id="startTime" class="form-control" aria-label="Default select example" asp-for="TimeSlot.StartTime" asp-items="@(await Model.SelectTime())">
+                <select id="startTime" class="form-control" aria-label="Default select example" asp-for="TimeSlot.StartTime" asp-items="@(Model.SelectTime())">
                 </select>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-time">

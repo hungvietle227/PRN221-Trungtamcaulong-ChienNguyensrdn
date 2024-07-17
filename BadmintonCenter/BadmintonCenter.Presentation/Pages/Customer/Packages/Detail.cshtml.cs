@@ -1,31 +1,39 @@
 using BadmintonCenter.BusinessObject.Models;
+using BadmintonCenter.Common.Constant.Message;
+using BadmintonCenter.Common.Constant.Payment;
+using BadmintonCenter.Common.DTO.Booking;
 using BadmintonCenter.Service;
 using BadmintonCenter.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
 
 namespace BadmintonCenter.Presentation.Pages.Customer.Packages
 {
+    [Authorize(Roles = "Customer")]
+    [BindProperties]
     public class DetailModel : PageModel
     {
         private readonly IPackageService _packageService;
-        private readonly IUserPackageService _userpackageService;
         private readonly IUserService _userService;
-        public DetailModel(IPackageService packageService, IUserPackageService userpackageService, IUserService userService)
+        private readonly IPaymentService _paymentService;
+
+        public DetailModel(IPackageService packageService,
+                           IUserService userService,
+                           IPaymentService paymentService)
         {
             _packageService = packageService;
-            _userpackageService = userpackageService;
             _userService = userService;
+            _paymentService = paymentService;
         }
 
-        [BindProperty]
-        public Package Package { get; set; }
+        public Package Package { get; set; } = null!;
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
             var packages = await _packageService.GetPackageById(id);
-            if(packages == null)
+            if (packages == null)
             {
                 return NotFound();
             }
@@ -35,32 +43,24 @@ namespace BadmintonCenter.Presentation.Pages.Customer.Packages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (ModelState.IsValid)
+            var user = (await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!))!;
+
+            var newBookingCreate = new BookingCreateDTO()
             {
-                var user = await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email));
-                var package = await _userpackageService.GetUserPackagesByUserIdAndPackageId(user.UserId, Package.PackageId);
+                TotalPrice = Package.Price,
+                ItemType = ItemType.BUY_PACKAGE + $":{Package.PackageId}",
+                TotalHours = Package.HourIncluded,
+                UserId = user.UserId,
+            };
 
-                if (package != null)
-                {
-                    await _userpackageService.UpdateUserPackageAsync(package);
-                }
-                else
-                {
-                    await _userpackageService.AddUserPackageAsync(new UserPackage
-                    {
-                        PackageId = Package.PackageId,
-                        UserId = user.UserId,
-                        HourRemaining = Package.HourIncluded,
-                        ValidInMonth = DateTime.Now.Month,
-                    });
-                }
+            var paymentUrl = await _paymentService.CreatePaymentRequest(PaymentMethodConst.VNPAY, newBookingCreate, HttpContext);
 
-                
-                
-                
-                return Page();
+            if (!string.IsNullOrEmpty(paymentUrl))
+            {
+                return Redirect(paymentUrl);
             }
-            return RedirectToPage("/Index");
+
+            return Page();
         }
     }
 }

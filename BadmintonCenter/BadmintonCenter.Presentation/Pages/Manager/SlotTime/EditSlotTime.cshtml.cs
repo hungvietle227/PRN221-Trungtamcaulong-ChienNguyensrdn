@@ -37,7 +37,7 @@ namespace BadmintonCenter.Presentation.Pages.Manager.SlotTime
             }
             return Page();
         }
-        public async Task<IEnumerable<SelectListItem>> SelectTime()
+        public IEnumerable<SelectListItem> SelectTime()
         {
 
             var times = new List<SelectListItem>();
@@ -51,17 +51,6 @@ namespace BadmintonCenter.Presentation.Pages.Manager.SlotTime
                     times.Add(new SelectListItem { Text = timeString, Value = timeString });
                 }
             }
-            //IEnumerable<TimeSlot> databaseTimes = await _timeSlotService.GetAllTimeSlots();
-
-            ////times = times.Where(time => !databaseTimes.Any(dbTime => dbTime.StartTime == time.Value)).ToList();
-            //times = times.Where(time =>
-            //{
-            //    var timeValue = TimeSpan.Parse(time.Value);
-            //    return !databaseTimes.Any(dbTime =>
-            //        timeValue >= TimeSpan.Parse(dbTime.StartTime) &&
-            //        timeValue < TimeSpan.Parse(dbTime.EndTime)
-            //    );
-            //}).ToList();
 
             return times;
         }

@@ -1,11 +1,13 @@
 using BadmintonCenter.BusinessObject.Models;
 using BadmintonCenter.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
 
 namespace BadmintonCenter.Presentation.Pages.Customer.Packages
 {
+    [Authorize(Roles = "Customer")]
     public class IndexModel : PageModel
     {
         private readonly IPackageService _packageService;
@@ -17,13 +19,13 @@ namespace BadmintonCenter.Presentation.Pages.Customer.Packages
             _userService = userService;
         }
 
-        public ICollection<Package> Packages { get; set; }
-        public UserPackage UserPackage { get; set; }
+        public ICollection<Package> Packages { get; set; } = null!;
+        public UserPackage UserPackage { get; set; } = null!;
         public User? Users { get; set; }
         public async Task<IActionResult> OnGetAsync()
         {
             Packages = await _packageService.GetAllPackages();
-            Users = await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email));
+            Users = await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!);
 
             return Page();
         }
