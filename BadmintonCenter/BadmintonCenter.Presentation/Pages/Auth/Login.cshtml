@@ -33,11 +33,6 @@
                         <span asp-validation-for="LoginRequest.Password" class="text-danger mb-2"></span>
                     </div>
 
-
-                    <div class="d-flex justify-content-start align-items-center mb-4">
-                        <a href="#!">Forgot password?</a>
-                    </div>
-
                     @if(!string.IsNullOrEmpty(Model.Message))
                     {
                         <div class="text-danger text-center m-3">@Model.Message</div>
