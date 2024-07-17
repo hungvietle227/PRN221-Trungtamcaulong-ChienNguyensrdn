@@ -18,13 +18,15 @@ namespace BadmintonCenter.Service
         private readonly IPackageService _packageService;
         private readonly ICommonService _commonService;
         private readonly ITransactionService _transactionService;
+        private readonly IUserPackageService _userPackageService;
 
         public PaymentService(IVnPayService vpnPayService, 
                                 IBookingService bookingService, 
                                 IPaymentMethodService paymentMethodService,
                                 ITransactionService transactionService,
                                 IPackageService packageService,
-                                ICommonService commonService)
+                                ICommonService commonService,
+                                IUserPackageService userPackageService)
         {
             _vnpPayService = vpnPayService;
             _bookingService = bookingService;
@@ -32,6 +34,7 @@ namespace BadmintonCenter.Service
             _transactionService = transactionService;
             _packageService = packageService;
             _commonService = commonService;
+            _userPackageService = userPackageService;
         }
 
         public async Task<string> CreatePaymentRequest(string paymentMethod, BookingCreateDTO booking, HttpContext context)
@@ -45,7 +48,7 @@ namespace BadmintonCenter.Service
                         requestUrl = _vnpPayService.CreatePaymentUrl(booking, context);
                         break;
                     case PaymentMethodConst.HOURS:
-                        var updatedBooking = await _bookingService.GetBookingById(booking.BookingId);
+                        var updatedBooking = await _bookingService.GetBookingById((int)booking.BookingId!);
 
                         if (updatedBooking != null)
                         {
@@ -117,8 +120,26 @@ namespace BadmintonCenter.Service
                 }
             } else
             {
-                // handle package later...
-                return;
+                var package = await _packageService.GetPackageById((int)info.PackageId!);
+                var packageOfUser = await _userPackageService.GetUserPackagesByUserIdAndPackageId(info.UserId, (int)info.PackageId!);
+
+                if (package != null)
+                {
+                    if (packageOfUser != null)
+                    {
+                        await _userPackageService.UpdateUserPackageAsync(packageOfUser);
+                    } else
+                    {
+                        await _userPackageService.AddUserPackageAsync(new UserPackage
+                        {
+                            PackageId = (int)info.PackageId!,
+                            UserId = info.UserId!,
+                            HourRemaining = package!.HourIncluded,
+                            ValidInMonth = DateTime.Now.Month,
+                        });
+                    }
+
+                }
             }
         }
     }

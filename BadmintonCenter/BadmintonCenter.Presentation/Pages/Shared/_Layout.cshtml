@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using BadmintonCenter.Service.Interface
+@using System.Security.Claims
+@using DemoSchedule.Services.Interfaces
+@inject IUserService UserService;
+@inject ICommonService CommonService;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -23,19 +28,32 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-page="/Customer/Bookings/Index">Booking</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-page="/Customer/Packages/Index">Package</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-page="/Customer/History/Index">History</a>
-                        </li>
+                        @if (User.Identity!.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-page="/Customer/Bookings/Index">Booking</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-page="/Customer/Packages/Index">Package</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-page="/Customer/History/Index">History</a>
+                            </li>
+                        }                  
                     </ul>
                     <div class="d-flex align-items-center">
                         @if (User.Identity!.IsAuthenticated)
                         {
+                            var user = await UserService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!);
+                            var package = await CommonService.GetTimeRemainingOfUser(user!.UserId);
+                            double time = 0;
+                            foreach (var item in package)
+                            {
+                                time += item.HourRemaining;
+                            }
+                            <div class="me-3 text-light">
+                                <strong>@time</strong> Hours
+                            </div>
                             <div class="me-3 text-light">
                                 @User.Identity.Name
                             </div>
