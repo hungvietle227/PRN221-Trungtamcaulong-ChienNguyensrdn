@@ -1,0 +1,84 @@
+﻿@page
+@model BadmintonCenter.Presentation.Pages.Manager.SlotTime.AddSlotTimeModel
+@{
+    Layout = "_LayoutManager";
+    var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>Add Slot Time</h2>
+
+    <form method="post">
+        <div class="form-group" style="margin: 30px; margin-left: 0px">
+            <label for="startTime">Start Time</label>
+            <div class="input-group date" style="width: 400px">
+                <select id="startTime" class="form-control" aria-label="Default select example" asp-for="TimeSlot.StartTime" asp-items="@(await Model.SelectTime())">
+                </select>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-time">
+                    </span>
+                </span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="endTime">End Time</label>
+                <div class="input-group date" style="width: 400px">
+                    <select asp-for="TimeSlot.EndTime" id="endTime" class="form-control"></select>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time">
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <label class="control-label">Price</label>
+                <div class="input-group date" style="width: 400px">
+                    <input asp-for="TimeSlot.Price" class="form-control" />
+                </div>
+                <span asp-validation-for="TimeSlot.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label class="control-label">Total Time</label>
+                <div class="input-group date" style="width: 400px">
+                    <input asp-for="TimeSlot.Time" class="form-control" />
+                </div>
+                <span asp-validation-for="TimeSlot.Time" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary" /> Create
+            </div>
+            <div class="mt-4">
+                <a class="btn btn-secondary" asp-page="/Manager/ViewSlotTime">Back to List</a>
+            </div>
+        </div>
+    </form>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+    <script>
+        // JavaScript để cập nhật danh sách end time khi start time thay đổi
+        $(function () {
+            $('#startTime').change(function () {
+                var startTimeValue = $(this).val();
+                var endTimeSelect = $('#endTime');
+                endTimeSelect.empty();
+
+                // Lọc danh sách end time để chỉ hiển thị các giờ sau giờ start time đã chọn
+                var startTimeIndex = $('#startTime option').index($('#startTime option:selected'));
+                $('#startTime option').slice(startTimeIndex + 1).each(function () {
+                    endTimeSelect.append($('<option>').text($(this).text()).attr('value', $(this).val()));
+                });
+            }).change();
+        });
+    </script>
+</body>
+</html>

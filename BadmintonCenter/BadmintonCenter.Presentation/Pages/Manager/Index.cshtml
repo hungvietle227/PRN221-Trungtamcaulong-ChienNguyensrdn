@@ -1,0 +1,117 @@
+﻿@page
+@model BadmintonCenter.Presentation.Pages.Manager.IndexModel
+@{
+    Layout = "_LayoutManager";
+    var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management</title>
+    <link rel="stylesheet" href="~/css/CustomerManagementStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div style="padding: 25px 25px 5px 25px;
+         border-radius: 10px;
+         box-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px;
+         background: white;
+         padding-bottom: 15px">
+        <div class="header">
+            <h2>Court Management</h2>
+        </div>
+        <div class="mt-4 mb-2">
+            <div class="action-container">
+                <div class="search-container">
+                    <form method="get" class="form-inline mb-3">
+                        <input asp-for="SearchValue" type="text" class="form-control mr-2 w-50" placeholder="Search by Court Name" />
+                        <button type="submit" class="btn btn-outline-primary">Search</button>
+                    </form>
+                </div>
+                <div class="add-new-container">
+                    <button class="btn btn-primary" type="button" onclick="navigateToAdd()"><i class="fa-solid fa-circle-plus"></i> Add New</button>
+                </div>
+            </div>
+            <h5 class="noti-msg">@TempData["CreateMsg"]</h5>
+            <h5 class="noti-msg">@TempData["SearchMsg"]</h5>
+            <h5 class="noti-msg">@TempData["UpdateMsg"]</h5>
+            <h5 class="noti-msg">@TempData["DeleteMsg"]</h5>
+            <table class="table table-hover mt-4">
+                <thead style="background-color: black; color: white; height: 50px" class="align-middle">
+                    <tr>
+                        <th>
+                            Court ID
+                        </th>
+                        <th>
+                            Court Name
+                        </th>
+                        <th>
+                            Court Description
+                        </th>
+                        <th>
+                            Court Status
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.AllCourt.Count() <= 0)
+                    {
+                        <tr>
+                            <td colspan="5" style="text-align: center; height: 65px; vertical-align: middle; font-size: 17px">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.004-.001.274-.11a.75.75 0 0 1 .558 0l.274.11.004.001zm-1.374.527L8 5.962 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339Z" />
+                                </svg> No data
+                            </td>
+                        </tr>
+                    }
+                    @foreach (var court in Model.Courts)
+                    {
+                        <tr class="align-middle">
+                            <td>@court.CourtId</td>
+                            <td>@court.CourtName</td>
+                            <td>@court.Description</td>
+                            <td>@court.Status</td>
+                            <td>
+                                <a asp-page="/Manager/EditCourt" asp-route-id="@court.CourtId" class="btn btn-primary">Edit</a>
+                                <a asp-page="/Manager/DeleteCourt" asp-route-id="@court.CourtId" class="btn btn-primary">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @if (Model.AllCourt.Count() > 0)
+            {
+                <nav aria-label="Room pagination">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                            <a class="page-link" asp-page="/Manager/Index" asp-route-searchValue="@Model.SearchValue" asp-route-id="@(Model.CurrentPage - 1)" tabindex="-1" aria-disabled="@(Model.CurrentPage == 1 ? "true" : "false")">Previous</a>
+                        </li>
+
+                        @for (int i = 1; i <= Math.Ceiling((double)Model.AllCourt.Count() / Model.PageSize); i++)
+                        {
+                            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                <a class="page-link" asp-page="/Manager/Index" asp-route-searchValue="@Model.SearchValue" asp-route-id="@i">@i</a>
+                            </li>
+                        }
+
+                        <li class="page-item @(Model.CurrentPage >= Math.Ceiling((double)Model.AllCourt.Count() / Model.PageSize) ? "disabled" : "")">
+                            <a class="page-link" asp-page="/Manager/Index" asp-route-searchValue="@Model.SearchValue" asp-route-id="@(Model.CurrentPage + 1)">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            }
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function navigateToAdd() {
+        window.location.href = "/Manager/AddCourt";
+    }
+</script>

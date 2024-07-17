@@ -1,5 +1,6 @@
 ﻿@page
-@model BadmintonCenter.Presentation.Pages.Booking.DetailModel
+@using BadmintonCenter.Common.Enum.Booking
+@model BadmintonCenter.Presentation.Pages.Bookings.DetailModel
 @{
 }
 <link rel="stylesheet" href="~/css/booking-detail.css" asp-append-version="true" />
@@ -87,7 +88,7 @@
                         <p class="ms-3">Add additional notes and payment information</p>
                             <div class="d-flex flex-row pb-3">
                                 <div class="d-flex align-items-center pe-2">
-                                    <input asp-for="PaymentMethod" value="Vnpay" class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
+                                    <input asp-for="PaymentMethod" value="Vnpay" name="paymentMethod" class="form-check-input" type="radio" checked
                                            aria-label="..." />
                                 </div>
                                 <div class="rounded border d-flex w-100 p-3 align-items-center">
@@ -96,19 +97,19 @@
                                     </p>
                                     <div class="ms-auto">970419xxxxxxxxxxxxx</div>
                                 </div>
-                            </div>              
-                            @{
-                                int time = 0;
+                            </div>       
+                            @if (Model.Booking != null && Model.Booking.DateOfWeek == null)
+                            {
+                                double time = 0;
                                 foreach (var item in Model.Packages)
                                 {
                                     time += item.HourRemaining;
                                 }
-                            }
                             @if(time >= Model.Booking.TotalHour)
                             {
                                 <div class="d-flex flex-row pb-3">
                                     <div class="d-flex align-items-center pe-2">
-                                        <input asp-for="PaymentMethod" value="Hours" class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
+                                            <input asp-for="PaymentMethod" value="Hours" name="paymentMethod" class="form-check-input" type="radio"
                                                aria-label="..." />
                                     </div>
                                     <div class="rounded border d-flex w-100 p-3 align-items-center">
@@ -137,12 +138,11 @@
                                     </div>
                                 </div>
                             }
-
-
+                            }                         
                     </div>
                     <div class="col-xl-4">
                         <ul class="list-unstyled">
-                            <li class="text-muted ms-3"><span class="text-black me-4">SubTotal</span>@Model.Booking.TotalPrice VND</li>
+                            <li class="text-muted ms-3"><span class="text-black me-4">SubTotal</span>@Model.Booking!.TotalPrice VND</li>
                             <li class="text-muted ms-3 mt-2"><span class="text-black me-4">Total Hour</span>@Model.Booking.TotalHour Hours</li>
                         </ul>
                         <p class="text-black float-start">

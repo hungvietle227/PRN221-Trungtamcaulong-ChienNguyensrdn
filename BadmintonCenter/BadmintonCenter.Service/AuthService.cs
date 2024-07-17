@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication;
+using BadmintonCenter.Common.DTO.User;
 
 namespace BadmintonCenter.Service
 {
@@ -98,6 +99,26 @@ namespace BadmintonCenter.Service
                 PasswordSalt = salt,
                 PasswordHash = HashPassword(request.Password, salt),
                 RoleId = (int)UserRole.Customer
+            };
+
+            await _userRepo.AddUserAsync(user);
+        }
+
+        public async Task CreateManager(CreateUserDTO request)
+        {
+            // generate byte arr salt
+            byte[] salt;
+            salt = GenerateRandomBytes(16);
+
+            var user = new User
+            {
+                UserName = request.Username,
+                FullName = request.FullName,
+                Email = request.Email,
+                PhoneNumber = request.PhoneNumber,
+                PasswordSalt = salt,
+                PasswordHash = HashPassword(request.Password, salt),
+                RoleId = (int)UserRole.Manager
             };
 
             await _userRepo.AddUserAsync(user);

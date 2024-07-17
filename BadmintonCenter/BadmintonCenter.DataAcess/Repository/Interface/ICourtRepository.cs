@@ -8,6 +8,7 @@ namespace BadmintonCenter.DataAcess.Repository.Interface
         Task<List<Court>> GetAllCourtsAsync();
         Task AddCourtAsync(Court court);
         Task UpdateCourtAsync(Court court);
-        Task DeleteCourtAsync(int courtId);
+        Task DeleteCourtAsync(Court court);
+        Task<List<Court>> GetCourtByName(string name);
     }
 }

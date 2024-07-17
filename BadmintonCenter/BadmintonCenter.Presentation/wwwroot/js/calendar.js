@@ -40,12 +40,14 @@ $(document).ready(() => {
 		var day = $('<div>');
 		if (month === thisMonth && counter === today) {
 			day.addClass('to day');
-		} else if (counter < today) {
+		} else if (counter < today || counter > today + 7) {
 			day.addClass('day disabled');
 		} else {
 			day.addClass('day');
 		}
+
 		day.css('order', order);
+
 		if (counter === "&nbsp;" || counter === "") {
 			day.text("");
 			day.addClass('disabled');
@@ -132,7 +134,7 @@ $(document).ready(() => {
 
 		$.ajax({
 			method: 'GET',
-			url: "/customer/booking/byday/?handler=UpdateSlotTime",
+			url: "/customer/bookings/byday/?handler=UpdateSlotTime",
 			data: {
 				courtId: value,
 				date: formattedDate

@@ -7,7 +7,7 @@ namespace BadmintonCenter.DataAcess.Repository
     public class CourtRepo : ICourtRepository
     {
         private readonly ICourtDAO _courtDAO;
-         
+
         public CourtRepo(ICourtDAO courtDAO)
         {
             _courtDAO = courtDAO;
@@ -33,9 +33,14 @@ namespace BadmintonCenter.DataAcess.Repository
             await _courtDAO.UpdateCourtAsync(court);
         }
 
-        public async Task DeleteCourtAsync(int courtId)
+        public async Task DeleteCourtAsync(Court court)
         {
-            await _courtDAO.DeleteCourtAsync(courtId);
+            await _courtDAO.DeleteCourtAsync(court);
+        }
+
+        public async Task<List<Court>> GetCourtByName(string name)
+        {
+            return await _courtDAO.GetCourtByName(name);
         }
     }
 }

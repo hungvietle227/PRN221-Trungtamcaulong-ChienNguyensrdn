@@ -1,4 +1,7 @@
-﻿using BadmintonCenter.BusinessObject.Models;
+﻿using Azure.Core;
+using BadmintonCenter.BusinessObject.Models;
+using BadmintonCenter.Common.DTO.User;
+using BadmintonCenter.Common.Enum.User;
 using BadmintonCenter.DataAcess.Repository.Interface;
 using BadmintonCenter.Service.Interface;
 
@@ -7,10 +10,12 @@ namespace BadmintonCenter.Service
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IRoleRepository _roleRepository;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, IRoleRepository roleRepository)
         {
             _userRepository = userRepository;
+            _roleRepository = roleRepository;
         }
 
         public async Task<User?> GetUserByEmail(string email)
@@ -21,6 +26,50 @@ namespace BadmintonCenter.Service
         public async Task<User?> GetUserById(int id)
         {
             return await _userRepository.GetUserByIdAsync(id);
+        }
+
+        public async Task DeleteUserAsync(User user)
+        {
+            await _userRepository.DeleteUserAsync(user);
+        }
+        public async Task<IEnumerable<User>> GetAllUsers()
+        {
+            return await _userRepository.GetAllUsersAsync();
+        }
+
+        public async Task<Role> GetRoleByUserId(int userId)
+        {
+            var user = await _userRepository.GetUserByIdAsync(userId);
+            return (await _roleRepository.GetRoleByIdAsync(user.RoleId));
+        }
+
+        public async Task UpdateUserAsync(User user)
+        {
+            var thisUser = await _userRepository.GetUserByEmail(user.Email);
+
+            thisUser.UserName = user.UserName;
+            thisUser.FullName = user.FullName;
+            thisUser.Email = user.Email;
+            thisUser.PhoneNumber = user.PhoneNumber;
+            thisUser.PasswordSalt = user.PasswordSalt;
+            thisUser.PasswordHash = user.PasswordHash;
+            thisUser.RoleId = user.RoleId;
+
+            await _userRepository.UpdateUserAsync(thisUser);
+        }
+
+        public async Task<UpdateUserDTO?> GetUpdateUserById(int id)
+        {
+            var userUp = await _userRepository.GetUserByIdAsync(id);
+            var user = new UpdateUserDTO
+            {
+                UserName = userUp.UserName,
+                FullName = userUp.FullName,
+                Email = userUp.Email,
+                PhoneNumber = userUp.PhoneNumber,
+            };
+
+            return user;
         }
     }
 }

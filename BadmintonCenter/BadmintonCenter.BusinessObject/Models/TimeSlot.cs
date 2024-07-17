@@ -7,6 +7,6 @@
         public string EndTime { get; set; } = null!;
         public double Price { get; set; }
         public double Time { get; set; }
-        public ICollection<BookingDetail> BookingDetails { get; set; } = null!;
+        public ICollection<BookingDetail>? BookingDetails { get; set; }
     }
 }

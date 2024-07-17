@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 using System.Security.Claims;
 
-namespace BadmintonCenter.Presentation.Pages.Booking
+namespace BadmintonCenter.Presentation.Pages.Bookings
 {
     [Authorize(Roles = "Customer")]
     public class ByDayModel : PageModel
@@ -94,7 +94,7 @@ namespace BadmintonCenter.Presentation.Pages.Booking
 
         public async Task<IActionResult> OnPostBookingAsync([FromBody] BookingModel data)
         {
-            BadmintonCenter.BusinessObject.Models.Booking newBooking = new BadmintonCenter.BusinessObject.Models.Booking()
+            Booking newBooking = new BadmintonCenter.BusinessObject.Models.Booking()
             {
                 BookingDate = DateTime.Now,
                 ExpiredDate = data.ValidDate,

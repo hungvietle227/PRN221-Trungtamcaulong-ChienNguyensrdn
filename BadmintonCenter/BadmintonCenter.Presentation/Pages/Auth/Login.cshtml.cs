@@ -28,19 +28,20 @@ namespace BadmintonCenter.Presentation.Pages.Auth
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            // login with role customer
+            returnUrl ??= Url.Content("~/");
+
             var user = await _authService.Login(LoginRequest.Username, LoginRequest.Password);
 
             if (user != null)
             {
-                return Redirect("/");
+                return LocalRedirect(returnUrl);
             }
             else
             {
