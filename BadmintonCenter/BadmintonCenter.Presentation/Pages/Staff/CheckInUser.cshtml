@@ -1,0 +1,80 @@
+﻿@page
+@model BadmintonCenter.Presentation.Pages.Staff.CheckInUserModel
+@{
+    Layout = "_LayoutStaff";
+    ViewData["Title"] = "Check-in Customer";
+}
+<link rel="stylesheet" href="~/css/checkin.css" asp-append-version="true" />
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Check-in</title>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' />
+    <link rel="stylesheet" href="~/css/checkin.css" asp-append-version="true" />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+</head>
+
+<body>
+    <h2>Customer Check-in</h2>
+    <div id='calendar'></div>
+
+    <!-- Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="event-details">
+                <h2>Event Details</h2>
+                <p><strong>Name:</strong> <span id="modal-event-name"></span></p>
+                <p><strong>Court:</strong> <span id="modal-event-court"></span></p>
+                <p><strong>Start Time:</strong> <span id="modal-event-start"></span></p>
+                <p><strong>End Time:</strong> <span id="modal-event-end"></span></p>
+                <button id="checkin-button" class="action-button">Check-in</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [
+                    {
+                        title: 'John Doe',
+                        start: '2024-07-14T10:00:00',
+                        end: '2024-07-14T12:00:00',
+                        color: 'blue',
+                        extendedProps: {
+                            court: 'Court 1',
+                            checkin: false
+                        }
+                    },
+                    
+                ],
+                eventClick: function (info) {
+                    // Populate modal with event details
+                    document.getElementById('modal-event-name').textContent = info.event.title;
+                    document.getElementById('modal-event-court').textContent = info.event.extendedProps.court;
+                    document.getElementById('modal-event-start').textContent = info.event.start.toLocaleString();
+                    document.getElementById('modal-event-end').textContent = info.event.end.toLocaleString();
+
+                    // Show modal
+                    var modal = document.getElementById('eventModal');
+                    modal.style.display = 'block';
+                }
+            });
+            calendar.render();
+        });
+
+        // Close the modal when the close button is clicked
+        function closeModal() {
+            var modal = document.getElementById('eventModal');
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>   

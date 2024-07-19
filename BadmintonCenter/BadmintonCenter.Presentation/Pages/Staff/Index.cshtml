@@ -1,0 +1,35 @@
+﻿@page
+@model BadmintonCenter.Presentation.Pages.Staff.IndexModel
+@{
+    Layout = "_LayoutStaff";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard - Badminton Center</title>
+    <link rel="stylesheet" href="~/css/staffindex.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <h1 class="dashboard-title">Welcome!</h1>
+        <div class="dashboard-content">
+            <div class="task-cards">
+                <div class="task-card" onclick="location.href='@Url.Page("/Staff/CheckInUser")'">
+                    <i class="fas fa-user-check"></i>
+                    <h2>Check-in Customer</h2>
+                    <p>Register customer arrivals</p>
+                </div>
+                <div class="task-card" onclick="location.href='@Url.Page("/Staff/CheckCourt")'">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h2>Check Court</h2>
+                    <p>Verify court status and availability</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

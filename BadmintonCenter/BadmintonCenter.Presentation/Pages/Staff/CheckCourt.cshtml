@@ -1,0 +1,41 @@
+﻿@page
+@model BadmintonCenter.Presentation.Pages.Staff.CheckCourtModel
+@{
+    Layout = "_LayoutStaff";
+    ViewData["Title"] = "Check Court";
+}
+<link rel="stylesheet" href="~/css/checkcourt.css" asp-append-version="true" />
+<div class="container">
+    <h2 class="text-center mb-4">Check Court</h2>
+    <div class="court-list">
+        <div class="grid-container">
+            @foreach (var court in Model.Courts)
+            {
+                <div class="card">
+                    <img src="https://www.myuc.vn/uploads/products/2023/04/24/hinh_1_copy.jpg" alt="@court.CourtName" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">@court.CourtName</h5>
+                        <p class="card-text">Status: @court.Status</p>
+                        <p class="card-text">Description: @court.Description</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <nav aria-label="Court pagination" class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                    <a class="page-link" asp-page="/staff/checkcourt" asp-route-id="@(Model.CurrentPage - 1)" tabindex="-1" aria-disabled="@(Model.CurrentPage == 1 ? "true" : "false")">Previous</a>
+                </li>
+                @for (int i = 1; i <= Math.Ceiling((double)Model.AllCourt.Count() / Model.PageSize); i++)
+                {
+                    <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                        <a class="page-link" asp-page="/staff/checkcourt" asp-route-id="@i">@i</a>
+                    </li>
+                }
+                <li class="page-item @(Model.CurrentPage >= Math.Ceiling((double)Model.AllCourt.Count() / Model.PageSize) ? "disabled" : "")">
+                    <a class="page-link" asp-page="/staff/checkcourt" asp-route-id="@(Model.CurrentPage + 1)">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
