@@ -26,9 +26,8 @@
         <div class="mt-4 mb-2">
             <div class="action-container">
                 <div class="search-container">
-                    <form method="get" class="form-inline mb-3" asp-page-handler="SearchCustomer">
-                        <input type="text" class="form-control mr-2 w-50" placeholder="Search by Slot Time" />
-                        <input type="hidden" name="SearchValue" />
+                    <form method="get" class="form-inline mb-3">
+                        <input asp-for="searchValue" type="text" class="form-control mr-2 w-50" placeholder="Search by Slot Time" />
                         <button type="submit" class="btn btn-outline-primary">Search</button>
                     </form>
                 </div>
@@ -97,18 +96,18 @@
             <nav aria-label="Room pagination">
                 <ul class="pagination justify-content-center">
                     <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
-                        <a class="page-link" asp-page="/Manager/ViewSlotTime" asp-route-id="@(Model.CurrentPage - 1)" tabindex="-1" aria-disabled="@(Model.CurrentPage == 1 ? "true" : "false")">Previous</a>
+                        <a class="page-link" asp-route-search="@Model.searchValue" asp-page="/Manager/ViewSlotTime" asp-route-id="@(Model.CurrentPage - 1)" tabindex="-1" aria-disabled="@(Model.CurrentPage == 1 ? "true" : "false")">Previous</a>
                     </li>
 
                     @for (int i = 1; i <= Math.Ceiling((double)Model.AllTimeSlot.Count() / Model.PageSize); i++)
                     {
                         <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
-                            <a class="page-link" asp-page="/Manager/ViewSlotTime" asp-route-id="@i">@i</a>
+                            <a class="page-link" asp-route-search="@Model.searchValue" asp-page="/Manager/ViewSlotTime" asp-route-id="@i">@i</a>
                         </li>
                     }
 
                     <li class="page-item @(Model.CurrentPage >= Math.Ceiling((double)Model.AllTimeSlot.Count() / Model.PageSize) ? "disabled" : "")">
-                        <a class="page-link" asp-page="/Manager/ViewSlotTime" asp-route-id="@(Model.CurrentPage + 1)">Next</a>
+                        <a class="page-link" asp-route-search="@Model.searchValue" asp-page="/Manager/ViewSlotTime" asp-route-id="@(Model.CurrentPage + 1)">Next</a>
                     </li>
                 </ul>
             </nav>

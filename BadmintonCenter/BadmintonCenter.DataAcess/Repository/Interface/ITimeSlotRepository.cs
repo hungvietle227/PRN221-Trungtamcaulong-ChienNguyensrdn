@@ -14,5 +14,6 @@ namespace BadmintonCenter.DataAcess.Repository.Interface
         Task AddTimeSlotAsync(TimeSlot timeSlot);
         Task UpdateTimeSlotAsync(TimeSlot timeSlot);
         Task DeleteTimeSlotAsync(TimeSlot timeSlot);
+        Task<List<TimeSlot>> GetTimeSlotByCondition(string value);
     }
 }

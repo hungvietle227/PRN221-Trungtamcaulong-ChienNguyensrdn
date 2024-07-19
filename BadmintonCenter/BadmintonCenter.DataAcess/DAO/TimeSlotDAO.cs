@@ -15,6 +15,7 @@ namespace BadmintonCenter.DataAcess.DAO
         Task AddTimeSlotAsync(TimeSlot timeSlot);
         Task UpdateTimeSlotAsync(TimeSlot timeSlotId);
         Task DeleteTimeSlotAsync(TimeSlot timeSlotId);
+        Task<List<TimeSlot>> GetTimeSlotByCondition(string value);
     }
     public class TimeSlotDAO : ITimeSlotDAO
     {
@@ -53,6 +54,12 @@ namespace BadmintonCenter.DataAcess.DAO
             //
             _context.Remove(timeSlotId);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<TimeSlot>> GetTimeSlotByCondition(string value)
+        {
+            var listTimeSlot = await GetAllTimeSlotAsync();
+            return listTimeSlot.Where(a=> a.StartTime.Contains(value.Trim()) || a.EndTime.Contains(value.Trim()) || a.Price.ToString().Contains(value.Trim())).ToList();
         }
     }
 }

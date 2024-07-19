@@ -15,6 +15,7 @@ namespace BadmintonCenter.DataAcess.DAO
         Task AddPackageAsync(Package Package);
         Task UpdatePackageAsync(Package Package);
         Task DeletePackageAsync(Package PackageId);
+        Task<List<Package>> GetPackageByCondition(string value);
     }
     public class PackageDAO : IPackageDAO
     {
@@ -49,6 +50,12 @@ namespace BadmintonCenter.DataAcess.DAO
         {
             _context.Remove(packageId);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Package>> GetPackageByCondition(string value)
+        {
+            var listPackage = await GetAllPackagesAsync();
+            return listPackage.Where(a => a.PackageName.ToLower().Contains(value.ToLower()) || a.HourIncluded.ToString() == value).ToList();
         }
     }
 }
