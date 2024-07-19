@@ -17,7 +17,6 @@ namespace BadmintonCenter.Presentation.Pages.Auth
 
         [BindProperty]
         public LoginDTO LoginRequest { get; set; } = null!;
-        public string Message { get; set; } = string.Empty;
 
         public IActionResult OnGet()
         {
@@ -41,11 +40,12 @@ namespace BadmintonCenter.Presentation.Pages.Auth
 
             if (user != null)
             {
+                TempData["success"] = "Login successfully";
                 return LocalRedirect(returnUrl);
             }
             else
             {
-                Message = AuthMessage.LoginFailed;
+                TempData["error"] = "Invalid username or password";
                 return Page();
             }
 
