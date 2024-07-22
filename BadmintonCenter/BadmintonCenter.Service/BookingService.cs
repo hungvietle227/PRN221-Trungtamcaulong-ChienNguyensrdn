@@ -136,5 +136,12 @@ namespace BadmintonCenter.Service
         {
             await _bookingRepository.UpdateBookingAsync(booking);
         }
+
+
+        //Check In Customer
+        public async Task<IEnumerable<BookingDetail>> GetAllBookingDetails()
+        {
+            return await _bookingDetailRepository.GetAllBookingDetailsAsync();
+        }
     }
 }

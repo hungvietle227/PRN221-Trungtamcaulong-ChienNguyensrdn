@@ -23,9 +23,15 @@ namespace BadmintonCenter.DataAcess.DAO
         {
             _context = context;
         }
+        
         public async Task<IEnumerable<BookingDetail>> GetAllBookingDetailsAsync()
         {
-            return await _context.BookingDetails.Include(p => p.Court).Include(p => p.TimeSlot).ToListAsync();
+            return await _context.BookingDetails
+                .Include(p => p.Booking)
+                    .ThenInclude(b => b.User)
+                .Include(p => p.Court)
+                .Include(p => p.TimeSlot)
+                .ToListAsync();
         }
 
         public async Task AddBookingDetailAsync(BookingDetail bookingDetail)
