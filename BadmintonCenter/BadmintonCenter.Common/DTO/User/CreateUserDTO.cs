@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BadmintonCenter.Common.Enum.User;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -24,5 +25,6 @@ namespace BadmintonCenter.Common.DTO.User
         [Required(ErrorMessage = "Phone number is required")]
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be 10 digits")]
         public string PhoneNumber { get; set; } = null!;
+        public UserRole Role { get; set; }
     }
 }

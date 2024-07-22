@@ -118,7 +118,7 @@ namespace BadmintonCenter.Service
                 PhoneNumber = request.PhoneNumber,
                 PasswordSalt = passwordSalt,
                 PasswordHash = HashPassword("12345Aa@", passwordSalt),
-                RoleId = (int)UserRole.Manager
+                RoleId = (int)request.Role
             };
 
             await _userRepo.AddUserAsync(user);

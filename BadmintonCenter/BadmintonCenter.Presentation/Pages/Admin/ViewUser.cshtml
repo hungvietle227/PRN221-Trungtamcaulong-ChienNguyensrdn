@@ -97,7 +97,7 @@
                     }
 
                     <li class="page-item @(Model.CurrentPage >= Math.Ceiling((double)Model.AllUsers.Count() / Model.PageSize) ? "disabled" : "")">
-                        <a class="page-link" asp-page="/Manager/ViewUser" asp-route-id="@(Model.CurrentPage + 1)">Next</a>
+                        <a class="page-link" asp-page="/Admin/ViewUser" asp-route-id="@(Model.CurrentPage + 1)">Next</a>
                     </li>
                 </ul>
             </nav>

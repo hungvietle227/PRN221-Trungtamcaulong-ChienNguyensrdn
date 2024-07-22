@@ -39,7 +39,6 @@ namespace BadmintonCenter.Presentation.Pages.Auth
             returnUrl ??= Url.Content("~/");
 
             var user = await _authService.Login(LoginRequest.Username, LoginRequest.Password);
-            HttpContext.User.FindFirstValue(ClaimTypes.Role);
 
             if (user != null && user.RoleId == (int)UserRole.Admin)
             {

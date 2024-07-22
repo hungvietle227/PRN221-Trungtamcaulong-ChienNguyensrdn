@@ -28,6 +28,12 @@
                 <input asp-for="UserDTO.PhoneNumber" class="form-control" />
                 <span asp-validation-for="UserDTO.PhoneNumber" class="text-danger"></span>
             </div>
+            <div class="form-group mt-3">
+                <label asp-for="UserDTO.Role"></label>
+                <select required class="form-select" aria-label="Default select example" asp-for="UserDTO.Role" asp-items="@BadmintonCenter.Presentation.Pages.Admin.Users.AddUserModel.SelectStatus()">
+                </select>
+                <span asp-validation-for="UserDTO.Role" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
