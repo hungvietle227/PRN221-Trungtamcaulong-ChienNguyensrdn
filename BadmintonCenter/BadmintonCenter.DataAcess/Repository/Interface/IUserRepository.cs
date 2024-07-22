@@ -11,5 +11,6 @@ namespace BadmintonCenter.DataAcess.Repository.Interface
         Task DeleteUserAsync(User user);
         Task<User?> GetUserByUserName(string username);
         Task<User?> GetUserByEmail(string email);
+        Task<List<User>> GetUserByName(string name);
     }
 }

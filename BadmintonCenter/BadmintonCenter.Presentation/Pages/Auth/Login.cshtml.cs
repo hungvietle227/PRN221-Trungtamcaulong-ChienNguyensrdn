@@ -3,6 +3,7 @@ using BadmintonCenter.Common.DTO.Auth;
 using BadmintonCenter.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Claims;
 
 namespace BadmintonCenter.Presentation.Pages.Auth
 {
@@ -37,6 +38,9 @@ namespace BadmintonCenter.Presentation.Pages.Auth
             returnUrl ??= Url.Content("~/");
 
             var user = await _authService.Login(LoginRequest.Username, LoginRequest.Password);
+            HttpContext.User.FindFirstValue(ClaimTypes.Role);
+
+
 
             if (user != null)
             {
