@@ -32,7 +32,6 @@ namespace BadmintonCenter.Presentation.Pages.Manager.SlotTime
             
             var times = new List<SelectListItem>();
 
-            // Tạo danh sách các giờ từ 8:00 sáng đến 11:00 đêm
             for (int hour = 8; hour <= 23; hour++)
             {
                 for (int minute = 0; minute <= 30; minute += 30)
@@ -43,7 +42,6 @@ namespace BadmintonCenter.Presentation.Pages.Manager.SlotTime
             }
             IEnumerable<TimeSlot> databaseTimes = await _timeSlotService.GetAllTimeSlots();
 
-            //times = times.Where(time => !databaseTimes.Any(dbTime => dbTime.StartTime == time.Value)).ToList();
             times = times.Where(time =>
             {
                 var timeValue = TimeSpan.Parse(time.Value);
