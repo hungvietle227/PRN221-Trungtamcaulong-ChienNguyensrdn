@@ -8,12 +8,10 @@ namespace BadmintonCenter.Presentation.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly IAuthService _authService;
 
-        public IndexModel(ILogger<IndexModel> logger, IAuthService authService)
+        public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
-            _authService = authService;
         }
 
         public IActionResult OnGet()
@@ -21,7 +19,7 @@ namespace BadmintonCenter.Presentation.Pages
             var role = HttpContext.User.FindFirstValue(ClaimTypes.Role);
             if (role == null)
             {
-                return Redirect("/Admin/Index");
+                return Redirect("/");
             }
             else if (role == "Manager")
             {
@@ -29,9 +27,14 @@ namespace BadmintonCenter.Presentation.Pages
             }
             else if(role == "Admin")
             {
-                return Redirect("/");
+                return Redirect("/Admin/Index");
+            } else if(role == "Staff")
+            {
+                return Redirect("/Staff/Index");
+            } else
+            {
+                return Redirect("/Index");
             }
-            return Page();
         }
     }
 }
