@@ -1,5 +1,6 @@
 using BadmintonCenter.Common.Constant.Message;
 using BadmintonCenter.Common.DTO.Auth;
+using BadmintonCenter.Common.Enum.User;
 using BadmintonCenter.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -40,9 +41,15 @@ namespace BadmintonCenter.Presentation.Pages.Auth
             var user = await _authService.Login(LoginRequest.Username, LoginRequest.Password);
             HttpContext.User.FindFirstValue(ClaimTypes.Role);
 
-
-
-            if (user != null)
+            if (user != null && user.RoleId == (int)UserRole.Admin)
+            {
+                return RedirectToPage("/Admin/Index");
+            }
+            if (user != null && user.RoleId == (int)UserRole.Manager)
+            {
+                return RedirectToPage("/Manager/HomeManager");
+            }
+            if (user != null && (user.RoleId != 2 || user.RoleId == 3))
             {
                 TempData["success"] = "Login successfully";
                 return LocalRedirect(returnUrl);
