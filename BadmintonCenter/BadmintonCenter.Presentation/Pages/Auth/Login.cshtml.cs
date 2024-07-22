@@ -49,6 +49,10 @@ namespace BadmintonCenter.Presentation.Pages.Auth
             {
                 return RedirectToPage("/Manager/HomeManager");
             }
+            if (user != null && user.RoleId == (int)UserRole.Staff)
+            {
+                return RedirectToPage("/Staff/Index");
+            }
             if (user != null && (user.RoleId != 2 || user.RoleId == 3))
             {
                 TempData["success"] = "Login successfully";

@@ -49,10 +49,10 @@ builder.Services.AddScoped<ITimeSlotRepository, TimeSlotRepo>();
 builder.Services.AddScoped<IBookingDetailRepository, BookingDetailRepository>();
 builder.Services.AddScoped<IBookingRepository, BookingRepo>();
 builder.Services.AddScoped<IUserPackageRepository, UserPackageRepository>();
-builder.Services.AddScoped<ITransactionRepository,  TransactionRepository>();
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
 builder.Services.AddScoped<IPackageRepository, PackageRepository>();
-builder.Services.AddScoped<IRoleRepository,  RoleRepository>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 
 // services
 builder.Services.AddScoped<IAuthService, AuthService>();
