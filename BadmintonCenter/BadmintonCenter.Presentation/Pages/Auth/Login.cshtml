@@ -33,11 +33,6 @@
                         <span asp-validation-for="LoginRequest.Password" class="text-danger mb-2"></span>
                     </div>
 
-                    @if(!string.IsNullOrEmpty(Model.Message))
-                    {
-                        <div class="text-danger text-center m-3">@Model.Message</div>
-                    }
-
                     <!-- Submit button -->
                     <div class="d-flex flex-column gap-2 justify-content-center align-items-center mb-4">
                         <button type="submit" class="btn-signin">Sign in</button>
