@@ -72,7 +72,7 @@ namespace BadmintonCenter.Presentation.Pages.Customer.History
                         AllBookings = AllBookings.OrderBy(s => s.BookingId);
                         break;
                 }
-                Bookings = PaginatedList<Booking>.Create(AllBookings.ToList(), CurrentPage, PageSize);
+                Bookings = PaginatedList<Booking>.Create(AllBookings.OrderByDescending(p => p.BookingDate).ToList(), CurrentPage, PageSize);
             }
 
             return Page();

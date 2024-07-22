@@ -1,0 +1,92 @@
+﻿@page
+
+
+@model BadmintonCenter.Presentation.Pages.Staff.CheckInUserModel
+@{
+    Layout = "_LayoutStaff";
+    ViewData["Title"] = "Check-in Customer";
+
+    var events = Model.BookingDetails.Select(b => new
+    {
+        title = $"{b.Booking.User.FullName}",
+        court = $"{b.Court.CourtName}",
+        price = $"{b.Booking.TotalPrice}",
+        timeSlot = $"{b.TimeSlot.StartTime} - {b.TimeSlot.EndTime}",
+        start = $"{b.Booking.ValidDate:yyyy-MM-dd}T{b.TimeSlot.StartTime:HH:mm:ss}",
+    });
+}
+<link rel="stylesheet" href="~/css/checkin.css" asp-append-version="true" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
+
+<h1>Check In Users</h1>
+
+@* <table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Court</th>
+            <th>Valid Date</th>
+            <th>Expired Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+        </tr>
+    </thead>
+    <tbody>       
+        @foreach (var booking in Model.BookingDetails)
+        {
+            <tr>
+                <td>@booking.Booking.User.FullName</td>
+                <td>@booking.Booking.ValidDate</td>
+                <td>@booking.Booking.ExpiredDate</td>
+                <td>@booking.Court.CourtName</td>
+                <td>@booking.TimeSlot.StartTime</td>
+                <td>@booking.TimeSlot.EndTime</td>
+            </tr>
+        }
+    </tbody>
+</table> *@
+
+<div id="calendar"></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            events: @Html.Raw(Json.Serialize(events)),
+            eventContent: function (info) {
+                return {
+                    html: `
+                            <div>
+                                <strong class="fc-custom-event-title">${info.event.title}</strong><br>
+                                <br/>
+                                <div class="fc-custom-event-court">
+                                   <span>Booked : ${info.event.extendedProps.court}</span> 
+                                </div>
+                                     <div class="fc-custom-event-court">
+                                       <span>Price : ${info.event.extendedProps.price} VND</span>
+                                    </div>
+                                 <div class="fc-custom-event-time">
+                                     <span>Duration : ${info.event.extendedProps.timeSlot}</span>
+                                 </div>
+                                <div class="fc-custom-event-status">
+                                   <svg xmlns="http://www.w3.org/2000/svg" width="22.903" height="19.395"><path d="M22.903 2.828 20.075 0 6.641 13.435 3.102 9.09 0 11.616l6.338 7.779L22.903 2.828z"/></svg>
+                                   <span class="acx">Successful</span>
+                                </div>
+                                
+                            </div>
+                        `
+                };
+            }
+        });
+
+        calendar.render();
+    });
+</script>
+
+
+
+
+

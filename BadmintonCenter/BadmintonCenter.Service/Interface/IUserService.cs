@@ -8,10 +8,12 @@ namespace BadmintonCenter.Service.Interface
     {
         Task<User?> GetUserById(int id);
         Task<User?> GetUserByEmail(string email);
+        Task<User?> GetUserByUserName(string email);
         Task DeleteUserAsync(User user);
         Task<IEnumerable<User>> GetAllUsers();
         Task<Role> GetRoleByUserId(int userId);
         Task UpdateUserAsync(User user);
         Task<UpdateUserDTO?> GetUpdateUserById(int id);
+        Task<List<User>> GetUserByName(string name);
     }
 }

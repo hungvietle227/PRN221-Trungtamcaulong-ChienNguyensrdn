@@ -16,6 +16,7 @@ namespace BadmintonCenter.DataAcess.DAO
         Task UpdateUserAsync(User user);
         Task DeleteUserAsync(User user);
         Task<User?> GetUserByUserName(string username);
+        Task<List<User>> GetUserByName(string name);
     }
     public class UserDAO : IUserDAO
     {
@@ -63,6 +64,12 @@ namespace BadmintonCenter.DataAcess.DAO
         public async Task<User?> GetUserByUserName(string username)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
+        }
+
+        public async Task<List<User>> GetUserByName(string name)
+        {
+            List<User> courts = await GetAllUsersAsync();
+            return courts.Where(a => a.FullName.ToLower().Contains(name.ToLower())).ToList();
         }
     }
 }

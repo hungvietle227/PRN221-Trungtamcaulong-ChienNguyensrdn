@@ -42,5 +42,10 @@ namespace BadmintonCenter.DataAcess.Repository
         {
             await _packageDAO.DeletePackageAsync(packageId);
         }
+
+        public async Task<List<Package>> GetPackageByCondition(string value)
+        {
+            return await _packageDAO.GetPackageByCondition(value);
+        }
     }
 }

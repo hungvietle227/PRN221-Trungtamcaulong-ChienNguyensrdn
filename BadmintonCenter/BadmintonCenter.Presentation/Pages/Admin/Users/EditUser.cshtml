@@ -13,27 +13,27 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="UserDTO.UserId" />
             <div class="form-group">
-                <label asp-for="UserDTO.UserName" class="control-label"></label>
+                <label class="control-label">Username</label>
                 <input asp-for="UserDTO.UserName" class="form-control" />
                 <span asp-validation-for="UserDTO.UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserDTO.FullName" class="control-label"></label>
+                <label class="control-label">Fullname</label>
                 <input asp-for="UserDTO.FullName" class="form-control" />
                 <span asp-validation-for="UserDTO.FullName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserDTO.Email" class="control-label"></label>
+                <label class="control-label">Email</label>
                 <input asp-for="UserDTO.Email" class="form-control" />
                 <span asp-validation-for="UserDTO.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserDTO.PhoneNumber" class="control-label"></label>
+                <label class="control-label">Phonenumber</label>
                 <input asp-for="UserDTO.PhoneNumber" class="form-control" />
                 <span asp-validation-for="UserDTO.PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Edit" class="btn btn-primary" />
             </div>
         </form>
     </div>

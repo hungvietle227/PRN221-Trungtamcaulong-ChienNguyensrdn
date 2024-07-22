@@ -4,6 +4,7 @@ using BadmintonCenter.Common.DTO.User;
 using BadmintonCenter.Common.Enum.User;
 using BadmintonCenter.DataAcess.Repository.Interface;
 using BadmintonCenter.Service.Interface;
+using Microsoft.Extensions.Configuration;
 
 namespace BadmintonCenter.Service
 {
@@ -11,10 +12,12 @@ namespace BadmintonCenter.Service
     {
         private readonly IUserRepository _userRepository;
         private readonly IRoleRepository _roleRepository;
+        private readonly IConfiguration _config;
 
-        public UserService(IUserRepository userRepository, IRoleRepository roleRepository)
+        public UserService(IUserRepository userRepository, IRoleRepository roleRepository, IConfiguration configuration)
         {
             _userRepository = userRepository;
+            _config = configuration;
             _roleRepository = roleRepository;
         }
 
@@ -45,17 +48,19 @@ namespace BadmintonCenter.Service
 
         public async Task UpdateUserAsync(User user)
         {
-            var thisUser = await _userRepository.GetUserByEmail(user.Email);
+            var thisuser = await GetUserByEmail(user.Email);
 
-            thisUser.UserName = user.UserName;
-            thisUser.FullName = user.FullName;
-            thisUser.Email = user.Email;
-            thisUser.PhoneNumber = user.PhoneNumber;
-            thisUser.PasswordSalt = user.PasswordSalt;
-            thisUser.PasswordHash = user.PasswordHash;
-            thisUser.RoleId = user.RoleId;
-
-            await _userRepository.UpdateUserAsync(thisUser);
+            user.PasswordHash = thisuser.PasswordHash;
+            user.PasswordSalt = thisuser.PasswordSalt;
+            user.Role = thisuser.Role;
+            user.Transactions = thisuser.Transactions;
+            user.UserPackages = thisuser.UserPackages;
+            user.Bookings = thisuser.Bookings;
+            user.Email = thisuser.Email;
+            user.FullName = thisuser.FullName;
+            user.PhoneNumber = thisuser.PhoneNumber;
+            user.UserName = thisuser.UserName;
+            await _userRepository.UpdateUserAsync(user);
         }
 
         public async Task<UpdateUserDTO?> GetUpdateUserById(int id)
@@ -70,6 +75,37 @@ namespace BadmintonCenter.Service
             };
 
             return user;
+        }
+
+        public async Task<List<User>> GetUserByName(string name)
+        {
+            return await _userRepository.GetUserByName(name);   
+        }
+
+        public async Task<User?> GetUserByUserName(string email)
+        {
+            return await _userRepository.GetUserByUserName(email);
+        }
+
+        private User? CheckAdminAccount(string username, string password)
+        {
+            var adminUsername = _config["AdminAccount:username"];
+            var adminPass = _config["AdminAccount:password"];
+
+            if (!string.IsNullOrEmpty(adminUsername) && !string.IsNullOrEmpty(adminPass))
+            {
+                if (adminUsername == username && adminPass == password)
+                {
+                    return new User
+                    {
+                        FullName = "Admin",
+                        Email = "Admin@badminton.com",
+                        RoleId = (int)UserRole.Admin
+                    };
+                }
+            }
+
+            return null;
         }
     }
 }

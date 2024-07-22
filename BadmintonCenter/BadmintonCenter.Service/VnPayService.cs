@@ -35,7 +35,7 @@ namespace BadmintonCenter.Service
             AddRequestData("vnp_CurrCode", _configuration["Vnpay:CurrCode"]!);
             AddRequestData("vnp_IpAddr", GetIpAddress(context));
             AddRequestData("vnp_Locale", _configuration["Vnpay:Locale"]!);
-            AddRequestData("vnp_OrderInfo", $"Pay for {booking.ItemType}");
+            AddRequestData("vnp_OrderInfo", $"{booking.ItemType}");
             AddRequestData("vnp_OrderType", "Badminton payment");
             AddRequestData("vnp_ReturnUrl", urlCallBack);
             AddRequestData("vnp_TxnRef", tick);

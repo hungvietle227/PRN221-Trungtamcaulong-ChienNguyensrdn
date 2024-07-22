@@ -10,5 +10,6 @@ namespace BadmintonCenter.Service.Interface
         Task UpdatePackageAsync(Package package);
         Task DeletePackageAsync(Package package);
         Task UpdateUserPackage(UserPackage package);
+        Task<List<Package>> GetPackageByCondition(string value);
     }
 }
