@@ -4,6 +4,7 @@ using BadmintonCenter.Common.DTO.User;
 using BadmintonCenter.Common.Enum.User;
 using BadmintonCenter.DataAcess.Repository.Interface;
 using BadmintonCenter.Service.Interface;
+using Microsoft.Extensions.Configuration;
 
 namespace BadmintonCenter.Service
 {
@@ -11,10 +12,12 @@ namespace BadmintonCenter.Service
     {
         private readonly IUserRepository _userRepository;
         private readonly IRoleRepository _roleRepository;
+        private readonly IConfiguration _config;
 
-        public UserService(IUserRepository userRepository, IRoleRepository roleRepository)
+        public UserService(IUserRepository userRepository, IRoleRepository roleRepository, IConfiguration configuration)
         {
             _userRepository = userRepository;
+            _config = configuration;
             _roleRepository = roleRepository;
         }
 
@@ -82,6 +85,27 @@ namespace BadmintonCenter.Service
         public async Task<User?> GetUserByUserName(string email)
         {
             return await _userRepository.GetUserByUserName(email);
+        }
+
+        private User? CheckAdminAccount(string username, string password)
+        {
+            var adminUsername = _config["AdminAccount:username"];
+            var adminPass = _config["AdminAccount:password"];
+
+            if (!string.IsNullOrEmpty(adminUsername) && !string.IsNullOrEmpty(adminPass))
+            {
+                if (adminUsername == username && adminPass == password)
+                {
+                    return new User
+                    {
+                        FullName = "Admin",
+                        Email = "Admin@badminton.com",
+                        RoleId = (int)UserRole.Admin
+                    };
+                }
+            }
+
+            return null;
         }
     }
 }
