@@ -26,9 +26,8 @@
         <div class="mt-4 mb-2">
             <div class="action-container">
                 <div class="search-container">
-                    <form method="get" class="form-inline mb-3" asp-page-handler="SearchCustomer">
-                        <input type="text" class="form-control mr-2 w-50" placeholder="Search by Account Name" />
-                        <input type="hidden" name="SearchValue" />
+                    <form method="get" class="form-inline mb-3">
+                        <input asp-for="SearchValue" type="text" class="form-control mr-2 w-50" placeholder="Search by Court Name" />
                         <button type="submit" class="btn btn-outline-primary">Search</button>
                     </form>
                 </div>
