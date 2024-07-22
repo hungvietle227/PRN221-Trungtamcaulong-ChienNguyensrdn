@@ -1,6 +1,7 @@
 ﻿@using BadmintonCenter.Service.Interface
 @using System.Security.Claims
 @using DemoSchedule.Services.Interfaces
+@using BadmintonCenter.Common.Enum.User
 @inject IUserService UserService;
 @inject ICommonService CommonService;
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BadmintonCenter.Presentation.styles.css" asp-append-version="true" />
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
@@ -40,21 +41,24 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-page="/Customer/History/Index">History</a>
                             </li>
-                        }                  
+                        }
                     </ul>
                     <div class="d-flex align-items-center">
                         @if (User.Identity!.IsAuthenticated)
                         {
                             var user = await UserService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!);
-                            var package = await CommonService.GetTimeRemainingOfUser(user!.UserId);
-                            double time = 0;
-                            foreach (var item in package)
+                            if (User.Identity.Name != "Admin")
                             {
-                                time += item.HourRemaining;
+                                var package = await CommonService.GetTimeRemainingOfUser(user!.UserId);
+                                double time = 0;
+                                foreach (var item in package)
+                                {
+                                    time += item.HourRemaining;
+                                }
+                                <div class="me-3 text-light">
+                                    <strong>@time</strong> Hours
+                                </div>
                             }
-                            <div class="me-3 text-light">
-                                <strong>@time</strong> Hours
-                            </div>
                             <div class="me-3 text-light">
                                 @User.Identity.Name
                             </div>
