@@ -4,13 +4,13 @@
     Layout = "_LayoutManager";
     var dateNow = DateTime.Now.ToString("yyyy-MM-dd");
 }
-<h2>Add Court</h2>
+<h2>Add Package</h2>
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group mt-3">
-                <label class="control-label">Court Name</label>
+                <label class="control-label">Package Name</label>
                 <input asp-for="Package.PackageName" class="form-control" />
                 <span asp-validation-for="Package.PackageName" class="text-danger"></span>
             </div>
@@ -20,7 +20,7 @@
                 <span asp-validation-for="Package.Description" class="text-danger"></span>
             </div>
             <div class="form-group mt-3">
-                <label asp-for="Package.HourIncluded"></label>
+                <label class="control-label">Hour Included</label>
                 <select required class="form-select" aria-label="Default select example" asp-for="Package.HourIncluded" asp-items="@BadmintonCenter.Presentation.Pages.Manager.Packages.AddPackageModel.SelectHours()">
                 </select>
                 <span asp-validation-for="Package.HourIncluded" class="text-danger"></span>
