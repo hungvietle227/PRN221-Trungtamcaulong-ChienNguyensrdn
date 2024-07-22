@@ -11,6 +11,7 @@
         title = $"{b.Booking.User.FullName}",
         court = $"{b.Court.CourtName}",
         price = $"{b.Booking.TotalPrice}",
+        timeSlot = $"{b.TimeSlot.StartTime} - {b.TimeSlot.EndTime}",
         start = $"{b.Booking.ValidDate:yyyy-MM-dd}T{b.TimeSlot.StartTime:HH:mm:ss}",
     });
 }
@@ -67,8 +68,11 @@
                                      <div class="fc-custom-event-court">
                                        <span>Price : ${info.event.extendedProps.price} VND</span>
                                     </div>
+                                 <div class="fc-custom-event-time">
+                                     <span>Duration : ${info.event.extendedProps.timeSlot}</span>
+                                 </div>
                                 <div class="fc-custom-event-status">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22.903" height="19.395"><path d="M22.903 2.828 20.075 0 6.641 13.435 3.102 9.09 0 11.616l6.338 7.779L22.903 2.828z"/></svg>
+                                   <svg xmlns="http://www.w3.org/2000/svg" width="22.903" height="19.395"><path d="M22.903 2.828 20.075 0 6.641 13.435 3.102 9.09 0 11.616l6.338 7.779L22.903 2.828z"/></svg>
                                    <span class="acx">Successful</span>
                                 </div>
                                 

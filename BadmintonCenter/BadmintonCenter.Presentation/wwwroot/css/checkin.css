@@ -80,6 +80,7 @@ h1 {
     text-align: center;
     align-items: center;
     padding: 0.2rem;
+    max-width:120px;
 }
 
     .fc-custom-event-status .acx { 
@@ -100,6 +101,14 @@ h1 {
         background-color: #2980b9 !important;
         border-color: #2980b9 !important;
     }
+
+
+.fc-custom-event-time {
+    font-weight: 600;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+}
 
 
 .action-button {
