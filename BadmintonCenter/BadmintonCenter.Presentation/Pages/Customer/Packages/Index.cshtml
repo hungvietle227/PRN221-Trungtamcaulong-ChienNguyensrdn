@@ -1,0 +1,38 @@
+﻿@page
+@model BadmintonCenter.Presentation.Pages.Customer.Packages.IndexModel
+@{
+}
+
+<link rel="stylesheet" href="~/css/booking.css" asp-append-version="true" />
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">PACKAGES</h1>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-5 justify-content-center" id="container-room">
+        @if (Model.Packages.Any())
+        {
+            @foreach (var room in Model.Packages)
+            {
+
+                <div class="card mx-2" style="width: 18rem;">
+                    <img class="card-img-top" src="https://tse2.mm.bing.net/th?id=OIP.UecmWknyfqWzk18Gj8Z8xgHaE8&pid=Api&P=0&h=180" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title" id="room-number-@room.PackageId">@room.PackageName</h5>
+                        <p class="card-text" id="room-number-@room.PackageId">@room.Description</p>
+                        <p class="card-text mb-0"><span class="fw-bold">Price:</span> $<span id="room-price-@room.PackageId">@Math.Truncate((decimal)room.HourIncluded!) </span>/ day</p>
+                        <div class="mt-2">
+                            <a asp-page="/Customer/Packages/Detail" asp-route-id="@room.PackageId" class="btn btn-primary me-2 add">Buy Package</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <h4 class="text-center">No Item Available!</h4>
+        }
+
+    </div>
+</div>
+
+

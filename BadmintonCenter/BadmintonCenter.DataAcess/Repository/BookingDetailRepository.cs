@@ -1,6 +1,7 @@
 ﻿using BadmintonCenter.BusinessObject.Models;
 using BadmintonCenter.DataAcess.DAO;
 using BadmintonCenter.DataAcess.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
 
 namespace BadmintonCenter.DataAcess.Repository
 {
@@ -36,7 +37,7 @@ namespace BadmintonCenter.DataAcess.Repository
         public async Task<IEnumerable<BookingDetail>> GetBookingDetailsByBookingId(int id)
         {
             var bookingDetails = await _bookingDetailDAO.GetAllBookingDetailsAsync();
-            return bookingDetails.Where(p => p.BookingId == id).AsEnumerable();
+            return bookingDetails.AsQueryable().Include(p => p.Court).Include(p => p.Booking).Include(p => p.TimeSlot).Where(p => p.BookingId == id);
         }
 
         public async Task UpdateBookingDetailAsync(BookingDetail bookingDetail)

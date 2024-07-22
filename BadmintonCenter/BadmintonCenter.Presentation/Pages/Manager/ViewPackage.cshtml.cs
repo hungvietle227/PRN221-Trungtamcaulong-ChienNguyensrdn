@@ -13,20 +13,29 @@ namespace BadmintonCenter.Presentation.Pages.Manager
         {
             _packageService = packageService;
         }
-
+        [BindProperty(SupportsGet = true)]
+        public string? searchValue { get; set; }
         public List<Package> AllPackages { get; set; }
         public List<Package> Packages { get; set; }
 
         public int CurrentPage { get; set; } = 1;
         public int PageSize { get; set; } = 5; // Number of items per page
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, string? search)
         {
-            AllPackages = await _packageService.GetAllPackages();
-            CurrentPage = id ?? 1;
-            // Paginate the list of rooms
-            Packages = PaginatedList<Package>.Create(AllPackages, CurrentPage, PageSize);
-
+            search = searchValue ?? string.Empty;
+            if (!string.IsNullOrEmpty(search))
+            {
+                AllPackages = await _packageService.GetPackageByCondition(search);
+                CurrentPage = id ?? 1;
+                Packages = PaginatedList<Package>.Create(AllPackages, CurrentPage, PageSize);
+            }
+            else
+            {
+                AllPackages = await _packageService.GetAllPackages();
+                CurrentPage = id ?? 1;
+                Packages = PaginatedList<Package>.Create(AllPackages, CurrentPage, PageSize);
+            }
             return Page();
         }
     }

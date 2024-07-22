@@ -1,9 +1,4 @@
 ﻿using BadmintonCenter.BusinessObject.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BadmintonCenter.Service.Interface
 {
@@ -14,5 +9,7 @@ namespace BadmintonCenter.Service.Interface
         Task AddPackageAsync(Package package);
         Task UpdatePackageAsync(Package package);
         Task DeletePackageAsync(Package package);
+        Task UpdateUserPackage(UserPackage package);
+        Task<List<Package>> GetPackageByCondition(string value);
     }
 }

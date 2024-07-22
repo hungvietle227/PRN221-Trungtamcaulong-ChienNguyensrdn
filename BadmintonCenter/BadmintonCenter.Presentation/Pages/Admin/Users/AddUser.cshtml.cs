@@ -1,25 +1,29 @@
-﻿using BadmintonCenter.BusinessObject.Models;
-using BadmintonCenter.Common.DTO.Auth;
+﻿using BadmintonCenter.Common.Constant.Email;
 using BadmintonCenter.Common.DTO.User;
 using BadmintonCenter.Service.Interface;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace BadmintonCenter.Presentation.Pages.Admin.Users
 {
     public class AddUserModel : PageModel
     {
         private readonly IAuthService _authService;
-        public AddUserModel(IAuthService authService) 
+        private readonly IEmailService _emailService;
+        private readonly IUserService _userService;
+        public AddUserModel(IAuthService authService, IEmailService emailService, IUserService userService) 
         {
             _authService = authService;
+            _emailService = emailService;
+            _userService = userService;
         }
         [BindProperty]
         public CreateUserDTO UserDTO { get; set; } = null!;
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -29,7 +33,17 @@ namespace BadmintonCenter.Presentation.Pages.Admin.Users
                 return Page();
             }
 
+            var user = await _userService.GetUserByUserName(UserDTO.Username);
+            if(user != null)
+            {
+                ModelState.AddModelError("UserDTO.Username", "This username is existed!");
+            }
+            if (!ModelState.IsValid)
+            {
+                return OnGet();
+            }
             await _authService.CreateManager(UserDTO);
+            _emailService.SendInfomationModeratorEmail(UserDTO.Email, Subject.Subjectmail, UserDTO);
             return Redirect("/Admin/ViewUser");
         }
     }

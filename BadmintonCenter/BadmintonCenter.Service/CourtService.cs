@@ -33,6 +33,11 @@ namespace BadmintonCenter.Service
             return await _courtRepository.GetCourtByIdAsync(id);
         }
 
+        public async Task<List<Court>> GetCourtByName(string name)
+        {
+            return await _courtRepository.GetCourtByName(name);
+        }
+
         public async Task UpdateCourtAsync(Court court)
         {
             await _courtRepository.UpdateCourtAsync(court);

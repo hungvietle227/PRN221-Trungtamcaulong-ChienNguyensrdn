@@ -15,5 +15,6 @@ namespace BadmintonCenter.Service.Interface
         Task<Booking?> GetUnPaidBookingByUserId(int userId);
 
         Task<IEnumerable<BookingDetail>> GetAllBookingDetails();
+        Task<IEnumerable<Booking>> GetAllBookingOfUser(int userId);
     }
 }

@@ -109,19 +109,29 @@ namespace BadmintonCenter.Service
             // generate byte arr salt
             byte[] salt;
             salt = GenerateRandomBytes(16);
-
+            CreatePasswordHash("12345Aa@", out byte[] passwordHash, out byte[] passwordSalt);
             var user = new User
             {
                 UserName = request.Username,
                 FullName = request.FullName,
                 Email = request.Email,
                 PhoneNumber = request.PhoneNumber,
-                PasswordSalt = salt,
-                PasswordHash = HashPassword(request.Password, salt),
+                PasswordSalt = passwordSalt,
+                PasswordHash = HashPassword("12345Aa@", passwordSalt),
                 RoleId = (int)UserRole.Manager
             };
 
             await _userRepo.AddUserAsync(user);
+        }
+
+        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        {
+            using (var hMac = new HMACSHA512())
+            {
+                passwordSalt = hMac.Key;
+                passwordHash = hMac
+                    .ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            }
         }
 
         private static string HashPassword(string password, byte[] salt)

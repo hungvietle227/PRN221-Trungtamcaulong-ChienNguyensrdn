@@ -18,7 +18,10 @@ namespace BadmintonCenter.Presentation.Pages.Payment
         private readonly IUserService _userService;
         private readonly IPaymentService _paymentService;
 
-        public IndexModel(IBookingService bookingService, IUserService userService, IPaymentService paymentService)
+
+        public IndexModel(IBookingService bookingService, 
+                          IUserService userService, 
+                          IPaymentService paymentService)
         {
             _bookingService = bookingService;
             _userService = userService;
@@ -34,51 +37,80 @@ namespace BadmintonCenter.Presentation.Pages.Payment
 
             if (requestQuery != null)
             {
-                var status = requestQuery.First(x => x.Key == "vnp_ResponseCode").Value;
-                var user = await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!);
-                BadmintonCenter.BusinessObject.Models.Booking unPaidBooking = new BadmintonCenter.BusinessObject.Models.Booking();
-                if (user != null)
+                if (requestQuery.First(x => x.Key == "vnp_OrderInfo").Value == ItemType.RENT_COURT)
                 {
-                    unPaidBooking = (await _bookingService.GetUnPaidBookingByUserId(user.UserId))!;
-                    if (!string.IsNullOrEmpty(status) && status == "00")
+                    var status = requestQuery.First(x => x.Key == "vnp_ResponseCode").Value;
+                    var user = await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!);
+                    Booking unPaidBooking = new Booking();
+                    if (user != null)
                     {
-                        if (unPaidBooking != null)
+                        unPaidBooking = (await _bookingService.GetUnPaidBookingByUserId(user.UserId))!;
+                        if (!string.IsNullOrEmpty(status) && status == "00")
                         {
-                            await _paymentService.HandlePaymentResponse(new PaymentInfoDTO()
+                            if (unPaidBooking != null)
                             {
-                                BookingId = unPaidBooking.BookingId,
-                                UserId = user!.UserId,
-                                CreatedDate = DateTime.Now,
-                                Description = requestQuery.First(x => x.Key == "vnp_OrderInfo").Value!,
-                                Price = double.Parse(requestQuery.First(x => x.Key == "vnp_Amount").Value!),
-                                Status = TransactionStatus.Paid,
-                                PaymentMethod = requestQuery.First(x => x.Key == "vnp_CardType").Value! == "ATM" ? PaymentMethodConst.VNPAY : ""
-                            });
+                                await _paymentService.HandlePaymentResponse(new PaymentInfoDTO()
+                                {
+                                    BookingId = unPaidBooking.BookingId,
+                                    UserId = user!.UserId,
+                                    CreatedDate = DateTime.Now,
+                                    Description = requestQuery.First(x => x.Key == "vnp_OrderInfo").Value!,
+                                    Price = double.Parse(requestQuery.First(x => x.Key == "vnp_Amount").Value!),
+                                    Status = TransactionStatus.Paid,
+                                    PaymentMethod = requestQuery.First(x => x.Key == "vnp_CardType").Value! == "ATM" ? PaymentMethodConst.VNPAY : ""
+                                });
+                            }
+
+                            Message = PaymentMessage.Success;
+                            Success = true;
                         }
+                        else
+                        {
+                            if (unPaidBooking != null)
+                            {
+                                unPaidBooking!.Status = BookingStatus.Cancel;
+                                await _bookingService.UpdateBooking(unPaidBooking);
+                            }
+
+                            Message = PaymentMessage.Cancel;
+                        }
+                    }
+                }
+                else
+                {
+                    var status = requestQuery.First(x => x.Key == "vnp_ResponseCode").Value;
+                    var user = await _userService.GetUserByEmail(User.FindFirstValue(ClaimTypes.Email)!);
+
+                    if (user != null && !string.IsNullOrEmpty(status) && status == "00")
+                    {
+                        var description = requestQuery.First(x => x.Key == "vnp_OrderInfo").Value!.ToString().Split(":");
+                        var packageId = int.Parse(description[1]);
+
+                        await _paymentService.HandlePaymentResponse(new PaymentInfoDTO()
+                        {
+                            PackageId = packageId,
+                            UserId = user!.UserId,
+                            CreatedDate = DateTime.Now,
+                            Description = description[0],
+                            Price = double.Parse(requestQuery.First(x => x.Key == "vnp_Amount").Value!),
+                            Status = TransactionStatus.Paid,
+                            PaymentMethod = requestQuery.First(x => x.Key == "vnp_CardType").Value! == "ATM" ? PaymentMethodConst.VNPAY : ""
+                        });
 
                         Message = PaymentMessage.Success;
                         Success = true;
-                    }
-                    else
+                    } else
                     {
-                        if (unPaidBooking != null)
-                        {
-                            unPaidBooking!.Status = Common.Enum.Status.BookingStatus.Cancel;
-                            await _bookingService.UpdateBooking(unPaidBooking);
-                        }
-
                         Message = PaymentMessage.Cancel;
                     }
-
-                    return Page();
                 }
-
-                return RedirectToPage("/Auth/Login");
-            } else
+            }
+            else
             {
                 Message = PaymentMessage.Error;
-                return Page();
             }
+
+            return Page();
         }
     }
 }

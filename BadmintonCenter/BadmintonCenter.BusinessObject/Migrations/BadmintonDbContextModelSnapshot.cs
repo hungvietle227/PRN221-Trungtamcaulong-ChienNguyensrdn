@@ -141,8 +141,8 @@ namespace BadmintonCenter.BusinessObject.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("HourIncluded")
-                        .HasColumnType("int");
+                    b.Property<double>("HourIncluded")
+                        .HasColumnType("float");
 
                     b.Property<string>("PackageName")
                         .IsRequired()
@@ -325,8 +325,8 @@ namespace BadmintonCenter.BusinessObject.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("HourRemaining")
-                        .HasColumnType("int");
+                    b.Property<double>("HourRemaining")
+                        .HasColumnType("float");
 
                     b.Property<int>("ValidInMonth")
                         .HasColumnType("int");

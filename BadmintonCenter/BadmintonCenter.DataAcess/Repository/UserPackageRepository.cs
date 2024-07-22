@@ -13,9 +13,9 @@ namespace BadmintonCenter.DataAcess.Repository
             _userPackageDAO = userPackageDAO;
         }
 
-        public Task AddUserPackageAsync(UserPackage userPackage)
+        public async Task AddUserPackageAsync(UserPackage userPackage)
         {
-            throw new NotImplementedException();
+            await _userPackageDAO.AddUserPackageAsync(userPackage);
         }
 
         public Task DeleteUserPackageAsync(int userPackageId)
@@ -23,7 +23,7 @@ namespace BadmintonCenter.DataAcess.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<List<UserPackage>> GetAllUserPackageAsync()
+        public async Task<IEnumerable<UserPackage>> GetAllUserPackageAsync()
         {
             return await _userPackageDAO.GetAllUserPackageAsync();
         }
@@ -39,9 +39,9 @@ namespace BadmintonCenter.DataAcess.Repository
             return packages.Where(p => p.UserId == userId).AsEnumerable();
         }
 
-        public Task UpdateUserPackageAsync(UserPackage userPackage)
+        public async Task UpdateUserPackageAsync(UserPackage userPackage)
         {
-            throw new NotImplementedException();
+            await _userPackageDAO.UpdateUserPackageAsync(userPackage);
         }
     }
 }

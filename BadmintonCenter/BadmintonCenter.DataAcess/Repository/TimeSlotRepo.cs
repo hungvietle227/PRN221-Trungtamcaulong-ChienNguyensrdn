@@ -42,5 +42,10 @@ namespace BadmintonCenter.DataAcess.Repository
         {
             await _timeSlotDAO.DeleteTimeSlotAsync(timeSlotId);
         }
+
+        public async Task<List<TimeSlot>> GetTimeSlotByCondition(string value)
+        {
+            return await _timeSlotDAO.GetTimeSlotByCondition(value);
+        }
     }
 }

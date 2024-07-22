@@ -5,9 +5,6 @@ using BadmintonCenter.Common.Enum.Status;
 using BadmintonCenter.DataAcess.Repository.Interface;
 using BadmintonCenter.Service.Interface;
 using DemoSchedule.DTO;
-using Microsoft.EntityFrameworkCore.Storage.Json;
-using System.Numerics;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BadmintonCenter.Service
 {
@@ -110,6 +107,11 @@ namespace BadmintonCenter.Service
             }
 
             return null;
+        }
+
+        public async Task<IEnumerable<Booking>> GetAllBookingOfUser(int userId)
+        {
+            return await _bookingRepository.GetAllBookingOfUser(userId);
         }
 
         public async Task<IEnumerable<Booking>> GetAllBookings()
