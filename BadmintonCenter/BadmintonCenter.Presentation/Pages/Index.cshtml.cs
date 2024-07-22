@@ -19,21 +19,21 @@ namespace BadmintonCenter.Presentation.Pages
             var role = HttpContext.User.FindFirstValue(ClaimTypes.Role);
             if (role == null)
             {
-                return Redirect("/");
+                return RedirectToPage("/Auth/Login");
             }
             else if (role == "Manager")
             {
-                return Redirect("/Manager/Index");
+                return RedirectToPage("/Manager/Index");
             }
             else if(role == "Admin")
             {
-                return Redirect("/Admin/Index");
+                return RedirectToPage("/Admin/Index");
             } else if(role == "Staff")
             {
-                return Redirect("/Staff/Index");
+                return RedirectToPage("/Staff/Index");
             } else
             {
-                return Redirect("/Index");
+                return Page();
             }
         }
     }
