@@ -1,4 +1,5 @@
 ﻿using BadmintonCenter.BusinessObject.Models;
+using BadmintonCenter.Common.Enum.Status;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -27,11 +28,12 @@ namespace BadmintonCenter.DataAcess.DAO
         public async Task<IEnumerable<BookingDetail>> GetAllBookingDetailsAsync()
         {
             return await _context.BookingDetails
-                .Include(p => p.Booking)
-                    .ThenInclude(b => b.User)
-                .Include(p => p.Court)
-                .Include(p => p.TimeSlot)
-                .ToListAsync();
+       .Include(p => p.Booking)
+       .ThenInclude(b => b.User)
+       .Include(p => p.Court)
+       .Include(p => p.TimeSlot)
+       .Where(p => p.Booking.Status == BookingStatus.Paid)
+       .ToListAsync();
         }
 
         public async Task AddBookingDetailAsync(BookingDetail bookingDetail)
